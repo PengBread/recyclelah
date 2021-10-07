@@ -1,0 +1,75 @@
+.grid-container {
+    display: grid;
+    grid-gap: 0px 0px;
+    grid-template-columns: 46% 54%;
+    padding: 20px 30px 20px;
+  }
+  .grid-item {
+    background-color: none;
+    padding: 0px;
+  }
+  #section1-Description {
+    padding: 150px 20px 150px 35%;
+  }
+
+  .grid-container2 {
+    display: grid;
+    grid-gap: 0px 25px;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+  }
+  .grid-item2 {
+    background-color: none;
+    padding: 0px;
+  }
+  #section2-Logo {
+    padding: 0 0 0 70px;
+  }
+  #section2-Description {
+    padding: 60px 0 0 0;
+  }
+
+  .grid-container3 {
+    display: grid;
+    grid-gap: 0px 150px;
+    grid-template-columns: 319px 319px 319px;
+    padding: 50px 20px 50px 20px;
+  }
+  .grid-item3 {
+    background-color: white;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 7px;
+    height: 400px;
+    width: auto;
+  }
+
+  .grid-container4 {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 50% 50%;
+    padding: 100px 30px 100px;
+  }
+  .grid-item4 {
+    background-color: none;
+    padding: 0 0px 0;
+  }
+  .grid-item4 img {
+    padding: 0 0px 0;
+  }
+  #section4-Description {
+    padding: 100px 0 100px;
+  }
+  .grid-item4 button {
+    height: 80px;
+    width: 250px;
+  }
+  
+  .scheduleBtn .btn {
+    height: 64px;
+    width: 239px;
+  }
+
+  #carouselIndicators {
+    height: 55vh;
+    background-color: #4d4d4d;
+  }
