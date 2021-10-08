@@ -14,6 +14,9 @@
 
         <!-- Styles -->
         <style>
+          #navigationBar {
+            background-color: rgba(0, 0, 0, 0.0);
+          }
           .navbar-nav {
             margin-left: 50px;
           }
@@ -43,7 +46,7 @@
     </head>
     <body class="antialiased">
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="#" style="padding: 0 0 0 20px;">
               <img src="{{asset('/images/TempLogo.png')}}" alt="" width="85" height="50" class="d-inline-block align-text-top">
