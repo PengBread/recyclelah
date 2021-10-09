@@ -4,7 +4,7 @@
     <div id="section1-div" style="height: 65vh; background-image: url('{{asset('/images/bg.png')}}');">
         <div class="container h-100">
             <div class="row h-auto">
-                <div id="section1-Description" class=" wordColor col-sm d-flex justify-content-center align-items-center">
+                <div id="section1-Description" class="wordColor col-sm d-flex justify-content-center align-items-center">
                     <div class="wordColor">
                         <h1>Welcome to Recycle-Lah!</h1>
                         <p>

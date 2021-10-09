@@ -1,0 +1,45 @@
+#schedule-TopSection {
+    padding: 0 0 100px;
+}
+
+#pageTitle-Container {
+    padding: 30px;
+    /* background-color: rgba(0, 107, 107, 0.3); */
+    text-align: center;
+    border-radius: 5px;
+}
+
+#searchSchedule-Main {
+    background-color: rgba(226, 226, 226, 0.5);
+    border-radius: 7px;
+}
+
+#searchSchedule-Container .row {
+    padding: 10px 10px 10px;
+}
+
+#schedule-BottomSection {
+    background: #aee8e2;
+    box-shadow: 0 -5px 30px 30px #aee8e2;
+}
+
+.schedule-Cards {
+    padding: 10px 10px 10px;
+}
+
+.schedule-Cards .card {
+    border-color: #aee8e2;
+    width: 80%;
+}
+
+.card-body {
+    height: 250px;
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    #searchSchedule-Container .form-group {
+        padding: 10px 0 10px;
+    }
+  }
