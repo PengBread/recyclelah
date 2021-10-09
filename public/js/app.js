@@ -19320,6 +19320,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/schedule.css":
+/*!************************************!*\
+  !*** ./resources/css/schedule.css ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/map.css":
+/*!*******************************!*\
+  !*** ./resources/css/map.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -19636,6 +19662,8 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/map": 0,
+/******/ 			"css/schedule": 0,
 /******/ 			"css/homepage": 0
 /******/ 		};
 /******/ 		
@@ -19686,8 +19714,10 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/homepage"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/homepage"], () => (__webpack_require__("./resources/css/homepage.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/map","css/schedule","css/homepage"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/map","css/schedule","css/homepage"], () => (__webpack_require__("./resources/css/homepage.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/map","css/schedule","css/homepage"], () => (__webpack_require__("./resources/css/schedule.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/map","css/schedule","css/homepage"], () => (__webpack_require__("./resources/css/map.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
