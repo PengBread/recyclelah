@@ -15,16 +15,16 @@
 
                 <div class="container-fluid mx-auto justify-content-centre">
                     <p class="text-center" style="margin-top:10vh; font-size:20px">
-                        Verification Email
+                        Reset Password
                     </p>
                 </div>
 
                 <div class="container-fluid d-flex justify-content-center">
-                    <input type="text" class="form-control" placeholder="Email" name="Email" style="margin-top:30px; margin-left:30vh; margin-right:30vh;">
+                    <input type="text" class="form-control" placeholder="New Password" name="Password" style="margin-top:30px; margin-left:30vh; margin-right:30vh;">
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-success btn-lg" style="margin-top: 20px; margin-bottom:10vh;" type="submit" >Sent Email</button>
+                    <button class="btn btn-outline-success btn-lg" style="margin-top: 20px; margin-bottom:10vh;" type="submit" >Reset</button>
                 </div>
 
                 {{-- <div class="container my-5" ></div> --}}

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.navfoot')
 
-@section('content')
-<div class="container">
+@section('navfoot')
+<div class="container" style="margin-top: 20vh; margin-bottom:20vh">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
