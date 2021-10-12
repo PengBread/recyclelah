@@ -21,56 +21,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-Route::get('/reset', function (Request $request) {
-    return view('reset');
+Route::get('/schedule', function () {
+    return view('schedule');
 });
 
-Route::get('/verify', function (Request $request) {
-    return view('verify');
+Route::get('/map', function () {
+    return view('map');
 });
 
-Route::get('/login', function (Request $request) {
-    return view('login');
-});
-
-Route::get('/register', function (Request $request) {
-    return view('register');
-});
-
-<<<<<<< HEAD
-
-Auth::routes();
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-// Route::get('/schedule', function () {
-//     return view('schedule');
-// });
-
-// Route::get('/map', function () {
-//     return view('map');
-// });
-
-// Route::get('/support', function () {
-//     return view('support');
-// });
-
-// Route::get('/faq', function () {
-//     return view('faq');
-// });
-
-// Route::get('/profile', function () {
-//     return view('profile');
-// });
-=======
 Route::get('/support', function () {
     return view('support');
 });
@@ -82,4 +40,3 @@ Route::get('/faq', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
->>>>>>> 18594e3 (Created Support[Feedback renamed], FAQ, Profile Page)
