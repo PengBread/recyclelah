@@ -24,3 +24,15 @@ Route::get('/schedule', function () {
 Route::get('/map', function () {
     return view('map');
 });
+
+Route::get('/support', function () {
+    return view('support');
+});
+
+Route::get('/faq', function () {
+    return view('faq');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
