@@ -20,11 +20,11 @@
                 </div>
 
                 <div class="container-fluid d-flex justify-content-center">
-                    <input type="text" class="form-control" placeholder="Email" name="Email" style="margin-top:30px; margin-left:30vh; margin-right:30vh;">
+                    <input type="text" class="form-control" placeholder="Email" name="Email" style="margin-top:30px; margin-left:10vw; margin-right:10vw;">
                 </div>
 
-                <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-success btn-lg" style="margin-top: 20px; margin-bottom:10vh;" type="submit" >Sent Email</button>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-success btn-lg" style="margin-top: 20px; margin-bottom:10vh; margin-left:24vh; margin-right:24vh;" type="submit" >Send Email</button>
                 </div>
 
                 {{-- <div class="container my-5" ></div> --}}
