@@ -38,6 +38,7 @@ Route::get('/register', function (Request $request) {
     return view('register');
 });
 
+<<<<<<< HEAD
 
 Auth::routes();
 
@@ -69,3 +70,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/profile', function () {
 //     return view('profile');
 // });
+=======
+Route::get('/support', function () {
+    return view('support');
+});
+
+Route::get('/faq', function () {
+    return view('faq');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+>>>>>>> 18594e3 (Created Support[Feedback renamed], FAQ, Profile Page)

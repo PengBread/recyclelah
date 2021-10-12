@@ -2,11 +2,14 @@
     background: #aee8e2;
     box-shadow: 0 -5px 10px 10px #aee8e2;
 }
+
 #mapSearch {
 }
+
 #mapSearch-Inside {
     background-color: rgba(116, 116, 116, 0.3);
 }
+
 #confirmBtn {
     width: 300px;
     height: 70px;
