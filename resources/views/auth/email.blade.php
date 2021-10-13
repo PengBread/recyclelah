@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.navfoot2')
 
-@section('content')
+@section('navfoot2')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +16,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action=""> <!-- Route password.email here -->
                         @csrf
 
                         <div class="form-group row">
@@ -45,3 +47,5 @@
     </div>
 </div>
 @endsection
+
+{{-- {{ route('password.email') }} --}}

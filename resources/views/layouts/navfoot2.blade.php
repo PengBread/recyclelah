@@ -24,10 +24,11 @@
             font-size: 25px;
           }
 
-          footer {
+          .footer {
             position: relative;
             left: 0;
             bottom: 0;
+            width: 100%;
             background-color: #181818;
             color: white;
             text-align: center;
@@ -75,10 +76,12 @@
       @yield('navfoot2')
 
       <footer>
-        <div class="text-center p-5" style="background-color: #313a43;">
-          <p class="text-white">Website by Bird-Bird</p>
+        <div class="footer">
+          <div class="text-center navbar-static-bottom p-5" style="background-color: #313a43;">
+            <p class="text-white">Website by Bird-Bird</p>
+          </div>
+          <div class="footer-bottom" style=""></div>
         </div>
-        <div class="footer-bottom" style=""></div>
       </footer>
     </body>
 </html>

@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.navfoot2')
 
-@section('content')
+@section('navfoot2')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,7 +12,7 @@
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
+                    <form method="POST" action=""> <!-- route password.confirm here-->
                         @csrf
 
                         <div class="form-group row">
@@ -33,11 +35,11 @@
                                     {{ __('Confirm Password') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>
@@ -47,3 +49,5 @@
     </div>
 </div>
 @endsection
+
+{{-- {{ route('password.confirm') }} --}}

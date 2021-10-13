@@ -1,0 +1,20 @@
+.card-header {
+    text-align: center;
+}
+
+.form-group {
+
+}
+
+@media screen and (min-width: 768px) {
+    .content-container {
+        width: 50%;
+        padding: 200px 10px 200px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .content-container {
+        padding: 100px 10px 100px;
+    }
+}

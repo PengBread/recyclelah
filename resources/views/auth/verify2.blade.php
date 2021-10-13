@@ -1,6 +1,6 @@
-@extends('layouts.navfoot')
+@extends('layouts.navfoot2')
 
-@section('navfoot')
+@section('navfoot2')
 <body>
    
     {{-- <div class="container my-5"> --}}

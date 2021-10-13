@@ -40,3 +40,19 @@ Route::get('/faq', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/verify', function () {
+    return view('auth.verify');
+});
+
+Route::get('/reset', function () {
+    return view('auth.reset');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
