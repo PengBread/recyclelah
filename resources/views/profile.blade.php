@@ -14,10 +14,10 @@
                             <hr>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="">Account Information</a>
+                            <a href="/profile">Account Information</a>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="">Organization Information</a>
+                            <a href="/profileOrg">Organization Information</a>
                         </div>
                     </div>
                 </div>
@@ -52,6 +52,9 @@
                         <div class="information-content">
                             <label for="inputCfmPassword" class="form-label">Confirm Password: </label>
                             <input type="password" id="inputCfmPassword" class="form-control" aria-describedby="passwordHelpBlock">
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center col-auto py-3">
+                            <button type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>

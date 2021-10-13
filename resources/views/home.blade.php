@@ -101,7 +101,7 @@
             </div>
             <div id="section3-Btn" class="d-flex justify-content-center align-items-center">
                 <div>
-                    <button id="viewScheduleBtn" type="button" class="btn btn-success">VIEW ALL SCHEDULES</button>
+                    <a id="viewScheduleBtn" class="btn btn-success btn-lg" href="/schedule">VIEW ALL SCHEDULES</a>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
                                 Our mother earth is currently slowly collapsing day by day.
                                 Do mother earth a favor, start recycling today!
                             </p>
-                            <button id="startRecyclingBtn" type="button" class="btn btn-success">Start Recycling</button>
+                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="/schedule">Start Recycling</a>
                         </div>
                     </div>
                 </div>

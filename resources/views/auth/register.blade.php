@@ -78,6 +78,9 @@
                             Register
                         </button>
                     </div>
+                    <div class=" pt-3">
+                        <a href="/login" class="">Return to Login</a>
+                    </div>
                 </form>
             </div>
         </div>

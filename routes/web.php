@@ -41,6 +41,10 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+Route::get('/profileOrg', function () {
+    return view('profileOrg');
+});
+
 Route::get('/verify', function () {
     return view('auth.verify');
 });

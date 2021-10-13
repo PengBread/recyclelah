@@ -20,9 +20,12 @@
           .navbar-nav {
             margin-left: 50px;
           }
-          .nav-item .btn {
+          .nav-item {
+            padding: 0 10px;
+          }
+          .nav-link {
             color: #004b4d;
-            font-size: 25px;
+            font-size: 30px;
           }
           body {
             height: 100%;
@@ -48,7 +51,7 @@
       <header>
         <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="padding: 0 0 0 20px;">
+            <a class="navbar-brand" href="/" style="padding: 0 0 0 20px;">
               <img src="{{asset('/images/TempLogo.png')}}" alt="" width="85" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,21 +60,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <button class="btn">Home</button>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn">Schedules</button>
+                  <a class="nav-link" href="/schedule">Schedules</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn">Map</button>
+                  <a class="nav-link" href="/map">Map</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn">FAQ</button>
+                  <a class="nav-link" href="/faq">FAQ</a>
                 </li>
               </ul>
-              <form class="d-flex">
-                <button class="btn btn-outline-success btn-lg" style="width: 150px;"type="submit">Login</button>
-              </form>
+              
+              <div class="d-flex">
+                <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/login">Login</a>
+              </div>
+              <!-- 
+                If user is logged in, the nav bar will change to "Profile/Account"
+              -->
+              {{-- <div class="d-flex nav-item dropdown">
+                <a class="btn btn-outline-success btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/support">Support</a></li>
+                  <li><a class="dropdown-item" href="#">Log Out</a></li>
+                </ul>
+              </div> --}}
+
             </div>
           </div>
         </nav>

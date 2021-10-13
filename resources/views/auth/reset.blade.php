@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class=" pt-3">
-                        <a href="" class="">Return to Login</a>
+                        <a href="/login" class="">Return to Login</a>
                     </div>
                 </form>
             </div>
