@@ -9,7 +9,7 @@
             <div class="card-header"><h4>Account Log In</h4></div>
 
             <div class="card-body">
-                <form method="POST" action=""> <!-- Route Login here -->
+                <form method="POST" action="{{ route('login') }}"> 
                     @csrf
 
                     <div class="form-group row p-3">

@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Organization;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Requests\CreateValidationRequest;
 
 class RegisterController extends Controller
 {
@@ -50,9 +54,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+            'phoneNumber' => ['required', 'regex:/(6?01)[0-9]{8,9}/', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'organizationName' => ['string', 'max:50']
         ]);
     }
 
@@ -67,7 +73,26 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phoneNumber' => $data['phoneNumber'],
             'password' => Hash::make($data['password']),
         ]);
     }
 }
+        // if ($request->flexRadioDefault == 'organization') {
+        //     return Validator::make($data, [
+        //         'organizationName' => ['required', 'string', 'max:50'],
+        //     ]);
+            // $organization = new Organization();
+            // $random = Str::random(40);
+            // $organization->organizationName = $data['organizationName'];
+            // $organization->organizationCode = $random;
+            // $organization->save();
+
+        //$organization = Client->findOrFail($id);
+        // if ($data['organizationName']) {
+        //     $random = Str::random(5);
+        //     return Organization::create([
+        //         'organizationName' => $data['organizationName'],
+        //         'organizationCode' => $random,
+        //     ]);
+        // }

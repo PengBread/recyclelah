@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+    protected $primaryKey = 'userID';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phoneNumber',
         'password',
     ];
 
@@ -41,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function affiliate()
+    {
+        return $this->belongsTo(Organization::class, 'organizationID', 'organizationID');
+    }
 }

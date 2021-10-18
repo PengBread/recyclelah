@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,10 +54,17 @@ Route::get('/reset', function () {
     return view('auth.reset');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+// Route::get('/register', function () {
+//     return view('auth.register');
+// });
 
 Route::get('/login', function () {
     return view('auth.login');
 });
+Auth::routes(['verify' => true]);
+
+Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
+
+Route::resource('/register', registerController::class);
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

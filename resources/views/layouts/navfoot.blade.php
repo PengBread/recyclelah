@@ -73,9 +73,17 @@
                 </li>
               </ul>
               
+              @guest
               <div class="d-flex">
                 <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/login">Login</a>
               </div>
+              @endguest
+
+              @auth
+              <div class="d-flex">
+                <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/logout">Logout</a>
+              </div>
+              @endauth
               <!-- 
                 If user is logged in, the nav bar will change to "Profile/Account"
               -->
