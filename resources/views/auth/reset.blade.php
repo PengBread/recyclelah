@@ -13,10 +13,22 @@
             <div class="card-header"><h4>Reset password</h4></div>
 
             <div class="card-body">
-                <form method="POST" action=""> <!-- route password here -->
+                <form method="POST" action="{{url('/forgotPassword')}}">
                     @csrf
 
-                    <input type="hidden" name="token" value=""> <!-- token here -->
+                    @if(session('error'))
+                    <div>
+                    {{ session('error') }}
+                    </div>
+                    @endif
+
+                    @if(session('success'))
+                    <div>
+                    {{ session('success') }}
+                    </div>
+                    @endif
+
+                    <input type="hidden" name="token"> <!-- token here -->
 
                     <div class="form-group row p-3">
                         <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

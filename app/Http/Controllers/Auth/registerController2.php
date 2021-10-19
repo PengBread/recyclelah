@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateValidationRequest;
 use App\Models\User;
 use App\Models\Organization;
 use Illuminate\Support\Str;
+use Mail;
+use Auth;
 
-class registerController extends Controller
+class registerController2 extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('guest');
-    // }
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -73,11 +76,28 @@ class registerController extends Controller
                 'password' => $request->input('password')
             ]);
             $organization = Organization::create([
+                'userID' => $user->userID,
                 'organizationName' => $request->input('organizationName'),
                 'organizationCode' => Str::random(5)
             ]);
+
+            $user->organizationID = $organization->organizationID;
+            $user->save();
         }
-        return redirect('/');
+
+        $input = [
+            $request->input('name'),
+            $request->input('email'),
+            $request->input('phoneNumber'),
+            $request->input('password')
+        ];
+
+        Mail::send('auth.emailActivation', $input, function ($message) use ($input) {
+            $message->to($input[1]);
+            $message->subject('Recycle-Lah - Activation Code');
+        });
+
+        return redirect('/email/verify');
     }
 
     /**
@@ -88,7 +108,6 @@ class registerController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**

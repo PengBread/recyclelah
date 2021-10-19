@@ -76,6 +76,12 @@
               @endguest
 
               @auth
+              <div class="d-flex">
+                <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/logout">Logout</a>
+              </div>
+              @endauth
+
+              @auth
               <!-- 
                 If user is logged in, the nav bar will change to "Profile/Account"
               -->

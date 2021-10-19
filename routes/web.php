@@ -1,11 +1,15 @@
 <?php
 
+namespace App\Http\Controllers\Auth;
+
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\registerController;
+use App\Http\Controllers\Auth\registerController2;
+use App\Models\User;
+use App\Models\User as Model;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +42,9 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+// Route::get('/profile', function () {
+//     return view('profile');
+// });
 
 Route::get('/profileOrg', function () {
     return view('profileOrg');
@@ -54,10 +58,6 @@ Route::get('/reset', function () {
     return view('auth.reset');
 });
 
-// Route::get('/register', function () {
-//     return view('auth.register');
-// });
-
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -65,6 +65,23 @@ Auth::routes(['verify' => true]);
 
 Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
 
-Route::resource('/register', registerController::class);
+Route::resource('/register', registerController2::class);
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+});
+
+Route::get('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@forgotPassword');
+Route::post('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@sendResetPassword');
+
+Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPassword');
+
+Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@updatePassword');
+
+//implement as only authorized users are allowed to access the profile page [middleware]
+//to be changed as login user is not always the last
+Route::get('/profile', function () {
+    $user = Model::all()->last()->name;
+    Auth::login(Model::all()->last());
+    return view('profile');
+});

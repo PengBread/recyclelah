@@ -1,6 +1,7 @@
 @extends('layouts.navfoot')
 
 @section('navfoot')
+
     <div id="section1-div" style="height: 65vh; background-image: url('{{asset('/images/bg.png')}}');">
         <div class="container h-100">
             <div class="row h-auto">

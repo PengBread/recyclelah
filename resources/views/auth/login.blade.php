@@ -40,6 +40,14 @@
                         </div>
                     </div>
 
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                        <p>
+                            {{ $message }}
+                        </p>
+                        </div>
+                    @endif
+
                     <div class="form-group row p-2">
                         <div class="d-flex col justify-content-center">
                             <button type="submit" class="btn btn-primary" style="width: 130px;">
@@ -56,7 +64,7 @@
 
                     <div class="form-group row p-2">
                         <div class="col">
-                            <a href="/reset">Forgot password?</a>
+                            <a href="/forgotPassword">Forgot password?</a>
                         </div>
                         <div class="col" style="text-align: right;">
                             <a href="/register">Register Now</a>
