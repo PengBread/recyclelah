@@ -22,8 +22,7 @@ class Organization extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     protected $fillable = [
-        'organizationName',
-        'userID',
+        'organizationID',
         'organizationName',
         'organizationCode'
     ];
