@@ -80,21 +80,21 @@
               @endguest
 
               @auth
-              <div class="d-flex">
-                <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/logout">Logout</a>
-              </div>
-              @endauth
               <!-- 
                 If user is logged in, the nav bar will change to "Profile/Account"
               -->
-              {{-- <div class="d-flex nav-item dropdown">
-                <a class="btn btn-outline-success btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+              <div class="d-flex nav-item dropdown">
+                <a class="btn btn-outline-success btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false"> 
+                  <span class="mdi mdi-account-circle-outline"></span>
+                  Account
+                </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="/profile">Profile</a></li>
                   <li><a class="dropdown-item" href="/support">Support</a></li>
-                  <li><a class="dropdown-item" href="#">Log Out</a></li>
+                  <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                 </ul>
-              </div> --}}
+              </div>
+              @endauth
 
             </div>
           </div>

@@ -17,23 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
-            [
-                'email' => 'root@email.com',
-                'name' => 'root',
-                'password' => Hash::make('password'),
-                'phoneNumber' => '0123456789',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]
-        ]);
-
-        Organization::insert([
-            [
-                'userID' => 1,
-                'organizationName' => 'rootOrg',
-                'organizationCode' => '12345',
-            ]
+        $this->call([
+            UserSeeder::class
         ]);
     }
 }
