@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             [
                 'email' => 'test@gmail.com',
                 'name' => 'test',
-                'password' => Hash::make('test123'),
+                'password' => Hash::make('test1234'),
                 'phoneNumber' => '999999999',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

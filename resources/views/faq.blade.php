@@ -22,13 +22,15 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                                Who created Recycle-Lah?
+                                What is Recycle-Lah?
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
                                 <p>
-                                    Recycle-Lah is created by a group of students from UOW KDU penang.
+                                    Recycle-Lah is a brand new website that was developed by BirdBird Group that ventures into the recycling business. 
+                                    Mother Nature is reaching it's breaking point at an unprecidented rate, therefore, with it's best interest in mind, 
+                                    Recycle-Lah is an initiative that aims to help promote recyling by making it more accessable to the masses.
                                 </p>
                             </div>
                         </div>
@@ -39,13 +41,14 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                Why was Recycle-Lah Created?
+                                What can I Recycle?
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
                                 <p>
-                                    The reason why Recycle-Lah was created is due to Bird-Bird's Final Year Project.
+                                    Everything! From Paper, metals, plastic, glass, Recycle-Lah links you to a recyclers 
+                                    that will accept whatever you have to throw at them AS LONG AS THEY ARE DOMESTIC WASTE.
                                 </p>
                             </div>
                         </div>
@@ -56,13 +59,16 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                Q3
+                                How does the service work?
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
                                 <p>
-                                    .
+                                    Once registered, you can create a request by choosing the type of material you would like to recycle and drop a pin at your current location. 
+                                    Soon after, a recycler will drop by to pick up your recyclyables. 
+                                    Busy today but still want to do your part? No problem! You can schedule a pick up anytime you want. 
+                                    Once collected, both you and the recycler must verify that the recycleables have been picked up and your request will be treated as complete.
                                 </p>
                             </div>
                         </div>
@@ -73,30 +79,47 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                                Q4
+                                I am a recyling business, how can we be partners? 
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
                                 <p>
-                                    .
+                                    Firstly, all employees must be a registered user. A representative (Owner/ HR) may create an organization and add your employees into to that organization using a generated code. 
+                                    From there you will have privileges such as managing your organization, creating schedules and more.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- 5 -->
-                <div class="faq-panels5 accordion">
+                <div class="faq-panels accordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingFive">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-                                Q5
+                                Can I make multiple requests?
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
                                 <p>
-                                    .
+                                    No. Every user can only make one (1) request at a time. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panelsLast accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                                Report an organization/ service error. 
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                            <div class="accordion-body">
+                                <p>
+                                    Kindly make your report at the report/feedback page and we will look into it soon. 
                                 </p>
                             </div>
                         </div>

@@ -49,7 +49,7 @@ class registerController2 extends Controller
             $request->validate([
                 'name' => 'required|string|max:50',
                 'email' => 'required|string|email|max:50|unique:users',
-                'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,9}/|unique:users',
+                'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,10}/',
                 'password' => 'required|string|min:8|confirmed',
             ]);
 
@@ -94,7 +94,7 @@ class registerController2 extends Controller
 
         Mail::send('auth.emailActivation', $input, function ($message) use ($input) {
             $message->to($input[1]);
-            $message->subject('Recycle-Lah - Activation Code');
+            $message->subject('Recycle-Lah - Verification');
         });
 
         return redirect('/email/verify');
