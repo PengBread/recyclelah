@@ -28,7 +28,7 @@
                             <a href="/profile">Account Information</a>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="/profileOrg">Organization Information</a>
+                            <a href="{{ route('organization') }}">Organization Information</a>
                         </div>
                     </div>
                 </div>

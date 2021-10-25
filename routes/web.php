@@ -46,10 +46,6 @@ Route::get('/faq', function () {
 //     return view('profile');
 // });
 
-Route::get('/profileOrg', function () {
-    return view('profileOrg');
-});
-
 Route::get('/verify', function () {
     return view('auth.verify');
 });
@@ -96,6 +92,7 @@ Route::group([
          * AuthController Section
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
+        Route::get('profile/organization', 'ProfileController@organization')->name('organization');
 
         /**
          * ProfileController Section

@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Organization;
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            OrganizationSeeder::class
+        ]);
+        User::find(3)->update([
+            'organizationID' => 1
         ]);
     }
 }

@@ -27,7 +27,6 @@ class CreateOrganizationsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
-
         Schema::enableForeignKeyConstraints();
     }
 

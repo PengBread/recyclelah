@@ -34,18 +34,24 @@
                     </div>
                     <div class="pt-5 pb-5 px-5">
                         <div class="border">
-                            <div class="align-items-center" style="padding: 20px;">
-                                <div style="text-align: center;">
-                                    <h5>You are not involved in any organization</h5>
-                                    <p style="font-size: 14px;">Join one through using the organization code<p>
+                            
+                            <form class="form" method="" action="">
+                                @csrf
+
+                                <div class="align-items-center" style="padding: 20px;">
+                                    <div style="text-align: center;">
+                                        <h5>You are not involved in any organization</h5>
+                                        <p style="font-size: 14px;">Join one through using the organization code<p>
+                                    </div>
+                                    <div id="input-Code-Container" class="" style="text-align: center;">
+                                        <input type="text" id="inputCode" class="form-control" placeholder="Enter Organization Code" aria-describedby="">
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center col-auto py-3">
+                                        <button type="button" class="btn btn-primary">Confirm</button>
+                                    </div>
                                 </div>
-                                <div id="input-Code-Container" class="" style="text-align: center;">
-                                    <input type="text" id="inputCode" class="form-control" placeholder="Enter Organization Code" aria-describedby="">
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center col-auto py-3">
-                                    <button type="button" class="btn btn-primary">Confirm</button>
-                                </div>
-                            </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Organization;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class OrganizationSeeder extends Seeder
 {
@@ -16,10 +17,11 @@ class OrganizationSeeder extends Seeder
     {
         Organization::insert([
             [
-                // 'userID' => DB::table('users')->where('name', '=', 'test')->get('userID'),
-                'organizationName' => 'Organization A',
+                'userID' => 3,
+                'organizationName' => 'testOrg',
                 'organizationCode' => Str::random(7),
-            ],
+            ]
         ]);
+        
     }
 }

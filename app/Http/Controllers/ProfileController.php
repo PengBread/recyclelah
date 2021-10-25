@@ -15,7 +15,14 @@ class ProfileController extends Controller
     }
 
     public function organization(Request $request) {
-        return view('profileOrg');
+        $user = auth()->user();
+        if($user->organizationID != null) {
+            $data = Organization::find($request->organizationID);
+
+            return view('profileOrg', ['userInfo'=>$data]);
+        } else {
+            return view('profileOrg');
+        }
     }
 
     public function editName(ProfileRequest $request) {
