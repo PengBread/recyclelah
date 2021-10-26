@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -15,11 +18,11 @@ class ProfileController extends Controller
     }
 
     public function organization(Request $request) {
-        $user = auth()->user();
-        if($user->organizationID != null) {
-            $data = Organization::find($request->organizationID);
+        
+        if(auth()->user()->affiliate != null) {
+            $organization = auth()->user()->affiliate;
 
-            return view('profileOrg', ['userInfo'=>$data]);
+            return view('profileOrg', ['userInfo' => $organization]);
         } else {
             return view('profileOrg');
         }
@@ -44,5 +47,51 @@ class ProfileController extends Controller
         auth()->user()->update(['password' => Hash::make($request->safe()->password)]);
 
         return redirect()->route('authProfile');
+    }
+
+    public function joinOrganization(ProfileRequest $request) {
+        $code = $request->safe()->code;
+
+        $table = Organization::select('organizationID')
+                        ->where('organizationCode', '=', $code)
+                        ->first();
+        if($table == null) {
+            return redirect()->route('organization')->withErrors([
+                'invalidCodeError' => 'Invalid Code. No organization is under this code!'
+            ]);
+        }
+
+        auth()->user()->update(['organizationID' => $table->organizationID]);
+
+        return redirect()->route('organization');
+
+        // $table = DB::table('organizations')
+        //                     ->select('organizationID')
+        //                     ->where('organizationCode', '=', $code)
+        //                     ->get();
+    }
+
+    public function leaveOrganization(Request $request) {
+        auth()->user()->update(['organizationID' => null]);   
+
+        return redirect()->route('authProfile');
+    }
+
+    public function listUsers(Request $request) {
+        $orgID = auth()->user()->organizationID;
+        $user = User::select('name', 'phoneNumber')
+                    ->where('organizationID', '=', $orgID)
+                    ->get();
+
+        return view('affiliatesList', ['usersOrg' => $user]);
+    }
+
+    public function kickUser(Request $request) {
+        
+        return view('affiliatesList');
+    }
+
+    public function createSchedule(Request $request) {
+        //
     }
 }

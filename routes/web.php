@@ -42,10 +42,6 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-// Route::get('/profile', function () {
-//     return view('profile');
-// });
-
 Route::get('/verify', function () {
     return view('auth.verify');
 });
@@ -93,6 +89,7 @@ Route::group([
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
+        Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
 
         /**
          * ProfileController Section
@@ -100,9 +97,13 @@ Route::group([
         Route::group([
             'prefix' => 'profile'
         ], function () {
+            Route::get('listUsers', 'ProfileController@listUsers')->name('profile.listUsers');
             Route::put('editName', 'ProfileController@editName')->name('profile.editName');
             Route::put('editPhone', 'ProfileController@editPhone')->name('profile.editPhone');
             Route::put('editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
+            Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
+            Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
+            Route::put('organization/affiliates', 'ProfileController@kickUser')->name('profile.kickUser');
         });
     });
 });
