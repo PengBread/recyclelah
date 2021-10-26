@@ -14,10 +14,10 @@
                             <hr>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="/profile">Account Information</a>
+                            <a href="{{ route('authProfile') }}">Account Information</a>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="/profileOrg">Organization Information</a>
+                            <a href="{{ route('organization') }}">Organization Information</a>
                         </div>
                     </div>
                 </div>
@@ -33,10 +33,14 @@
                         </div>
                     </div>
                     <div class="pt-5 pb-5 px-5">
+                        @include('components.errors')
                         <div class="border">
-                            
-                            <form class="form" method="" action="">
+
+                            {{-- <!-- FOR USER WITHOUT ORGANIZATION -->
+                            @if(auth()->user()->organizationID == null)
+                            <form class="form" method="POST" action="{{ route('profile.joinOrganization') }}">
                                 @csrf
+                                @method('put')
 
                                 <div class="align-items-center" style="padding: 20px;">
                                     <div style="text-align: center;">
@@ -44,13 +48,54 @@
                                         <p style="font-size: 14px;">Join one through using the organization code<p>
                                     </div>
                                     <div id="input-Code-Container" class="" style="text-align: center;">
-                                        <input type="text" id="inputCode" class="form-control" placeholder="Enter Organization Code" aria-describedby="">
+                                        <input type="text" id="inputCode" name="code" class="form-control" placeholder="Enter Organization Code" pattern="^[a-zA-Z0-9]{7}$" title="7 digit/alphabet only in an Organization Code">
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center col-auto py-3">
-                                        <button type="button" class="btn btn-primary">Confirm</button>
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
                                     </div>
                                 </div>
                             </form>
+                            <!-- -->
+
+                            <!-- IF USER JOINED AN ORGANIZATION -->
+                            @else
+                            <form class="form" method="POST" action="{{ route('organization')}}">
+                                @csrf
+
+                                <div class="container mx-auto align-items-center" style="padding: 20px;">
+                                    <div style="text-align: center;">
+                                        <h5>{{ $userInfo->organizationName }}</h5>
+                                        <p class="pb-3" style="font-size: 14px;">You are working under this organization as a worker<p>
+                                        <div class="py-3">
+                                            <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
+                                        </div>
+                                        <div class="py-2">
+                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#leaveOrgModal">Leave Organization</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- -->
+                            @endif --}}
+
+                            <!-- ORGANIZATION OWNER VIEW -->
+                            <form class="form" method="POST" action="{{ route('organization')}}">
+                                @csrf
+
+                                <div class="container mx-auto align-items-center" style="padding: 20px;">
+                                    <div style="text-align: center;">
+                                        <h5>{{ $userInfo->organizationName }}</h5>
+                                        <p class="pb-3" style="font-size: 14px;">You are the owner of this organization<p>
+                                        <div class="py-3">
+                                            <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
+                                        </div>
+                                        <div class="py-2">
+                                            <a type="button" class="btn btn-dark" href="{{ route('memberList') }}">List Workers</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- -->
 
                         </div>
                     </div>
@@ -60,6 +105,7 @@
     </div>
     <div style="height: 19vh;">
     </div>
+    @include('components.organizationModal')
 </div>
 
 @endsection

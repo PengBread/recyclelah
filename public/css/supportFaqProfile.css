@@ -5,7 +5,7 @@
 .faq-panels {
     padding: 10px 0 10px;
 }
-.faq-panels5 {
+.faq-panelsLast {
     padding: 10px 0 20px;
 }
 
@@ -31,10 +31,6 @@
     .profile-sidebar {
         width: 100%;
     }
-
-}
-
-.rl-links {
 
 }
 
