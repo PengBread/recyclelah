@@ -11,6 +11,12 @@
                     <form method="POST" action="{{ url('updatePassword') }}">
                         @csrf
 
+                        @if(session('error'))
+                            <div>
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <input type="hidden" name="token" >
                         {{-- value="{{ $token }}" --}}
 

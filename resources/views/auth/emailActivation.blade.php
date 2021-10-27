@@ -6,7 +6,7 @@ Please activate your account :  --}}
 
 The body of content EDIT THIS.
 
-<a class="btn btn-link p-0 m-0 align-baseline" href='http://127.0.0.1:8000/profile' >{{ __('Visit Site') }}</a>
+<a class="btn btn-link p-0 m-0 align-baseline" href='http://127.0.0.1:8000/userLogin' >{{ __('Visit Site') }}</a>
 
 Thanks, <br>
 {{ config('app.name') }}

@@ -43,10 +43,15 @@ class ForgotPassword2 extends Controller
         return view('auth.passwords.reset');
     }
 
-    public function updatePassword()
+    public function updatePassword(Request $request)
     {
-        $userEmail = Input::get('email');
-        $user = User::where('email', $userEmail)->first();
+
+        $user = User::whereEmail($request->email)->first();
+
+        if (($user) == null) {
+            return redirect()->back()->with(['error' => 'Email not exists']);
+        }
+
         $userPassword = [Input::get('password')];
 
         $rules = array(
