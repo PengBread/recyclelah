@@ -35,9 +35,11 @@
                     <div class="pt-5 pb-5 px-5">
                         @include('components.errors')
                         <div class="border">
+                            
+                            {{-- {{ auth()->user()->affiliate }} --}}
 
-                            {{-- <!-- FOR USER WITHOUT ORGANIZATION -->
-                            @if(auth()->user()->organizationID == null)
+                            @if(!$organizationInfo)
+                            <!-- FOR USER WITHOUT ORGANIZATION -->
                             <form class="form" method="POST" action="{{ route('profile.joinOrganization') }}">
                                 @csrf
                                 @method('put')
@@ -57,34 +59,14 @@
                             </form>
                             <!-- -->
 
-                            <!-- IF USER JOINED AN ORGANIZATION -->
-                            @else
-                            <form class="form" method="POST" action="{{ route('organization')}}">
-                                @csrf
-
-                                <div class="container mx-auto align-items-center" style="padding: 20px;">
-                                    <div style="text-align: center;">
-                                        <h5>{{ $userInfo->organizationName }}</h5>
-                                        <p class="pb-3" style="font-size: 14px;">You are working under this organization as a worker<p>
-                                        <div class="py-3">
-                                            <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
-                                        </div>
-                                        <div class="py-2">
-                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#leaveOrgModal">Leave Organization</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- -->
-                            @endif --}}
-
+                            @elseif($organizationInfo->userID == auth()->user()->userID)
                             <!-- ORGANIZATION OWNER VIEW -->
                             <form class="form" method="POST" action="{{ route('organization')}}">
                                 @csrf
 
                                 <div class="container mx-auto align-items-center" style="padding: 20px;">
                                     <div style="text-align: center;">
-                                        <h5>{{ $userInfo->organizationName }}</h5>
+                                        <h5>{{ $organizationInfo->organizationName }}</h5>
                                         <p class="pb-3" style="font-size: 14px;">You are the owner of this organization<p>
                                         <div class="py-3">
                                             <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
@@ -96,6 +78,29 @@
                                 </div>
                             </form>
                             <!-- -->
+
+                            <!-- IF USER JOINED AN ORGANIZATION -->
+                            @elseif($organizationInfo)
+                            <form class="form" method="POST" action="{{ route('organization')}}">
+                                @csrf
+
+                                <div class="container mx-auto align-items-center" style="padding: 20px;">
+                                    <div style="text-align: center;">
+                                        <h5>{{ $organizationInfo->organizationName }}</h5>
+                                        <p class="pb-3" style="font-size: 14px;">You are working under this organization as a worker<p>
+                                        <div class="py-3">
+                                            <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
+                                        </div>
+                                        <div class="py-2">
+                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#leaveOrgModal">Leave Organization</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- -->
+                            @else
+                                Error Occured
+                            @endif
 
                         </div>
                     </div>

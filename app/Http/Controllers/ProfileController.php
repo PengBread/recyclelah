@@ -87,6 +87,7 @@ class ProfileController extends Controller
         return redirect()->route('authProfile');
     }
 
+<<<<<<< HEAD
     public function listUsers(Request $request)
     {
         $orgID = auth()->user()->organizationID;
@@ -101,6 +102,30 @@ class ProfileController extends Controller
     {
 
         return view('affiliatesList');
+=======
+    public function listUsers(Request $request) {
+        $organization = auth()->user()->affiliate;
+        $page = ($request->page) ?? 1;
+        $staffs = $organization
+                ->staffs()
+                ->where('userID', '!=', $organization->userID)     // exclude owner
+                ->offset(8*($page - 1))
+                ->limit(8)
+                ->get();
+        
+        $total = $organization
+                ->staffs()
+                ->where('userID', '!=', $organization->userID)     // exclude owner
+                ->count();
+        
+        return view('affiliatesList', ['userOrg' => $staffs, 'total' => $total, 'page' => $page]);
+    }
+
+    public function kickUser(Request $request, User $kicked) {
+        $kicked->update(['organizationID' => null]);
+        
+        return redirect()->route('memberList');
+>>>>>>> b59783a (User Profile System)
     }
 
     public function createSchedule(Request $request)

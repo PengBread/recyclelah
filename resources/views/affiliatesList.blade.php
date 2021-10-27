@@ -35,7 +35,7 @@
                     <div class="p-3">
                         <div class="border">
                             <div>
-                                <table class="table" name='affiliateTable'>
+                                <table class="table" id="affiliateTable">
                                     @csrf
                                     
                                     <thead>
@@ -47,18 +47,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($usersOrg as $user)
-                                        <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td name='name{{ $loop->iteration }}'>{{ $user->name }}</td>
-                                        <td>{{ $user->phoneNumber }}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#kickUserModal">Kick User</button>
-                                        </td>
-                                        </tr>
+                                    @foreach($userOrg as $target)
+                                        {{-- <form class="form" method="POST" action="{{ route('profile.kickUser') }}"> --}}
+                                            <tr>
+                                            <th scope="row" style="width: 5%">
+                                                {{ $loop->iteration }}
+                                                {{-- <input name="user_userID" value="{{ $user->userID }}" style="width: 20px" readonly> --}}
+                                            </th>
+                                            <td>{{ $target->name }}</td>
+                                            <td>{{ $target->phoneNumber }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-end">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#kickUserModal{{ $target->userID }}">Kick User</button>
+                                                @include('components.ownerViewModal', ['target' => $target])
+                                                    {{-- @csrf
+                                                    @method('put')
+                                                    <div style="text-align: right;">
+                                                    <button type="submit" class="thisUser btn btn-danger" value="GET VALUE">Kick User</button>
+                                                    </div>
+                                                    @include('components.organizationModal') --}}
+                                                </div>
+                                            </td>
+                                            </tr>
+                                        {{-- </form> --}}
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="d-flex justify-content-end px-3">
+                                    <nav aria-label="Page navigation">
+                                        <div class="d-flex justify-content-end">
+                                            <p id="pageInfo">Page: {{ $page }}</p>
+                                        </div>
+                                        <ul class="pagination">
+                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page-1]) }}">Previous</a></li>
+                                            @for($i = 0; $i < $total/1; $i++)
+                                                <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $i+1]) }}">{{ $i+1 }}</a></li>
+                                            @endfor
+                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page+1]) }}">Next</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +95,6 @@
         </div>
     </div>
 
-    @include('components.organizationModal')
 </div>
 
 @endsection
