@@ -100,7 +100,7 @@ Route::group([
             Route::put('editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
             Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
             Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
-            Route::put('organization/affiliates', 'ProfileController@kickUser')->name('profile.kickUser');
+            Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
         });
     });
 });
