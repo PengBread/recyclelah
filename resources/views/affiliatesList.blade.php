@@ -79,6 +79,7 @@
                                             <p id="pageInfo">Page: {{ $page }}</p>
                                         </div>
                                         <ul class="pagination">
+<<<<<<< HEAD
                                             @if($page > 1)
                                                 <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page-1]) }}">Previous</a></li>
                                             @endIf
@@ -88,6 +89,13 @@
                                             @if($page < $total/8)
                                                 <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page+1]) }}">Next</a></li>
                                             @endif
+=======
+                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page-1]) }}">Previous</a></li>
+                                            @for($i = 0; $i < $total/1; $i++)
+                                                <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $i+1]) }}">{{ $i+1 }}</a></li>
+                                            @endfor
+                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page+1]) }}">Next</a></li>
+>>>>>>> b59783a (User Profile System)
                                         </ul>
                                     </nav>
                                 </div>
