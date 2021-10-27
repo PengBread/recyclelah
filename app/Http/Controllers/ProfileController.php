@@ -19,13 +19,7 @@ class ProfileController extends Controller
 
     public function organization(Request $request) {
         
-        if(auth()->user()->affiliate != null) {
-            $organization = auth()->user()->affiliate;
-
-            return view('profileOrg', ['userInfo' => $organization]);
-        } else {
-            return view('profileOrg');
-        }
+        return view('profileOrg', ['organizationInfo' => auth()->user()->affiliate]);
     }
 
     public function editName(ProfileRequest $request) {
@@ -78,17 +72,27 @@ class ProfileController extends Controller
     }
 
     public function listUsers(Request $request) {
-        $orgID = auth()->user()->organizationID;
-        $user = User::select('name', 'phoneNumber')
-                    ->where('organizationID', '=', $orgID)
-                    ->get();
-
-        return view('affiliatesList', ['usersOrg' => $user]);
+        $organization = auth()->user()->affiliate;
+        $page = ($request->page) ?? 1;
+        $staffs = $organization
+                ->staffs()
+                ->where('userID', '!=', $organization->userID)     // exclude owner
+                ->offset(8*($page - 1))
+                ->limit(8)
+                ->get();
+        
+        $total = $organization
+                ->staffs()
+                ->where('userID', '!=', $organization->userID)     // exclude owner
+                ->count();
+        
+        return view('affiliatesList', ['userOrg' => $staffs, 'total' => $total, 'page' => $page]);
     }
 
-    public function kickUser(Request $request) {
+    public function kickUser(Request $request, User $kicked) {
+        $kicked->update(['organizationID' => null]);
         
-        return view('affiliatesList');
+        return redirect()->route('memberList');
     }
 
     public function createSchedule(Request $request) {
