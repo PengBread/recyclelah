@@ -70,13 +70,7 @@ Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPas
 
 Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@updatePassword');
 
-//implement as only authorized users are allowed to access the profile page [middleware]
-//to be changed as login user is not always the last
-// Route::get('/profile', function () {
-//     $user = Model::all()->last()->name;
-//     Auth::login(Model::all()->last());
-//     return view('profile');
-// });
+Route::get('userLogin', 'App\Http\Controllers\ProfileController@userLogin');
 
 Route::group([
     'namespace' => 'App\Http\Controllers'
