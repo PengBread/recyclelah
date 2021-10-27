@@ -9,8 +9,16 @@
             <div class="card-header"><h4>Account Log In</h4></div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('login') }}"> 
+                <form method="POST" action="{{ url('login') }}"> 
                     @csrf
+
+                    @if ($message = Session::get('error'))
+                        <div class="text-danger">
+                        <p>
+                            {{ $message }}
+                        </p>
+                        </div>
+                    @endif
 
                     <div class="form-group row p-3">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -39,14 +47,6 @@
                             @enderror
                         </div>
                     </div>
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                        <p>
-                            {{ $message }}
-                        </p>
-                        </div>
-                    @endif
 
                     <div class="form-group row p-2">
                         <div class="d-flex col justify-content-center">

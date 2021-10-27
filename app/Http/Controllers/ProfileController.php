@@ -10,20 +10,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User as Model;
 
 class ProfileController extends Controller
 {
 
-    public function userLogin(Request $request)
-    {
-        Auth::login(Model::all()->last());
-        return Redirect("http://127.0.0.1:8000/profile");
-    }
-
     public function profile(Request $request)
     {
-        //Auth::login(Model::all()->last());
         $user = auth()->user();
         return view('profile', ['userInfo' => $user]);
     }

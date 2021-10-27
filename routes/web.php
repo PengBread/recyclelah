@@ -52,8 +52,11 @@ Route::get('/reset', function () {
 
 Route::get('/login', function () {
     return view('auth.login');
-});
-Auth::routes(['verify' => true]);
+})->name('login');
+
+Route::post('/login', '\App\Http\Controllers\Auth\LoginController2@authentication');
+
+//Auth::routes(['verify' => true]);
 
 Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
 
@@ -70,7 +73,7 @@ Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPas
 
 Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@updatePassword');
 
-Route::get('userLogin', 'App\Http\Controllers\ProfileController@userLogin');
+Route::get('userLogin', 'App\Http\Controllers\Auth\LoginController2@userLogin');
 
 Route::group([
     'namespace' => 'App\Http\Controllers'

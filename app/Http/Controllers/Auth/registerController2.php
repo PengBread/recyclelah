@@ -10,6 +10,7 @@ use App\Models\Organization;
 use Illuminate\Support\Str;
 use Mail;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class registerController2 extends Controller
 {
@@ -57,7 +58,7 @@ class registerController2 extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phoneNumber' => $request->input('phoneNumber'),
-                'password' => $request->input('password')
+                'password' => Hash::make($request->input('password')),
             ]);
         }
         //if user choose organization radio button 
@@ -73,7 +74,7 @@ class registerController2 extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phoneNumber' => $request->input('phoneNumber'),
-                'password' => $request->input('password')
+                'password' => Hash::make($request->input('password')),
             ]);
             $organization = Organization::create([
                 'userID' => $user->userID,
