@@ -79,11 +79,15 @@
                                             <p id="pageInfo">Page: {{ $page }}</p>
                                         </div>
                                         <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page-1]) }}">Previous</a></li>
-                                            @for($i = 0; $i < $total/1; $i++)
+                                            @if($page > 1)
+                                                <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page-1]) }}">Previous</a></li>
+                                            @endIf
+                                            @for($i = 0; $i < $total/8; $i++)
                                                 <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $i+1]) }}">{{ $i+1 }}</a></li>
                                             @endfor
-                                            <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page+1]) }}">Next</a></li>
+                                            @if($page < $total/8)
+                                                <li class="page-item"><a class="page-link" href="{{ route('memberList', ['page' => $page+1]) }}">Next</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                 </div>
