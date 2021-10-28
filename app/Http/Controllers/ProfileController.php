@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -38,6 +39,8 @@ class ProfileController extends Controller
 
         return redirect()->route('authProfile');
     }
+
+
 
     public function editPassword(ProfileRequest $request) {
         // auth()->user()->password = Hash::make($request->safe()->password);

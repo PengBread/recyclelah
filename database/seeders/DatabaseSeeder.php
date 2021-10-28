@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            OrganizationSeeder::class
+            OrganizationSeeder::class,
+            ScheduleSeeder::class
         ]);
         User::find(3)->update([
             'organizationID' => 1
