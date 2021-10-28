@@ -21,16 +21,9 @@ class ProfileController extends Controller
         return view('profile', ['userInfo' => $user]);
     }
 
-    public function organization(Request $request)
-    {
-
-        if (auth()->user()->affiliate != null) {
-            $organization = auth()->user()->affiliate;
-
-            return view('profileOrg', ['userInfo' => $organization]);
-        } else {
-            return view('profileOrg');
-        }
+    public function organization(Request $request) {
+        
+        return view('profileOrg', ['organizationInfo' => auth()->user()->affiliate]);
     }
 
     public function editName(ProfileRequest $request)
@@ -87,22 +80,6 @@ class ProfileController extends Controller
         return redirect()->route('authProfile');
     }
 
-<<<<<<< HEAD
-    public function listUsers(Request $request)
-    {
-        $orgID = auth()->user()->organizationID;
-        $user = User::select('name', 'phoneNumber')
-            ->where('organizationID', '=', $orgID)
-            ->get();
-
-        return view('affiliatesList', ['usersOrg' => $user]);
-    }
-
-    public function kickUser(Request $request)
-    {
-
-        return view('affiliatesList');
-=======
     public function listUsers(Request $request) {
         $organization = auth()->user()->affiliate;
         $page = ($request->page) ?? 1;
@@ -125,7 +102,6 @@ class ProfileController extends Controller
         $kicked->update(['organizationID' => null]);
         
         return redirect()->route('memberList');
->>>>>>> b59783a (User Profile System)
     }
 
     public function createSchedule(Request $request)
