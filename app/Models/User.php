@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'phoneNumber',
         'password',
         'organizationID',
+        'pointerID',
     ];
 
     /**
@@ -50,5 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function affiliate()
     {
         return $this->belongsTo(Organization::class, 'organizationID', 'organizationID');
+    }
+
+    public function pointer()
+    {
+        return $this->belongsTo(Schedule::class, 'pointerID', 'pointerID');
     }
 }
