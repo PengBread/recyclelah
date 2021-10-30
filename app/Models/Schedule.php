@@ -10,17 +10,18 @@ class Schedule extends Model
     use HasFactory;
 
     protected $table = 'schedules';
-    protected $primarykey= 'scheduleID';
+    protected $primarykey = 'scheduleID';
     public $timestamps = false;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
 
-    protected $fillable=[
+    protected $fillable = [
         'scheduleID',
+        'organizationID',
         'scheduleName',
         'scheduleDate',
         'scheduleTimeStart',
@@ -31,5 +32,8 @@ class Schedule extends Model
         'stateName',
     ];
 
-
+    public function ownedBy()
+    {
+        return $this->belongsTo(Organization::class, 'organizationID', 'organizationID');
+    }
 }

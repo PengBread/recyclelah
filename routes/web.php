@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Client\Request as ClientRequest;
@@ -32,14 +33,9 @@ Route::get('/', function () {
 //     return view('schedule');
 // });
 
-Route::get('/schedule',[ScheduleController::class, 'getSchedules']);
-
-// Route::get('/schedule', function () {
-
-//     $petani = DB::table('schedules')->get();
-
-//     return view('schedule', ['schedule' => $schedule]);
-// });
+//Route::resource('/schedule', ScheduleController::class);
+Route::get('/schedule', [ScheduleController::class, 'index']);
+Route::post('/schedule', [ScheduleController::class, 'display']);
 
 Route::get('/map', function () {
     return view('map');
