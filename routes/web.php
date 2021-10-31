@@ -32,7 +32,7 @@ Route::get('/', function () {
 //     return view('schedule');
 // });
 
-Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('schedule.chosen');
+//Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('schedule.chosen');
 //Route::get('schedule',[ScheduleController::class, 'scheduleChosen'])->name('test');
 
 // Route::put('schedule', [ScheduleController::class, 'scheduleChosen'])->name('schedule.chosen');
@@ -43,6 +43,9 @@ Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('sched
 
 //     return view('schedule', ['schedule' => $schedule]);
 // });
+
+Route::get('/schedule', [ScheduleController::class, 'index']);
+Route::post('/schedule', [ScheduleController::class, 'display']);
 
 Route::get('/map', function () {
     return view('map');
