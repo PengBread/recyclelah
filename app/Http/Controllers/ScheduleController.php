@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-//use Request;
+use Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Schedule;
 use App\Models\Organization;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
@@ -16,20 +15,6 @@ class ScheduleController extends Controller
     //  *
     //  * @return \Illuminate\Http\Response
     //  */
-=======
-use Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Schedule;
-use App\Models\Organization;
-
-class ScheduleController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
     public function index(Request $request)
     {
         //display everything at the beginning
@@ -41,6 +26,7 @@ class ScheduleController extends Controller
             ->get('organizations.organizationName');
 
         $schedules = Schedule::all()->toJson();
+
         $schedules = json_decode($schedules);
 
         return view('schedule', [
@@ -320,8 +306,4 @@ class ScheduleController extends Controller
     {
         //
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608

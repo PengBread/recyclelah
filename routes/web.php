@@ -33,7 +33,6 @@ Route::get('/', function () {
 //     return view('schedule');
 // });
 
-<<<<<<< HEAD
 //Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('schedule.chosen');
 //Route::get('schedule',[ScheduleController::class, 'scheduleChosen'])->name('test');
 
@@ -45,13 +44,9 @@ Route::get('/', function () {
 
 //     return view('schedule', ['schedule' => $schedule]);
 // });
-=======
-//Route::resource('/schedule', ScheduleController::class);
-Route::get('/schedule', [ScheduleController::class, 'index']);
-Route::post('/schedule', [ScheduleController::class, 'display']);
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
 
 Route::get('/schedule', [ScheduleController::class, 'index']);
+
 Route::post('/schedule', [ScheduleController::class, 'display']);
 
 Route::get('/map', function () {

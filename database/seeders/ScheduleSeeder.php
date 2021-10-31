@@ -18,7 +18,7 @@ class ScheduleSeeder extends Seeder
     {
         Schedule::insert([
             [
-<<<<<<< HEAD
+            'organizationID' => '1',
             'scheduleID'=>'1',
             'scheduleName'=>'asgdiuag',
             'scheduleDate'=>Carbon::today()->toDateString(),
@@ -27,9 +27,10 @@ class ScheduleSeeder extends Seeder
             'scheduleStatus'=>false,
             'scheduleContent'=>'LITTLE PIG LITTLE PIG LET. ME. IN',
             'recyclingCatagory'=>'metal',
-            'stateName'=>'penang',
+            'stateName'=>'Penang',
             ],
             [
+            'organizationID' => '1',
             'scheduleID'=>'2',
             'scheduleName'=>'asgdafafdafdiuag',
             'scheduleDate'=>Carbon::today()->toDateString(),
@@ -38,10 +39,11 @@ class ScheduleSeeder extends Seeder
             'scheduleStatus'=>true,
             'scheduleContent'=>'SO YOU DO HAVE GUTS I"VE NEVER BEEN THIS WRONG IS MY WHOLE DAMN LIFE',
             'recyclingCatagory'=>'plastic',
-            'stateName'=>'subang',
+            'stateName'=>'Selangor',
         
             ],
             [
+            'organizationID' => '1',
             'scheduleID'=>'4',
             'scheduleName'=>'mnbvcxsdadfafa',
             'scheduleDate'=>Carbon::today()->toDateString(),
@@ -50,9 +52,10 @@ class ScheduleSeeder extends Seeder
             'scheduleStatus'=>false,
             'scheduleContent'=>'YEP ITS GONNA BE PEE PEE PANTS HERE REAL SOON',
             'recyclingCatagory'=>'paper',
-            'stateName'=>'kelanteh',
+            'stateName'=>'Kelantan',
             ],
             [
+                'organizationID' => '1',
                 'scheduleID'=>'7',
                 'scheduleName'=>'uefueuiofiuowqgiofdq',
                 'scheduleDate'=>Carbon::today()->toDateString(),
@@ -61,42 +64,8 @@ class ScheduleSeeder extends Seeder
                 'scheduleStatus'=>false,
                 'scheduleContent'=>'I JUST POPPED YOUR SKULL SO HARD YOUR EYEBALL JUST POPPED OUT...GROSS AS SHIT',
                 'recyclingCatagory'=>'paper',
-                'stateName'=>'kelanteh',
+                'stateName'=>'kelantan',
             ]
-=======
-                'organizationID' => '1',
-                'scheduleName' => 'asgdiuag',
-                'scheduleDate' => Carbon::today()->toDateString(),
-                'scheduleTimeStart' => Carbon::now()->toTimeString(),
-                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
-                'scheduleStatus' => false,
-                'scheduleContent' => 'fadyfasydaid',
-                'recyclingCatagory' => 'Metal',
-                'stateName' => 'Penang',
-            ],
-            [
-                'organizationID' => '1',
-                'scheduleName' => 'asgdafafdafdiuag',
-                'scheduleDate' => Carbon::today()->toDateString(),
-                'scheduleTimeStart' => Carbon::now()->toTimeString(),
-                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
-                'scheduleStatus' => true,
-                'scheduleContent' => 'fadyfdfaffasyid',
-                'recyclingCatagory' => 'Plastic',
-                'stateName' => 'Selangor',
-            ],
-            [
-                'organizationID' => '1',
-                'scheduleName' => 'mnbvcxsdadfafa',
-                'scheduleDate' => Carbon::today()->toDateString(),
-                'scheduleTimeStart' => Carbon::now()->toTimeString(),
-                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
-                'scheduleStatus' => false,
-                'scheduleContent' => 'saydfsvaydvsad',
-                'recyclingCatagory' => 'Paper',
-                'stateName' => 'Kelantan',
-            ],
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
         ]);
     }
 }

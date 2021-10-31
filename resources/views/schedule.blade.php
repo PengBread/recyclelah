@@ -38,21 +38,6 @@
                                 </div>
                             </div>
 
-<<<<<<< HEAD
-                        <div class="form-group col-sm d-flex justify-content-center align-items-center">
-                            
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <span class="mdi mdi-recycle-variant"></span>
-                                </span>
-                                <select class="form-select" id="catScheduleSelection">
-                                    <option selected>Select a Category</option>
-                                    @foreach ($catagory as $catagories)
-                                        <option>{{$catagories->recyclingCatagory}}</option>
-                                    @endforeach
-                                    {{-- <option>Insert all category through sql</option> --}}
-                                </select>
-=======
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
                                 <div class="input-group">
                                     <span class="input-group-text">
@@ -75,23 +60,8 @@
                                         <option value="Terengganu">Terengganu</option>
                                     </select>
                                 </div>
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                             </div>
 
-<<<<<<< HEAD
-                        <div class="form-group col-sm d-flex justify-content-center align-items-center">
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <span class="mdi mdi-compass-outline"></span>
-                                </span>
-                                <select class="form-select" id="stateScheduleSelection">
-                                    <option>Select a State</option>
-                                    @foreach ($state as $states)
-                                    <option>{{$states->stateName}}</option>
-                                    @endforeach
-                                    {{-- <option>Insert states into here</option> --}}
-                                </select>
-=======
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
                                 <div class="input-group">
                                     <span class="input-group-text">
@@ -104,7 +74,6 @@
                                         @endforeach
                                     </select>
                                 </div>
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                             </div>
                         </div>
                         <div class="row">
@@ -122,24 +91,7 @@
                                 <button id="searchBtn" type="submit" class="btn btn-success" style="width: 200px;">SEARCH</button>
                             </div>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm d-flex justify-content-center align-items-center">
-                            <select class="form-control" id="orgScheduleSelection">
-                                <option>Select a date</option>
-                                @foreach ($date as $dates)
-                                <option>{{$dates->scheduleDate}}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-center pt-2">
-                            <button id="searchBtn" type="button" class="btn btn-success" style="width: 200px;">SEARCH</button>
-                        </div>
-                    </div>
-=======
                     </form>
->>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                 </div>
             </div>
         </div>
@@ -149,10 +101,7 @@
             <div class="container mx-auto mt-5" style="min-height: 60vh">
                 <div class="container h-100">
                     <div class="row">
-
                         @foreach($schedules as $data)
-
-                        {{-- @for ($i = 0; $i < $rows; $i++) --}}
 
                         <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
                             <div class="card">
@@ -162,94 +111,34 @@
                                     <p id="cardDate" class="card-text">{{$data->scheduleDate}}</p>
                                     <p id="cardTime" class="card-text">{{$data->scheduleTimeStart}}</p>
                                     <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#{{$data->scheduleName}}">Click Me</a>
-                                    {{-- <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#nchosen">Edit</button> --}}
                                 </div>
-                            </div> 
-                            
-                            <div class="modal fade" id="{{$data->scheduleName}}" tabindex="-1">                   
-                                <div class="modal-dialog">
-                                    <div class="modal-content">                                 
-                                        <div class="modal-header">                                      
-                                           <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
-                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                        
-                                        <div class="modal-body">                                          
-                                                <p>{{$data->scheduleContent}}</p>
-                        
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Join Schedule</button>
-                                                </div>
-                                            </div>                                
-                                    </div>                           
-                                </div>                          
                             </div>
+                        </div>
 
-                        </div>       
-                        
-                        {{-- @endfor --}}
+                        <div class="modal fade" id="{{$data->scheduleName}}" tabindex="-1">                   
+                            <div class="modal-dialog">
+                                <div class="modal-content">                                 
+                                    <div class="modal-header">                                      
+                                       <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                    
+                                    <div class="modal-body">                                          
+                                            <p>{{$data->scheduleContent}}</p>
+                    
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Join Schedule</button>
+                                            </div>
+                                    </div>                                
+                                </div>                           
+                            </div> 
+                        </div>
 
-                        @endforeach      
-                        
-                        
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- @foreach($schedules as $data)
-                   
-    <div class="modal fade" id="chosen" tabindex="-1">                   
-        <div class="modal-dialog">
-            <div class="modal-content">                                 
-                <div class="modal-header">                                      
-                   <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
-                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">                                          
-                        <p>{{$data->scheduleContent}}</p>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Join Schedule</button>
-                        </div>
-                    </div>                                
-            </div>                           
-        </div>                          
-    </div>
-
-    @endforeach --}}
-
-    {{-- <!--Model boxes-->
-    <div class="modal fade" id="chosen" tabindex="-1">
-        @include('components.errors')
-        <form class="form" method="POST" action="{{ route('schedule.chosen') }}">
-            @csrf
-            @method('GET') 
-
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="scheduleModel">nothing</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-
-                        {{-- <p>Enter a new name to change your personal info name.</p> --}}
-                        {{-- <p>{{$schedules->scheduleName}}</p>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Join Schedule</button>
-                        </div>
-                  
-                </div>
-            </div>
-        
-        </div>
-        </form>
-    </div> --}} 
 @endsection
