@@ -32,7 +32,10 @@ Route::get('/', function () {
 //     return view('schedule');
 // });
 
-Route::get('/schedule',[ScheduleController::class, 'getSchedules']);
+Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('schedule.chosen');
+//Route::get('schedule',[ScheduleController::class, 'scheduleChosen'])->name('test');
+
+// Route::put('schedule', [ScheduleController::class, 'scheduleChosen'])->name('schedule.chosen');
 
 // Route::get('/schedule', function () {
 
@@ -79,6 +82,7 @@ Route::get('/email/verify', function () {
 });
 
 Route::get('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@forgotPassword');
+
 Route::post('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@sendResetPassword');
 
 Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPassword');
@@ -117,3 +121,5 @@ Route::group([
         });
     });
 });
+
+

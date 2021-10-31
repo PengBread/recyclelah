@@ -2,6 +2,7 @@
 
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/supportFaqProfile.css') }}">
+
 <script type="text/javascript">
     function Validate() {
         var password = document.getElementById("passwordModalInput").value;

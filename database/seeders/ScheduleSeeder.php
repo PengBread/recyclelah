@@ -24,7 +24,7 @@ class ScheduleSeeder extends Seeder
             'scheduleTimeStart'=>Carbon::now()->toTimeString(),
             'scheduleTimeEnd'=>Carbon::now()->toTimeString(),
             'scheduleStatus'=>false,
-            'scheduleContent'=>'fadyfasydaid',
+            'scheduleContent'=>'LITTLE PIG LITTLE PIG LET. ME. IN',
             'recyclingCatagory'=>'metal',
             'stateName'=>'penang',
             ],
@@ -35,7 +35,7 @@ class ScheduleSeeder extends Seeder
             'scheduleTimeStart'=>Carbon::now()->toTimeString(),
             'scheduleTimeEnd'=>Carbon::now()->toTimeString(),
             'scheduleStatus'=>true,
-            'scheduleContent'=>'fadyfdfaffasydaid',
+            'scheduleContent'=>'SO YOU DO HAVE GUTS I"VE NEVER BEEN THIS WRONG IS MY WHOLE DAMN LIFE',
             'recyclingCatagory'=>'plastic',
             'stateName'=>'subang',
         
@@ -47,9 +47,20 @@ class ScheduleSeeder extends Seeder
             'scheduleTimeStart'=>Carbon::now()->toTimeString(),
             'scheduleTimeEnd'=>Carbon::now()->toTimeString(),
             'scheduleStatus'=>false,
-            'scheduleContent'=>'saydfsvaydvsad',
+            'scheduleContent'=>'YEP ITS GONNA BE PEE PEE PANTS HERE REAL SOON',
             'recyclingCatagory'=>'paper',
             'stateName'=>'kelanteh',
+            ],
+            [
+                'scheduleID'=>'7',
+                'scheduleName'=>'uefueuiofiuowqgiofdq',
+                'scheduleDate'=>Carbon::today()->toDateString(),
+                'scheduleTimeStart'=>Carbon::now()->toTimeString(),
+                'scheduleTimeEnd'=>Carbon::now()->toTimeString(),
+                'scheduleStatus'=>false,
+                'scheduleContent'=>'I JUST POPPED YOUR SKULL SO HARD YOUR EYEBALL JUST POPPED OUT...GROSS AS SHIT',
+                'recyclingCatagory'=>'paper',
+                'stateName'=>'kelanteh',
             ]
         ]);
     }
