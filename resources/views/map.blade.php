@@ -6,7 +6,6 @@
 <!-- Google Map Script -->
 <script>
     function initMap() {
-<<<<<<< HEAD
         const input = document.getElementById("placeAddress");
         const searchBox = new google.maps.places.SearchBox(input);
         var latitude = parseFloat(document.getElementById("lat").value);
@@ -18,25 +17,12 @@
         center: {
             lat: latitude,
             lng: longitude
-=======
-        var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {
-            lat: 5.359051472864475,
-            lng: 100.31409357972954
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
         },
         zoom: 15
         });
 
         var marker = new google.maps.Marker({
-<<<<<<< HEAD
             position: new google.maps.LatLng(latitude, longitude),
-=======
-            // position: {
-            //     lat: 5.359051472864475,
-            //     lng: 100.31409357972954
-            // },
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
             map: map,
             draggable: true,
             title: "Click to zoom",
@@ -57,11 +43,6 @@
         }
 
         //SearchBox Add Marker
-<<<<<<< HEAD
-=======
-        const input = document.getElementById("searchMap-Input");
-        const searchBox = new google.maps.places.SearchBox(input);
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
 
         google.maps.event.addListener(searchBox, 'places_changed', function(){
             var places = searchBox.getPlaces();
@@ -107,7 +88,6 @@
         <!-- Google Map -->
             <div class="form-group">
                 <div id="googleMap" style="width:100%; height:700px;"></div>
-<<<<<<< HEAD
                 <form>
                     <div style="text-align: center">
                         <input type="radio" id="householdRadio" name="category" checked>
@@ -151,31 +131,6 @@
                             <button type="submit" id="arrivedBtn" class="btn btn-primary">ARRIVED</button>
                         </div>
                     </form>
-=======
-                <form method="POST" action="{{ route('map.addLocation') }}">
-                    @csrf
-                    @method('put')
-
-                    <div class="d-flex justify-content-center pt-3">
-                        <label for="searchMap-Input" class="px-2">Search Location:</label>
-                        <input type="text" name="placeInfo" id="searchMap-Input" class="w-50">
-                    </div>
-                    <div class="d-flex justify-content-center row py-3">
-                        <div class="col-3">
-                            <label for="lng" class="">Latitude: </label>
-                            <input type="text" name="lng" id="lng" class="w-50" value="{{ $userInfo }}">
-                        </div>
-                        <div class="col-3">
-                            <label for="lat" class="">Longitude: </label>
-                            <input type="text" name="lat" id="lat" class="w-50">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center pt-3">
-                        <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
-                    </div>
-
-                    REMEMBER CREATE WORKER VIEW TO SEARCH POINTER BASED ON SCHEDULE
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
                 </form>
             </div>
 
@@ -191,14 +146,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-                {{-- <div class="d-flex justify-content-center p-3">
-                    <form method="" action="">
-                        <button id="confirmBtn" type="button" class="btn btn-success">Save Location</button>
-                    </form>
-                </div> --}}
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
             </div>
         </div>
     </div>

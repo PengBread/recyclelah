@@ -17,7 +17,7 @@ class CreateMapPointerTable extends Migration
 
         Schema::create('map_pointers', function (Blueprint $table) {
             $table->increments('pointerID')->unsigned();
-            // $table->unsignedInteger('scheduleID');
+            $table->unsignedInteger('scheduleID')->nullable();
             $table->double('longitude');
             $table->double('latitude');
             $table->string('pointerAddress');
@@ -25,10 +25,10 @@ class CreateMapPointerTable extends Migration
             $table->datetime('arrived_At');
             $table->datetime('confirmed_At');
             $table->string('recycleCategory')->default('Paper');
-            // $table->foreign('scheduleID')
-            //     ->references('scheduleID')
-            //     ->on('schedules')
-            //     ->onDelete('set null');
+            $table->foreign('scheduleID')
+                ->references('scheduleID')
+                ->on('schedules')
+                ->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();

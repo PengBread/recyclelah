@@ -20,7 +20,6 @@ class Schedule extends Model
      */
 
     protected $fillable = [
-        'scheduleID',
         'organizationID',
         'scheduleName',
         'scheduleDate',

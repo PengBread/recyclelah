@@ -21,7 +21,7 @@ class MapPointer extends Model
      * @var string[]
      */
     protected $fillable = [
-        // 'scheduleID',
+        'scheduleID',
         'longitude',
         'latitude',
         'pointerAddress',
@@ -31,8 +31,8 @@ class MapPointer extends Model
         'recycleCategory',
     ];
 
-    // public function pointerBy()
-    // {
-    //     return $this->hasOne(User::class, 'pointerID', 'pointerID');
-    // }
+    public function pointerSchedule()
+    {
+        return $this->belongsTo(Schedule::class, 'scheduleID', 'scheduleID');
+    }
 }

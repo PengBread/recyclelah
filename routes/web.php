@@ -29,50 +29,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Route::get('/schedule', function () {
-//     return view('schedule');
-// });
-
-//Route::get('/schedule',[ScheduleController::class, 'getSchedules'])->name('schedule.chosen');
-//Route::get('schedule',[ScheduleController::class, 'scheduleChosen'])->name('test');
-
-// Route::put('schedule', [ScheduleController::class, 'scheduleChosen'])->name('schedule.chosen');
-
-// Route::get('/schedule', function () {
-
-//     $petani = DB::table('schedules')->get();
-
-//     return view('schedule', ['schedule' => $schedule]);
-// });
-
-Route::get('/schedule', [ScheduleController::class, 'index']);
-
-Route::post('/schedule', [ScheduleController::class, 'display']);
-
-Route::get('/map', function () {
-    return view('map');
-});
-
-Route::get('/support', function () {
-    return view('support');
-});
-
-Route::get('/faq', function () {
-    return view('faq');
-=======
-Route::get('/test', function () {
-    return view('test');
->>>>>>> a0d6cf8 (- Still working on Map pointer - 30% done)
-});
-
-=======
 Route::get('/test', function () {
     return view('test');
 });
 
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
 Route::get('/verify', function () {
     return view('auth.verify');
 });
@@ -107,6 +67,7 @@ Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@update
 
 Route::get('userLogin', 'App\Http\Controllers\Auth\LoginController2@userLogin');
 
+Route::post('/schedule', [ScheduleController::class, 'display']);
 
 Route::group([
     'namespace' => 'App\Http\Controllers'
@@ -154,10 +115,7 @@ Route::group([
             'prefix' => 'map'
         ], function () {
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
-<<<<<<< HEAD
             Route::put('list', 'MapController@listLocation')->name('map.listLocation');
-=======
->>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
         });
     });
 });
