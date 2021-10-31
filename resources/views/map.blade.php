@@ -6,19 +6,23 @@
 <!-- Google Map Script -->
 <script>
     function initMap() {
+        const input = document.getElementById("placeAddress");
+        const searchBox = new google.maps.places.SearchBox(input);
+        var latitude = parseFloat(document.getElementById("lat").value);
+        var longitude = parseFloat(document.getElementById("lng").value);
+
+        console.log(longitude, latitude);
+
         var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {
-            lat: 5.359051472864475,
-            lng: 100.31409357972954
+            lat: latitude,
+            lng: longitude
         },
         zoom: 15
         });
 
         var marker = new google.maps.Marker({
-            // position: {
-            //     lat: 5.359051472864475,
-            //     lng: 100.31409357972954
-            // },
+            position: new google.maps.LatLng(latitude, longitude),
             map: map,
             draggable: true,
             title: "Click to zoom",
@@ -39,8 +43,6 @@
         }
 
         //SearchBox Add Marker
-        const input = document.getElementById("searchMap-Input");
-        const searchBox = new google.maps.places.SearchBox(input);
 
         google.maps.event.addListener(searchBox, 'places_changed', function(){
             var places = searchBox.getPlaces();
@@ -86,29 +88,49 @@
         <!-- Google Map -->
             <div class="form-group">
                 <div id="googleMap" style="width:100%; height:700px;"></div>
-                <form method="POST" action="{{ route('map.addLocation') }}">
-                    @csrf
-                    @method('put')
+                <form>
+                    <div style="text-align: center">
+                        <input type="radio" id="householdRadio" name="category" checked>
+                        <label for="householdRadio">HouseHold</label>
+                        <input type="radio" id="workerRadio" name="category">
+                        <label for="householdRadio">Worker</label>
+                    </div>
+                    <form id="householdForm" method="POST" action="{{ route('map.addLocation') }}">
+                        @csrf
+                        @method('put')
 
-                    <div class="d-flex justify-content-center pt-3">
-                        <label for="searchMap-Input" class="px-2">Search Location:</label>
-                        <input type="text" name="placeInfo" id="searchMap-Input" class="w-50">
-                    </div>
-                    <div class="d-flex justify-content-center row py-3">
-                        <div class="col-3">
-                            <label for="lng" class="">Latitude: </label>
-                            <input type="text" name="lng" id="lng" class="w-50" value="{{ $userInfo }}">
+                        <div class="d-flex justify-content-center pt-3">
+                            <label for="placeAddress" class="px-2">Search Location:</label>
+                            <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="{{ $userInfo->pointerAddress }}">
                         </div>
-                        <div class="col-3">
-                            <label for="lat" class="">Longitude: </label>
-                            <input type="text" name="lat" id="lat" class="w-50">
+                        <div class="d-flex justify-content-center row py-3">
+                            <div class="col-3">
+                                <label for="lng" class="">Latitude: </label>
+                                <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->longitude }}" readonly>
+                            </div>
+                            <div class="col-3">
+                                <label for="lat" class="">Longitude: </label>
+                                <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->latitude }}" readonly>
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center pt-3">
-                        <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
-                    </div>
+                        <div class="d-flex justify-content-center pt-3">
+                            <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
+                        </div>
+                        {{-- <div class="d-flex justify-content-center pt-3">
+                            <button type="submit" id="collectedBtn" class="btn btn-primary">CONFIRMATION</button>
+                        </div> --}}
 
-                    REMEMBER CREATE WORKER VIEW TO SEARCH POINTER BASED ON SCHEDULE
+                        REMEMBER CREATE WORKER VIEW TO SEARCH POINTER BASED ON SCHEDULE, CREATE RADIO BUTTON FOR WORKER SELECT BETWEEN POINT OWNSELF OR LOOK AT
+                    </form>
+                    <form id="workerForm" method="" action="" style="display: block;">
+                        <div class="d-flex justify-content-center pt-3">
+                            <label for="" class="px-2">Selected Pointer ID: </label>
+                            <input type="text" name="placeInfo" id="pointerID" class="" value="">
+                        </div>
+                        <div class="d-flex justify-content-center pt-3">
+                            <button type="submit" id="arrivedBtn" class="btn btn-primary">ARRIVED</button>
+                        </div>
+                    </form>
                 </form>
             </div>
 
@@ -124,11 +146,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="d-flex justify-content-center p-3">
-                    <form method="" action="">
-                        <button id="confirmBtn" type="button" class="btn btn-success">Save Location</button>
-                    </form>
-                </div> --}}
             </div>
         </div>
     </div>

@@ -32,7 +32,7 @@ class MapController extends Controller
                 'recycleCategory' => 'Paper',
             ]);
         } else {
-            auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo], ['longitude' => $request->lng], ["latitude" => $request->lat], ['recycleCategory' => 'Paper']);
+            auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo, 'longitude' => $request->lng, "latitude" => $request->lat], ['recycleCategory' => 'Paper']);
         }
 
         return redirect()->route('map');
