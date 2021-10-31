@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Schedule;
+use App\Models\User;
 use App\Models\Organization;
+use App\Models\MapPointer;
+use App\Models\Schedule;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -15,7 +17,7 @@ class ScheduleController extends Controller
     //  *
     //  * @return \Illuminate\Http\Response
     //  */
-    public function schedules(Request $request)
+    public function index(Request $request)
     {
         //display everything at the beginning
         $catagory = Schedule::select('recyclingCatagory')->groupBy('recyclingCatagory')->get();
@@ -26,7 +28,6 @@ class ScheduleController extends Controller
             ->get('organizations.organizationName');
 
         $schedules = Schedule::all()->toJson();
-
         $schedules = json_decode($schedules);
 
         return view('schedule', [
@@ -242,6 +243,7 @@ class ScheduleController extends Controller
     }
 
     public function joinSchedule(Request $request) {
+        $pointer = auth()->user()->pointer;
         
     }
 }

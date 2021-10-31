@@ -67,8 +67,6 @@ Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@update
 
 Route::get('userLogin', 'App\Http\Controllers\Auth\LoginController2@userLogin');
 
-Route::post('/schedule', [ScheduleController::class, 'display']);
-
 Route::group([
     'namespace' => 'App\Http\Controllers'
 ], function () {
@@ -78,7 +76,8 @@ Route::group([
         /**
          * Without Login Checking. Available to everyone
          */
-        Route::get('schedules', 'ScheduleController@schedules')->name('schedules');
+        Route::get('schedules', 'ScheduleController@index')->name('schedules');
+        Route::post('schedules', 'ScheduleController@display')->name('display');
         Route::get('faq', function () { return view('faq'); })->name('faq');
         Route::get('support', function () { return view('support'); })->name('support');
     });
@@ -86,7 +85,7 @@ Route::group([
         'middleware' => 'auth'
     ], function () {
         /**
-         * AuthController Section
+         * AuthController Section - Put route here if you want the don't want non-account users to open the page.
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');

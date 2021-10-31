@@ -35,4 +35,8 @@ class Schedule extends Model
     {
         return $this->belongsTo(Organization::class, 'organizationID', 'organizationID');
     }
+
+    // public function pointers() {
+    //     return $this->hasMany(MapPointer::class, 'pointerID', 'pointerID');
+    // }
 }
