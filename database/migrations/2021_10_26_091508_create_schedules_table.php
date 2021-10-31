@@ -17,22 +17,20 @@ class CreateSchedulesTable extends Migration
 
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('scheduleID')->unsigned();
-            //$table->unsignedInteger('userID');
+            $table->unsignedInteger('organizationID');
             $table->string('scheduleName');
-            $table->string('scheduleDate');
+            $table->date('scheduleDate');
             $table->string('scheduleTimeStart');
             $table->string('scheduleTimeEnd');
             $table->boolean('scheduleStatus');
             $table->mediumText('scheduleContent');
             $table->string('recyclingCatagory');
             $table->string('stateName');
-            //table->onUpdate('cascade')->onDelete('cascade');
-            
-            //$table->foreign('organizationID')
-                //->references('organizationID')
-               // ->on('organizations')
-                //->onDelete('cascade')
-               // ->onUpdate('cascade');
+            $table->foreign('organizationID')
+                ->references('organizationID')
+                ->on('organizations')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }

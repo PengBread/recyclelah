@@ -18,6 +18,7 @@ class ScheduleSeeder extends Seeder
     {
         Schedule::insert([
             [
+<<<<<<< HEAD
             'scheduleID'=>'1',
             'scheduleName'=>'asgdiuag',
             'scheduleDate'=>Carbon::today()->toDateString(),
@@ -62,6 +63,40 @@ class ScheduleSeeder extends Seeder
                 'recyclingCatagory'=>'paper',
                 'stateName'=>'kelanteh',
             ]
+=======
+                'organizationID' => '1',
+                'scheduleName' => 'asgdiuag',
+                'scheduleDate' => Carbon::today()->toDateString(),
+                'scheduleTimeStart' => Carbon::now()->toTimeString(),
+                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
+                'scheduleStatus' => false,
+                'scheduleContent' => 'fadyfasydaid',
+                'recyclingCatagory' => 'Metal',
+                'stateName' => 'Penang',
+            ],
+            [
+                'organizationID' => '1',
+                'scheduleName' => 'asgdafafdafdiuag',
+                'scheduleDate' => Carbon::today()->toDateString(),
+                'scheduleTimeStart' => Carbon::now()->toTimeString(),
+                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
+                'scheduleStatus' => true,
+                'scheduleContent' => 'fadyfdfaffasyid',
+                'recyclingCatagory' => 'Plastic',
+                'stateName' => 'Selangor',
+            ],
+            [
+                'organizationID' => '1',
+                'scheduleName' => 'mnbvcxsdadfafa',
+                'scheduleDate' => Carbon::today()->toDateString(),
+                'scheduleTimeStart' => Carbon::now()->toTimeString(),
+                'scheduleTimeEnd' => Carbon::now()->toTimeString(),
+                'scheduleStatus' => false,
+                'scheduleContent' => 'saydfsvaydvsad',
+                'recyclingCatagory' => 'Paper',
+                'stateName' => 'Kelantan',
+            ],
+>>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
         ]);
     }
 }

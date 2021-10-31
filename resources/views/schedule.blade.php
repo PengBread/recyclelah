@@ -2,6 +2,10 @@
 
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/schedule.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
     <div id="all">
         <div id="schedule-TopSection" style="height: 100%;">
@@ -12,16 +16,29 @@
                 </div>
             </div>
 
-          
-
             <!-- Search -->
             
             <div id="searchSchedule-Main" class="container mx-auto" style="height: 100%;">
                 <div id="searchSchedule-Container" class="container h-100">
-                    <div class="row">
+                    <form class="form" method="POST" action="{{ url('schedule') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-sm d-flex justify-content-center align-items-center">
+                                
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <span class="mdi mdi-recycle-variant"></span>
+                                    </span>
+                                    <select class="form-select" id="catScheduleSelection" name="catScheduleSelection">
+                                        <option value="Select a Catagory">Select a Catagory</option>
+                                        @foreach ($catagory as $item)
+                                            <option value="{{$item->recyclingCatagory}}">{{$item->recyclingCatagory}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
-                        {{-- {!! Form::open(['action'=>'ScheduleController@scheduleFilter','method'=>'GET'])!!} --}}
-
+<<<<<<< HEAD
                         <div class="form-group col-sm d-flex justify-content-center align-items-center">
                             
                             <div class="input-group">
@@ -35,10 +52,33 @@
                                     @endforeach
                                     {{-- <option>Insert all category through sql</option> --}}
                                 </select>
+=======
+                            <div class="form-group col-sm d-flex justify-content-center align-items-center">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <span class="mdi mdi-compass-outline"></span>
+                                    </span>
+                                    <select class="form-select" id="stateScheduleSelection" name="stateScheduleSelection">
+                                        <option value="Select a State">Select a State</option>
+                                        <option value="Johor">Johor</option>
+                                        <option value="Kedah">Kedah</option>
+                                        <option value="Kelantan">Kelantan</option>
+                                        <option value="Malacca">Malacca</option>
+                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                        <option value="Pahang">Pahang</option>
+                                        <option value="Penang">Penang</option>
+                                        <option value="Perak">Perak</option>
+                                        <option value="Perlis">Perlis</option>
+                                        <option value="Sabah">Sabah</option>
+                                        <option value="Sarawak">Sarawak</option>
+                                        <option value="Selangor">Selangor</option>
+                                        <option value="Terengganu">Terengganu</option>
+                                    </select>
+                                </div>
+>>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                             </div>
-                            {{-- {{Form::Submit('something', ['class'=>'btn btn-primary'])}} --}}
-                        </div>
 
+<<<<<<< HEAD
                         <div class="form-group col-sm d-flex justify-content-center align-items-center">
                             <div class="input-group">
                                 <span class="input-group-text">
@@ -51,19 +91,38 @@
                                     @endforeach
                                     {{-- <option>Insert states into here</option> --}}
                                 </select>
+=======
+                            <div class="form-group col-sm d-flex justify-content-center align-items-center">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <span class="mdi mdi-home-city-outline"></span>
+                                    </span>
+                                    <select class="form-select" id="orgScheduleSelection" name="orgScheduleSelection" placeholder="Select an Organization">
+                                        <option value="Select an Organization">Select an Organization</option>
+                                        @foreach ($organization as $item)
+                                            <option>{{$item->organizationName}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+>>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                             </div>
                         </div>
-                        <div class="form-group col-sm d-flex justify-content-center align-items-center">
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <span class="mdi mdi-home-city-outline"></span>
-                                </span>
-                                <select class="form-select" id="orgScheduleSelection">
-                                    <option>Select an Organization</option>
-                                    <option>Insert all organization through sql</option>
-                                </select>
+                        <div class="row">
+                            <div class="form-group col-sm d-flex justify-content-center align-items-center">
+                                <input class="date form-control" type="text" placeholder="Select a date" name="dateScheduleSelection">
+                            </div>
+                            
+                            <script type="text/javascript">
+                                $('.date').datepicker({  
+                                    format: 'yyyy-mm-dd'
+                                });  
+                            </script>
+
+                            <div class="d-flex justify-content-center align-items-center pt-2">
+                                <button id="searchBtn" type="submit" class="btn btn-success" style="width: 200px;">SEARCH</button>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <div class="row">
                         <div class="form-group col-sm d-flex justify-content-center align-items-center">
@@ -78,25 +137,12 @@
                             <button id="searchBtn" type="button" class="btn btn-success" style="width: 200px;">SEARCH</button>
                         </div>
                     </div>
+=======
+                    </form>
+>>>>>>> 16b862ea7264a3146b86e951a31ce734648c5608
                 </div>
             </div>
-
-           
         </div>
-
-        
-        {{-- <div class="container mx-auto justify-content-centre">
-        <table style="border:1px;">
-            @foreach($schedules as $data)
-            <tr>    
-              <th>{{$data->scheduleID}}</th>
-              <th>{{$data->scheduleName}}</th>   
-              <th>{{$data->stateName}}</th>
-              <th>{{$data->scheduleTimeStart}}</th>       
-             </tr>
-            @endforeach
-        </table>
-        </div> --}}
 
         <!-- Schedules Boxes -->
         <div id="schedule-BottomSection">
