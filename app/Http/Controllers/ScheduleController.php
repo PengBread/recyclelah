@@ -10,6 +10,7 @@ use App\Models\Organization;
 
 class ScheduleController extends Controller
 {
+<<<<<<< HEAD
     // /**
     //  * Display a listing of the resource.
     //  *
@@ -305,5 +306,10 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         //
+=======
+    public function schedules(Request $request)
+    {
+        return view('schedule');
+>>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
     }
 }

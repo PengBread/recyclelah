@@ -6,6 +6,7 @@
     ],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "16ffc2252f4fd327e6d3aad98e8a415c",
 =======
     "content-hash": "1e1349a78a0e0a37b1f9688b66549995",
@@ -13,6 +14,9 @@
 =======
     "content-hash": "1e1349a78a0e0a37b1f9688b66549995",
 >>>>>>> b59783a (User Profile System)
+=======
+    "content-hash": "1e1349a78a0e0a37b1f9688b66549995",
+>>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
     "packages": [
         {
             "name": "asm89/stack-cors",

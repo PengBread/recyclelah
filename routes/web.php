@@ -30,6 +30,7 @@ Route::get('/', function () {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Route::get('/schedule', function () {
 //     return view('schedule');
 // });
@@ -66,6 +67,12 @@ Route::get('/test', function () {
 >>>>>>> a0d6cf8 (- Still working on Map pointer - 30% done)
 });
 
+=======
+Route::get('/test', function () {
+    return view('test');
+});
+
+>>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
 Route::get('/verify', function () {
     return view('auth.verify');
 });
@@ -147,7 +154,10 @@ Route::group([
             'prefix' => 'map'
         ], function () {
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
+<<<<<<< HEAD
             Route::put('list', 'MapController@listLocation')->name('map.listLocation');
+=======
+>>>>>>> a0d6cf85c11201d2128d06067cd1a218fac1b326
         });
     });
 });
