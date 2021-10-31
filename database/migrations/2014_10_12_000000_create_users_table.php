@@ -16,14 +16,14 @@ class CreateUsersTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('userID')->unsigned();
+            $table->increments('userID')->unsignedBigInteger();
             $table->unsignedInteger('organizationID')->default(null)->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phoneNumber')->unique();
             $table->string('status')->default('active');
-            $table->string('pointer')->default(null)->nullable();
+            $table->unsignedInteger('pointerID')->default(null)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -32,6 +32,10 @@ class CreateUsersTable extends Migration
                 ->references('organizationID')
                 ->on('organizations')
                 ->onDelete('set null');
+            $table->foreign('pointerID')
+                ->references('pointerID')
+                ->on('map_pointers')
+                ->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();

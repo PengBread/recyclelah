@@ -54,8 +54,8 @@ class ProfileController extends Controller
         $code = $request->safe()->code;
 
         $table = Organization::select('organizationID')
-            ->where('organizationCode', '=', $code)
-            ->first();
+                ->where('organizationCode', '=', $code)
+                ->first();
         if ($table == null) {
             return redirect()->route('organization')->withErrors([
                 'invalidCodeError' => 'Invalid Code. No organization is under this code!'

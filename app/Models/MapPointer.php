@@ -13,6 +13,7 @@ class MapPointer extends Model
 
     protected $table = 'map_pointers';
     protected $primaryKey = 'pointerID';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +22,8 @@ class MapPointer extends Model
      */
     protected $fillable = [
         // 'scheduleID',
-        'pointerCoords',
+        'longitude',
+        'latitude',
         'pointerAddress',
         'pointerStatus',
         'arrived_At',

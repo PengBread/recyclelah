@@ -17,10 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            OrganizationSeeder::class
+            OrganizationSeeder::class,
+            PointerSeeder::class
         ]);
         User::find(3)->update([
             'organizationID' => 1
+        ]);
+        User::find(2)->update([
+            'pointerID' => 1
         ]);
     }
 }
