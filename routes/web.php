@@ -29,6 +29,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+<<<<<<< HEAD
 // Route::get('/schedule', function () {
 //     return view('schedule');
 // });
@@ -59,6 +60,10 @@ Route::get('/support', function () {
 
 Route::get('/faq', function () {
     return view('faq');
+=======
+Route::get('/test', function () {
+    return view('test');
+>>>>>>> a0d6cf8 (- Still working on Map pointer - 30% done)
 });
 
 Route::get('/verify', function () {
@@ -95,9 +100,20 @@ Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@update
 
 Route::get('userLogin', 'App\Http\Controllers\Auth\LoginController2@userLogin');
 
+
 Route::group([
     'namespace' => 'App\Http\Controllers'
 ], function () {
+    Route::group([
+        //none
+    ], function () {
+        /**
+         * Without Login Checking. Available to everyone
+         */
+        Route::get('schedules', 'ScheduleController@schedules')->name('schedules');
+        Route::get('faq', function () { return view('faq'); })->name('faq');
+        Route::get('support', function () { return view('support'); })->name('support');
+    });
     Route::group([
         'middleware' => 'auth'
     ], function () {
@@ -107,6 +123,7 @@ Route::group([
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
+        Route::get('map', 'MapController@mapPage')->name('map');
 
         /**
          * ProfileController Section
@@ -121,6 +138,15 @@ Route::group([
             Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
             Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
             Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
+        });
+
+        /**
+         * MapController Section
+         */
+        Route::group([
+            'prefix' => 'map'
+        ], function () {
+            Route::put('add', 'MapController@addLocation')->name('map.addLocation');
         });
     });
 });

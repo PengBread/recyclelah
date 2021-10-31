@@ -55,6 +55,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function pointer()
     {
-        return $this->belongsTo(Schedule::class, 'pointerID', 'pointerID');
+        return $this->belongsTo(MapPointer::class, 'pointerID', 'pointerID');
     }
 }

@@ -60,13 +60,13 @@
                   <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/schedule">Schedules</a>
+                  <a class="nav-link" href="{{ route('schedules') }}">Schedules</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/map">Map</a>
+                  <a class="nav-link" href="{{ route('map') }}">Map</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/faq">FAQ</a>
+                  <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
               </ul>
 
