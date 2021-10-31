@@ -268,7 +268,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showCatagory($id)
+    public function showCategory($id)
     {
         //
     }
