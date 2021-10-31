@@ -46,6 +46,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'organizationID' => null,
+<<<<<<< HEAD
                 'email' => 'test3@gmail.com',
                 'name' => 'test3',
                 'password' => Hash::make('test1234'),
@@ -53,6 +54,15 @@ class UserSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+=======
+                'email' => 'something@something.com',
+                'name' => 'something',
+                'password' => Hash::make('password'),
+                'phoneNumber' => '0121112222',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
+>>>>>>> e371664 (test1)
         ]);
     }
 }

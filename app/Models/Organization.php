@@ -24,6 +24,7 @@ class Organization extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'organizationName',
         'organizationCode',
+        'userID'
     ];
 
     public function ownedBy()

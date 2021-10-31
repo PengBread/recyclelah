@@ -2,6 +2,7 @@
 
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+
 <script>
     function handleClick(flexRadioDefault) {
         if(document.getElementById('radioBtn1').checked) {

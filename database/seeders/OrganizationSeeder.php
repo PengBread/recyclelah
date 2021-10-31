@@ -20,6 +20,11 @@ class OrganizationSeeder extends Seeder
                 'userID' => 3,
                 'organizationName' => 'testOrg',
                 'organizationCode' => Str::random(7),
+            ],
+            [
+                'userID' => 4,
+                'organizationName' => 'test2',
+                'organizationCode' => Str::random(7),
             ]
         ]);
         

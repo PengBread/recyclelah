@@ -26,7 +26,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'phoneNumber',
         'password',
         'organizationID',
+<<<<<<< HEAD
         'pointerID',
+=======
+>>>>>>> e371664 (test1)
     ];
 
     /**
