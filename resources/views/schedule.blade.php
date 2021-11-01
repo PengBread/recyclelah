@@ -76,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
                                 <input class="date form-control" type="text" placeholder="Select a date" name="dateScheduleSelection">
@@ -110,7 +111,7 @@
                                     <p id="cardState" class="card-text">{{$data->stateName}}</p>
                                     <p id="cardDate" class="card-text">{{$data->scheduleDate}}</p>
                                     <p id="cardTime" class="card-text">{{$data->scheduleTimeStart}}</p>
-                                    <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#{{$data->scheduleName}}">Click Me</a>
+                                    <button type="button" class="btn btn-primary stretched-link">Click Me</a>
                                 </div>
                             </div>
                         </div>

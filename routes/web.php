@@ -14,6 +14,8 @@ use App\Models\User;
 use App\Models\User as Model;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +54,7 @@ Route::post('/login', '\App\Http\Controllers\Auth\LoginController2@authenticatio
 Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
 
 Route::resource('/register', registerController2::class);
+
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
@@ -119,4 +122,7 @@ Route::group([
     });
 });
 
+//Route::post('/profile/organization', 'ProfileController@createSchedule');
+
+//Route::get('/profile/organization', [ProfileController::class, 'createSchedule']);
 

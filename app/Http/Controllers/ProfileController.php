@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use App\Models\Organization;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
@@ -105,6 +106,25 @@ class ProfileController extends Controller
 
     public function createSchedule(Request $request)
     {
-        //
+        $request->validate([
+            'scheduleName' => 'required|string|max:50',
+            'stateName' => 'required|string|max:20',
+            'recyclingCatagory' => 'required|string|max:10',
+            'scheduleDate' => 'required|string|max:20',
+            'scheduleTimeStart' => 'required|string|max:10',
+            'scheduleContent'=>'required|string|max:50'
+        ]);
+
+        $schedule = Schedule::create([
+            'organizationID'=>$organization->organizationID,
+            'scheduleName' => $request->input('scheduleName'),
+            'scheduleDate' => $request->input('ScheduleDate'),
+            'scheduleTimeStart' => $request->input('scheduleTimeStart'),
+            'scheduleContent' =>$request->input('ScheduleContent'),
+            'recyclingCatagory'=>$request->input('recyclingCatagory'),
+            'stateName'=>$request->input('stateName')
+        ]);
+
+        $schedule->save();
     }
 }
