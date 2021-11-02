@@ -19,12 +19,11 @@ class CreateSchedulesTable extends Migration
             $table->increments('scheduleID')->unsigned();
             $table->unsignedInteger('organizationID');
             $table->string('scheduleName');
-            $table->date('scheduleDate');
-            $table->string('scheduleTimeStart');
-            $table->string('scheduleTimeEnd');
+            $table->timestamp('scheduleDateStart');
+            $table->timestamp('scheduleDateEnd');
             $table->boolean('scheduleStatus');
             $table->mediumText('scheduleContent');
-            $table->string('recyclingCatagory');
+            $table->string('recyclingCategory');
             $table->string('stateName');
             $table->foreign('organizationID')
                 ->references('organizationID')

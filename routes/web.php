@@ -90,7 +90,7 @@ Route::group([
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
-        Route::get('map', 'MapController@mapPage')->name('map');
+        Route::get('map', 'MapController@mapPage')->name('mapPage');
 
         /**
          * ProfileController Section
@@ -105,6 +105,15 @@ Route::group([
             Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
             Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
             Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
+        });
+
+        /**
+         * ScheduleController Section
+         */
+        Route::group([
+            'prefix' => 'schedule'
+        ], function () {
+            Route::put('/join', 'ScheduleController@joinSchedule')->name('schedule.joinSchedule');
         });
 
         /**

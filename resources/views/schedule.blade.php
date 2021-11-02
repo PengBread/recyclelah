@@ -20,7 +20,7 @@
             
             <div id="searchSchedule-Main" class="container mx-auto" style="height: 100%;">
                 <div id="searchSchedule-Container" class="container h-100">
-                    <form class="form" method="POST" action="{{ url('schedule') }}">
+                    <form class="form" method="POST" action="{{ route('schedules') }}">
                         @csrf
                         <div class="row">
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
@@ -30,9 +30,9 @@
                                         <span class="mdi mdi-recycle-variant"></span>
                                     </span>
                                     <select class="form-select" id="catScheduleSelection" name="catScheduleSelection">
-                                        <option value="Select a Catagory">Select a Catagory</option>
-                                        @foreach ($catagory as $item)
-                                            <option value="{{$item->recyclingCatagory}}">{{$item->recyclingCatagory}}</option>
+                                        <option value="">Select a Category</option>
+                                        @foreach ($category as $item)
+                                            <option value="{{ $item->recyclingCategory }}">{{ $item->recyclingCategory }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -44,7 +44,7 @@
                                         <span class="mdi mdi-compass-outline"></span>
                                     </span>
                                     <select class="form-select" id="stateScheduleSelection" name="stateScheduleSelection">
-                                        <option value="Select a State">Select a State</option>
+                                        <option value="">Select a State</option>
                                         <option value="Johor">Johor</option>
                                         <option value="Kedah">Kedah</option>
                                         <option value="Kelantan">Kelantan</option>
@@ -68,9 +68,9 @@
                                         <span class="mdi mdi-home-city-outline"></span>
                                     </span>
                                     <select class="form-select" id="orgScheduleSelection" name="orgScheduleSelection" placeholder="Select an Organization">
-                                        <option value="Select an Organization">Select an Organization</option>
+                                        <option value="">Select an Organization</option>
                                         @foreach ($organization as $item)
-                                            <option>{{$item->organizationName}}</option>
+                                            <option value='{{ $item->organizationID }}'>{{ $item->organizationName }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -101,40 +101,45 @@
             <div class="container mx-auto mt-5" style="min-height: 60vh">
                 <div class="container h-100">
                     <div class="row">
-                        @foreach($schedules as $data)
 
+                        @foreach($schedules as $data)
                         <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
                                     <p id="cardState" class="card-text">{{$data->stateName}}</p>
-                                    <p id="cardDate" class="card-text">{{$data->scheduleDate}}</p>
-                                    <p id="cardTime" class="card-text">{{$data->scheduleTimeStart}}</p>
+                                    <p id="cardDate" class="card-text">{{$data->scheduleDateStart}}</p>
+                                    {{-- <p id="cardTime" class="card-text">{{$data->scheduleDateStart}}</p> --}}
                                     <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#{{$data->scheduleName}}">Click Me</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- SCHEDULE MODAL -->
                         <div class="modal fade" id="{{$data->scheduleName}}" tabindex="-1">                   
                             <div class="modal-dialog">
                                 <div class="modal-content">                                 
                                     <div class="modal-header">                                      
                                        <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                    
-                                    <div class="modal-body">                                          
-                                            <p>{{$data->scheduleContent}}</p>
+                                    </div>    
+                                    <div class="modal-body">
+                                        <form class="form" method="POST" action="{{ route('schedule.joinSchedule', ['sch'=>$data->scheduleID]) }}">
+                                            @csrf
+                                            @method('put') 
+
+                                            <textarea class="form-control" style="resize: none" rows='10' readonly>{{$data->scheduleContent}}</textarea>
                     
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Join Schedule</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                <button type="submit" class="btn btn-primary">JOIN SCHEDULE</button>
                                             </div>
+                                        </form>
                                     </div>                                
                                 </div>                           
                             </div> 
                         </div>
-
+                        <!-- -------------------- -->
                         @endforeach
 
                     </div>
