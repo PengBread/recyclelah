@@ -66,7 +66,7 @@
                   <a class="nav-link" href="{{ route('schedules') }}">Schedules</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('map') }}">Map</a>
+                  <a class="nav-link" href="{{ route('mapPage') }}">Map</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('faq') }}">FAQ</a>

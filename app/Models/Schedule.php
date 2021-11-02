@@ -22,12 +22,11 @@ class Schedule extends Model
     protected $fillable = [
         'organizationID',
         'scheduleName',
-        'scheduleDate',
-        'scheduleTimeStart',
-        'scheduleTimeEnd',
+        'scheduleDateStart',
+        'scheduleDateEnd',
         'scheduleStatus',
         'scheduleContent',
-        'recyclingCatagory',
+        'recyclingCategory',
         'stateName',
     ];
 

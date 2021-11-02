@@ -38,7 +38,6 @@ class Organization extends Authenticatable implements MustVerifyEmail
     }
     public function schedules()
     {
-        //return $this->hasMany(Schedules::class, 'organizationID', 'organizationID');
-        return $this->hasMany(Schedules::class);
+        return $this->hasMany(Schedule::class, 'organizationID', 'organizationID');
     }
 }

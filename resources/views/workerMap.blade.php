@@ -12,10 +12,10 @@
         <div id="pageTitle" class="pt-5 pb-5">
             <div id="pageTitle-Container" class="row">
                 <div class="d-flex justify-content-center align-content-center">
-                    <h3>MAP</h3>
+                    <h3>ORGANIZATION MAP</h3>
                 </div>
                 <div class="d-flex justify-content-center align-content-center">
-                    <p>Pin-point household location</p>
+                    <p>Check user-pinpoints under specific schedules</p>
                 </div>
             </div>
         </div>
@@ -32,28 +32,6 @@
                         <input type="radio" id="workerRadio" name="category">
                         <label for="householdRadio">Worker</label>
                     </div>
-                    <form id="householdForm" method="POST" action="{{ route('map.addLocation') }}">
-                        @csrf
-                        @method('put')
-
-                        <div class="d-flex justify-content-center pt-3">
-                            <label for="placeAddress" class="px-2">Search Location:</label>
-                            <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="{{ $userInfo->pointerAddress }}">
-                        </div>
-                        <div class="d-flex justify-content-center row py-3">
-                            <div class="col-3">
-                                <label for="lng" class="">Latitude: </label>
-                                <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->longitude }}" readonly>
-                            </div>
-                            <div class="col-3">
-                                <label for="lat" class="">Longitude: </label>
-                                <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->latitude }}" readonly>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center pt-3">
-                            <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
-                        </div>
-                    </form>
 
                     <form id="workerForm" method="POST" action="{{ route('map.listLocation') }}" style="display: none;">
                         @csrf
