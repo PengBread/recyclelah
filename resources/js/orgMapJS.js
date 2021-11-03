@@ -1,20 +1,19 @@
 $(document).ready(function () {
     initMap();
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
 });
 
-function schedulePointers() {
+function initMap() {
     var latitude;
     var longitude;
-    var marker;
     const contentString =
     '<form method="" action="">' +
-        '@csrf' +
+        '<meta name="csrf-token" content="{{ csrf_token() }}">' +
         // "@method('put')" +
         '<div id="content">' +
             "<p><b>Latitude: 1000, Longitude: -1111</b></p>" +
@@ -42,14 +41,12 @@ function schedulePointers() {
         maxWidth: 400,
     });
         
-    marker = new google.maps.Marker({
-        position: new google.maps.LatLng(latitude, longitude),
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(100.3287506, 5.414130699999999),
         map: map,
-        draggable: false,
         title: "Click to zoom",
     });
 
-    
     //Onclick Listener, click once will move ur screen to the middle of the marker
     marker.addListener("click", () => {
         infowindow.open({

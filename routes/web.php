@@ -95,6 +95,7 @@ Route::group([
         Route::post('profile/organization', 'ProfileController@createSchedule')->name('createSchedule');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
         Route::get('map', 'MapController@mapPage')->name('mapPage');
+        Route::get('organizationMap', 'MapController@workerPage')->name('workerPage');
 
         /**
          * ProfileController Section
@@ -102,10 +103,10 @@ Route::group([
         Route::group([
             'prefix' => 'profile'
         ], function () {
-            Route::get('listUsers', 'ProfileController@listUsers')->name('profile.listUsers');
             Route::put('editName', 'ProfileController@editName')->name('profile.editName');
             Route::put('editPhone', 'ProfileController@editPhone')->name('profile.editPhone');
             Route::put('editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
+            Route::get('listUsers', 'ProfileController@listUsers')->name('profile.listUsers');
             Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
             Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
             Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
@@ -127,7 +128,7 @@ Route::group([
             'prefix' => 'map'
         ], function () {
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
-            Route::put('list', 'MapController@listLocation')->name('map.listLocation');
+            // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
         });
     });
 });
