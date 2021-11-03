@@ -58,21 +58,38 @@ class MapController extends Controller
             //worker
             $organization = auth()->user()->affiliate;
             $selectedDate = $request->input('dateSchedules');
-            // dd($selectedDate);
-            $scheduleFilter = $organization
-                            -> schedules;
 
-            $schedules = $organization
-                        -> schedules()
-                        -> where('scheduleID', '=', $selectedDate)
-                        -> get();
+            //for listing list of schedules in the dropdownlist
+            $scheduleFilter = $organization->schedules();
+
+            if($selectedDate != null) {
+                $scheduleFilter->where('scheduleID', $selectedDate);
+            }
+            // $schedules = $organization
+            // -> schedules()
+            // -> where('scheduleID', '=', $selectedDate)
+            // -> get();
+
+            $schedules = $scheduleFilter->get();
 
             $pointers = MapPointer::whereIn('scheduleID', $schedules->pluck('scheduleID'))
                         -> get();
-            
 
-            return view('workerMap', ['schedules' => $scheduleFilter ,'pointers' => $pointers]);
+            $userID = User::join('map_pointers', 'map_pointers.pointerID', '=', 'users.pointerID')
+                        -> join('schedules', 'schedules.scheduleID', '=', 'map_pointers.scheduleID')
+                        -> whereIn('map_pointers.pointerID', $pointers->pluck('pointerID'))
+                        -> get();
+            // whereIn('pointerID', $pointers->pluck('pointerID'))
+            //             -> get();
+            
+            return view('workerMap', ['schedules' => $schedules ,'pointers' => $userID, 'filter' => $organization->schedules]);
         }
+    }
+
+    public function changeStatus(Request $request) {
+        $target = $request;
+        dd($target);
+        return redirect()->route('mapPage');
     }
 
     // public function listLocation(Request $request) {

@@ -9,25 +9,30 @@
 <script>
     function initMap() {
         var pointers = @json($pointers->toArray());
+        console.log(pointers);
 
         var map = new google.maps.Map(document.getElementById("googleMap"), {
-            center: {lat: 5.285153, lng: 100.456238},
+            center: {lat: 5.3528, lng: 100.3530},
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoom: 12,
+            zoom: 11,
         });
 
         pointers.forEach(pointerList => {
-            console.log(pointerList)
+            // console.log(pointerList)
             const contentString =
-            '<form method="" action="">' +
-                // '<meta name="csrf-token" content="{{ csrf_token() }}">' +
+            '<form method="PUT" action="{{ route("map.changeStatus") }}">' +
+                '<meta name="csrf-token" content="{{ csrf_token() }}">' +
+                // '<meta name="method" content="@method("put")"' +
                 // "@method('put')" +
                 '<div id="content">' +
-                    "<p><b>Latitude: " + pointerList.latitude + ", Longitude:" + pointerList.longitude + "</b></p>" +
+                    "<p><b>Latitude: " + pointerList.latitude + "</b><br>" +
+                    "<b>Longitude:" + pointerList.longitude + "</b></p>" +
                     '<div id="bodyContent">' +
-                        "Name:" + " <br>" +
-                        "Phone No: 0124669989 <br>" +
-                        "Address: Penang, Malaysia" +
+                        "<b>Name:</b> " + pointerList.name + " <br>" +
+                        "<b>Phone No:</b> " + pointerList.phoneNumber + "<br>" +
+                        "<b>Address:</b> " + pointerList.pointerAddress + "<br>" +
+                        "<b>Recycling:</b> " + pointerList.recycleCategory + "<br><br>" +
+                        "<b>Pick-up Date:</b> " + pointerList.scheduleDateStart +
                     "</div>" +
                     '<div style="text-align: end; padding-top: 8px;">' +
                         '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
@@ -82,14 +87,18 @@
                     <form id="workerForm" method="GET" action="{{ route('workerPage') }}">
                         @csrf
 
-                        <div class="d-flex justify-content-center pt-3">
+                        <div class="d-flex justify-content-center align-items-center pt-3">
+                            <div class="px-4">
                             <label for="date-dropdown">Scheduled Date: </label>
                             <select name="dateSchedules" id="date-dropdown">
-                                @foreach($schedules as $scheduleDate)
+                                @foreach($filter as $scheduleDate)
                                     <option value="{{ $scheduleDate->scheduleID}}">{{ $scheduleDate->scheduleDateStart }}</option>
                                 @endforeach
                             </select>
-                            <button type="submit" id="markerBtn" class="btn btn-primary">Show Markers</button>
+                            </div>
+                            <div>
+                            <button type="submit" id="markerBtn" class="btn btn-primary">Show Pointers</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -99,10 +108,10 @@
                 <div class="container mx-auto">
                     <div id="mapSearch-Inside" class="p-5">
                         <div class="row">
-                            <h2 class="d-flex justify-content-center">Info</h2>
+                            <h2 class="d-flex justify-content-center">Guide</h2>
                             <p class="d-flex justify-content-center" style="text-align: center;">
-                                Find your house location and Click on the map to point the pointer on the map.
-                                <br>Once you are done with pointing your house location, click the "SAVE LOCATION" button.
+                                Locate households pointers that are under your organization's schedule.
+                                <br>Select a specific date, click the "Show Pointers" button to filter out pointers.
                             </p>
                         </div>
                     </div>
