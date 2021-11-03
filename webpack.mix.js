@@ -17,4 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/map.css', 'public/css', []) 
     .postCss('resources/css/supportFaqProfile.css', 'public/css', []) 
     .postCss('resources/css/auth.css', 'public/css', []) 
-    .js('resources/js/mapJS.js', 'public/js'); 
+    .js('resources/js/mapJS.js', 'public/js')
+    .js('resources/js/orgMapJS.js', 'public/js'); 

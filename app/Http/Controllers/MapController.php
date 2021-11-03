@@ -15,23 +15,24 @@ class MapController extends Controller
         if(!auth()->user()->pointer) {
             return view('map');
         } else {
-            if(auth()->user()->affiliate) {
-                //worker
-                $user = auth()->user()->pointer;
-                $organization = auth()->user()->affiliate;
-                $schedules = $organization
-                            -> schedules;
+            // if(auth()->user()->affiliate) {
+            //     //worker
+            //     $user = auth()->user()->pointer;
+            //     $organization = auth()->user()->affiliate;
+            //     $schedules = $organization
+            //                 -> schedules;
 
-                return view('map', ['userInfo' => $user, 'schedules' => $schedules]);
-            } else {
+            //     return view('map', ['userInfo' => $user, 'schedules' => $schedules]);
+            // } else {
                 //non worker
                 $user = auth()->user()->pointer;
 
                 return view('map', ['userInfo' => $user]);
-            }
+            // }
         }
     }
 
+    //User set their marker/pointer location
     public function addLocation(Request $request) {
         //save location
         if(!auth()->user()->pointer) {
@@ -50,24 +51,48 @@ class MapController extends Controller
         return redirect()->route('mapPage');
     }
 
-    public function listLocation(Request $request) {
-        //load all location
-        $organization = auth()->user()->affiliate;
-        $selectedDate = $request->input('dateSchedules');
-        $schedules = $organization
-                    -> schedules()
-                    -> where('scheduleID', '=', $selectedDate)
-                    -> get();
+    public function workerPage(Request $request) {
+        if(!auth()->user()->affiliate) {
+            return redirect()->route('mapPage');
+        } else {
+            //worker
+            $organization = auth()->user()->affiliate;
+            $selectedDate = $request->input('dateSchedules');
+            // dd($selectedDate);
+            $scheduleFilter = $organization
+                            -> schedules;
 
-        $pointers = MapPointer::select('pointerID')
-                    -> where('scheduleID', '=', $schedules->pluck('scheduleID'))
-                    -> get();
+            $schedules = $organization
+                        -> schedules()
+                        -> where('scheduleID', '=', $selectedDate)
+                        -> get();
 
-        //get user organizationID
-        //Use organizationID to find all schedules
-        //Get all schedules available, use $request input the find the selected schedule on the date.
-        //Get all pointers, then find all pointers under the specific schedule with scheduleID
+            $pointers = MapPointer::whereIn('scheduleID', $schedules->pluck('scheduleID'))
+                        -> get();
+            
 
-        return view('map', ['userPointers' => $pointers]);
+            return view('workerMap', ['schedules' => $scheduleFilter ,'pointers' => $pointers]);
+        }
     }
+
+    // public function listLocation(Request $request) {
+    //     //load all location
+    //     $organization = auth()->user()->affiliate;
+    //     $selectedDate = $request->input('dateSchedules');
+    //     $schedules = $organization
+    //                 -> schedules()
+    //                 -> where('scheduleID', '=', $selectedDate)
+    //                 -> get();
+
+    //     $pointers = MapPointer::select('pointerID')
+    //                 -> where('scheduleID', '=', $schedules->pluck('scheduleID'))
+    //                 -> get();
+
+    //     //get user organizationID
+    //     //Use organizationID to find all schedules
+    //     //Get all schedules available, use $request input the find the selected schedule on the date.
+    //     //Get all pointers, then find all pointers under the specific schedule with scheduleID
+
+    //     return view('workerMap', ['userPointers' => $pointers]);
+    // }
 }
