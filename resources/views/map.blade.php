@@ -12,28 +12,20 @@ function initMap() {
     var latitude = parseFloat(document.getElementById("lat").value);
     var longitude = parseFloat(document.getElementById("lng").value);
     const contentString =
-    '<form method="" action="">' +
-        // '<meta name="csrf-token" content="{{ csrf_token() }}">' +
-        // "@method('put')" +
-        '<div id="content">' +
-            "<p><b>Latitude: {{$userInfo->latitude}}, Longitude: {{$userInfo->longitude}}</b></p>" +
-            '<div id="bodyContent">' +
-                "Name: {{auth()->user()->name}} <br>" +
-                "Phone No: {{auth()->user()->phoneNumber}} <br>" +
-                "Address: Penang, Malaysia" +
-            "</div>" +
-            '<div style="text-align: end; padding-top: 8px;">' +
-                '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
-            "</div>" +
+    // '<meta name="csrf-token" content="{{ csrf_token() }}">' +
+    // "@method('put')" +
+    '<div id="content">' +
+        "<p><b>You placed your location here!</b></p>" +
+        '<div id="bodyContent">' +
         "</div>" +
-    "</form>";
+    "</div>";
 
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {
             lat: latitude,
             lng: longitude
         },
-        zoom: 15
+        zoom: 12
     });
 
     const infowindow = new google.maps.InfoWindow({
@@ -182,9 +174,9 @@ function initMap() {
                 <div class="container mx-auto">
                     <div id="mapSearch-Inside" class="p-5">
                         <div class="row">
-                            <h2 class="d-flex justify-content-center">Info</h2>
+                            <h2 class="d-flex justify-content-center">Guide</h2>
                             <p class="d-flex justify-content-center" style="text-align: center;">
-                                Find your house location and Click on the map to point the pointer on the map.
+                                Find your house location and Click on the map/type inside the input boxes to pinpoint the pointer on the map.
                                 <br>Once you are done with pointing your house location, click the "SAVE LOCATION" button.
                             </p>
                         </div>

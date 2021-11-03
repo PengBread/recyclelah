@@ -128,6 +128,7 @@ Route::group([
             'prefix' => 'map'
         ], function () {
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
+            Route::put('status', 'MapController@changeStatus')->name('map.changeStatus');
             // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
         });
     });
