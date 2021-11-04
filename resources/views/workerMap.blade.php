@@ -37,6 +37,11 @@
                     "</div>" +
                     '<div style="text-align: end; padding-top: 8px;">' +
                         '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
+                        // '@if(' + pointerList.pointerStatus + '!= "Done")' +
+                        // '<button type="submit" id="collectedBtn" class="btn-primary">UNSET</button>' +
+                        // '@else' +
+                        // '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
+                        // '@endIf' +
                     "</div>" +
                 "</div>" +
             "</form>";
@@ -59,6 +64,7 @@
                     map: map,
                     title: "Click to zoom",
                 });
+                marker.setAnimation(google.maps.Animation.BOUNCE);
             }
 
             //Onclick Listener, click once will move ur screen to the middle of the marker
