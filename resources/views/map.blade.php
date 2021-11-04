@@ -19,14 +19,18 @@ function initMap() {
         '<div id="bodyContent">' +
         "</div>" +
     "</div>";
-    console.log(longitude, latitude);
+    if(!longitude || !latitude) {
+        longitude = 100.3530;
+        latitude = 5.3528;
+    }
 
+    console.log(longitude);
+    console.log(latitude);
+    
     var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {
-            lat: latitude,
-            lng: longitude
-        },
-        zoom: 12
+        center: {lat: longitude, lng: latitude},
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoom: 11
     });
 
     const infowindow = new google.maps.InfoWindow({
@@ -107,21 +111,23 @@ function initMap() {
         <!-- Google Map -->
             <div>
                 <div id="googleMap" style="width:100%; height:700px;"></div>
-                    @if(auth()->user()->pointer->pointerStatus == 'Done')
-                    <form method="POST" action="{{ route('map.userConfirm') }}">
-                        @csrf
-                        @method('put') 
+                    @if(auth()->user()->pointer != null)
+                        @if(auth()->user()->pointer->pointerStatus == 'Done')
+                            <form method="POST" action="{{ route('map.userConfirm') }}">
+                                @csrf
+                                @method('put') 
 
-                        <div class="d-flex row p-5">
-                            <div id="cfmDiv" class="p-3" style="text-align: center">
-                                <h5>Confirmation</h5>
-                                <div>
-                                <p>The recycling truck has marked your pointer as completed. Please confirm by clicking the button below.</p>
-                                <button type="submit" id="markerBtn" class="btn btn-primary">Confirm</button>
+                                <div class="d-flex row p-5">
+                                    <div id="cfmDiv" class="p-3" style="text-align: center">
+                                        <h5>Confirmation</h5>
+                                        <div>
+                                        <p>The recycling truck has marked your pointer as completed. Please confirm by clicking the button below.</p>
+                                        <button type="submit" id="markerBtn" class="btn btn-primary">Confirm</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </form>
+                            </form>
+                        @endif
                     @endif
 
                     <form id="householdForm" method="POST" action="{{ route('map.addLocation') }}">
