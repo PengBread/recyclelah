@@ -129,6 +129,6 @@ class ProfileController extends Controller
             'recyclingCatagory'=>$catSelection,
         ]);
 
-        return redirect()->back()->with('success', 'Schedule created. DESIGN THIS');
+        return redirect()->route('organization')->with('success', 'Schedule created. DESIGN THIS');
     }
 }
