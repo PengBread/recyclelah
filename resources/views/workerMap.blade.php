@@ -20,19 +20,20 @@
         pointers.forEach(pointerList => {
             // console.log(pointerList)
             const contentString =
-            '<form method="PUT" action="{{ route("map.changeStatus") }}">' +
-                '<meta name="csrf-token" content="{{ csrf_token() }}">' +
-                // '<meta name="method" content="@method("put")"' +
-                // "@method('put')" +
+            '<form method="POST" action="{{ route("map.changeStatus") }}">' +
+                '@csrf' +
+                '@method("put")' +
                 '<div id="content">' +
+                    '<input type="hidden" name="pointer_Input" value="' + pointerList.pointerID + '" readonly>' +
                     "<p><b>Latitude: " + pointerList.latitude + "</b><br>" +
-                    "<b>Longitude:" + pointerList.longitude + "</b></p>" +
+                    "<b>Longitude: " + pointerList.longitude + "</b></p>" +
                     '<div id="bodyContent">' +
                         "<b>Name:</b> " + pointerList.name + " <br>" +
                         "<b>Phone No:</b> " + pointerList.phoneNumber + "<br>" +
                         "<b>Address:</b> " + pointerList.pointerAddress + "<br>" +
                         "<b>Recycling:</b> " + pointerList.recycleCategory + "<br><br>" +
-                        "<b>Pick-up Date:</b> " + pointerList.scheduleDateStart +
+                        "<b>Pick-up Date:</b> " + pointerList.scheduleDateStart + "<br>" +
+                        "<b>Status:</b> " + pointerList.pointerStatus + "<br>" +
                     "</div>" +
                     '<div style="text-align: end; padding-top: 8px;">' +
                         '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
@@ -45,11 +46,20 @@
                 maxWidth: 400,
             });
 
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(pointerList.latitude, pointerList.longitude),
-                map: map,
-                title: "Click to zoom",
-            });
+            if(pointerList.pointerStatus == 'Done') {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pointerList.latitude, pointerList.longitude),
+                    map: map,
+                    title: "Click to zoom",
+                    opacity: 0.5,
+                });
+            } else {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pointerList.latitude, pointerList.longitude),
+                    map: map,
+                    title: "Click to zoom",
+                });
+            }
 
             //Onclick Listener, click once will move ur screen to the middle of the marker
             marker.addListener("click", () => {
