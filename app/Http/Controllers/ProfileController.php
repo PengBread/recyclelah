@@ -16,8 +16,7 @@ use Session;
 class ProfileController extends Controller
 {
 
-    public function profile(Request $request)
-    {
+    public function profile(Request $request) {
         $user = auth()->user();
         return view('profile', ['userInfo' => $user]);
     }
@@ -27,32 +26,28 @@ class ProfileController extends Controller
         return view('profileOrg', ['organizationInfo' => auth()->user()->affiliate]);
     }
 
-    public function editName(ProfileRequest $request)
-    {
+    public function editName(ProfileRequest $request) {
         $array = $request->safe()->only(['name']);
         auth()->user()->update($array);
 
         return redirect()->route('authProfile');
     }
 
-    public function editPhone(ProfileRequest $request)
-    {
+    public function editPhone(ProfileRequest $request) {
         $array = $request->safe()->only(['phoneNumber']);
         auth()->user()->update($array);
 
         return redirect()->route('authProfile');
     }
 
-    public function editPassword(ProfileRequest $request)
-    {
+    public function editPassword(ProfileRequest $request) {
         // auth()->user()->password = Hash::make($request->safe()->password);
         auth()->user()->update(['password' => Hash::make($request->safe()->password)]);
 
         return redirect()->route('authProfile');
     }
 
-    public function joinOrganization(ProfileRequest $request)
-    {
+    public function joinOrganization(ProfileRequest $request) {
         $code = $request->safe()->code;
 
         $table = Organization::select('organizationID')
@@ -74,8 +69,7 @@ class ProfileController extends Controller
         //                     ->get();
     }
 
-    public function leaveOrganization(Request $request)
-    {
+    public function leaveOrganization(Request $request) {
         auth()->user()->update(['organizationID' => null]);
 
         return redirect()->route('authProfile');
@@ -105,8 +99,7 @@ class ProfileController extends Controller
         return redirect()->route('memberList');
     }
 
-    public function createSchedule(Request $request)
-    {
+    public function createSchedule(Request $request) {
         $request->validate([
             'scheduleName' => 'required|string|max:50',
             'scheduleDate' => 'required|string|max:20',
