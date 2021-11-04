@@ -8,6 +8,7 @@ use App\Models\MapPointer;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class MapController extends Controller
 {
@@ -87,8 +88,18 @@ class MapController extends Controller
     }
 
     public function changeStatus(Request $request) {
-        $target = $request;
-        dd($target);
+        $pointer = $request->input('pointer_Input');
+        
+        $target = MapPointer::select('pointerID')
+                    -> where('pointerID', $pointer)
+                    -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now()]);
+
+        return redirect()->route('workerPage');
+    }
+
+    public function userConfirm(Request $request) {
+        $pointer = auth()->user()->pointer->update(['pointerStatus' => 'Inactive', 'scheduleID' => null,'confirmed_At' => Carbon::now()]);
+
         return redirect()->route('mapPage');
     }
 

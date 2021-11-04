@@ -125,6 +125,7 @@ Route::group([
         ], function () {
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
             Route::put('status', 'MapController@changeStatus')->name('map.changeStatus');
+            Route::put('userConfirmation', 'MapController@userConfirm')->name('map.userConfirm');
             // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
         });
     });

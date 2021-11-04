@@ -104,12 +104,23 @@ function initMap() {
         <!-- Google Map -->
             <div>
                 <div id="googleMap" style="width:100%; height:700px;"></div>
-                    {{-- <div style="text-align: center">
-                        <input type="radio" id="householdRadio" name="category" checked>
-                        <label for="householdRadio">HouseHold</label>
-                        <input type="radio" id="workerRadio" name="category">
-                        <label for="householdRadio">Worker</label>
-                    </div> --}}
+                    @if(auth()->user()->pointer->pointerStatus == 'Done')
+                    <form method="POST" action="{{ route('map.userConfirm') }}">
+                        @csrf
+                        @method('put') 
+
+                        <div class="d-flex row p-5">
+                            <div id="cfmDiv" class="p-3" style="text-align: center">
+                                <h5>Confirmation</h5>
+                                <div>
+                                <p>The recycling truck has marked your pointer as completed. Please confirm by clicking the button below.</p>
+                                <button type="submit" id="markerBtn" class="btn btn-primary">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    @endif
+
                     <form id="householdForm" method="POST" action="{{ route('map.addLocation') }}">
                         @csrf
                         @method('put')
@@ -152,21 +163,6 @@ function initMap() {
                             </div>
                         @endif
                     </form>
-
-                    {{-- <form id="workerForm" method="POST" action="{{ route('map.listLocation') }}" style="display: none;">
-                        @csrf
-                        @method('put') 
-
-                        <div class="d-flex justify-content-center pt-3">
-                            <label for="date-dropdown">Scheduled Date: </label>
-                            <select name="dateSchedules" id="date-dropdown">
-                                @foreach($schedules as $scheduleDate)
-                                    <option value="{{ $scheduleDate->scheduleID}}">{{ $scheduleDate->scheduleDateStart }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit" id="markerBtn" class="btn btn-primary">Show Markers</button>
-                        </div>
-                    </form> --}}
                 </div>
             </div>
 
