@@ -48,8 +48,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function affiliate()
-    {
+    public function affiliate() {
         return $this->belongsTo(Organization::class, 'organizationID', 'organizationID');
+    }
+
+    public function pointer(){
+        return $this->belongsTo(MapPointer::class, 'pointerID', 'pointerID');
     }
 }

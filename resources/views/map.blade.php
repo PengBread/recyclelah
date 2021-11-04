@@ -19,6 +19,7 @@ function initMap() {
         '<div id="bodyContent">' +
         "</div>" +
     "</div>";
+    console.log(longitude, latitude);
 
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: {
@@ -81,6 +82,8 @@ function initMap() {
         $('#lat').val(lat);
         $('#lng').val(lng);
     })
+
+    marker.setAnimation(google.maps.Animation.BOUNCE);
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6YZ24et8sJXFJHy2fAtKDI8CZ4A2BiJs&&callback=initMap&libraries=places&v=weekly" async defer></script>
