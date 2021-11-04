@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -108,23 +109,33 @@ class ProfileController extends Controller
     {
         $request->validate([
             'scheduleName' => 'required|string|max:50',
-            'stateName' => 'required|string|max:20',
-            'recyclingCatagory' => 'required|string|max:10',
             'scheduleDate' => 'required|string|max:20',
             'scheduleTimeStart' => 'required|string|max:10',
             'scheduleContent'=>'required|string|max:50'
         ]);
 
-        $schedule = Schedule::create([
+        $stateSelection = $request->get('stateName');
+        $catSelection = $request->get('recyclingCatagory');
+
+        if ($stateSelection == 'Select a State'){
+            return redirect()->back()->withErrors(['stateName' => 'Select a state'])->withInput();
+        }
+
+        // if ($catSelection == 'Select a Catagory'){
+        //     return redirect()->back()->with(['recyclingCatagory' => 'Select a catagory'])->withInput();
+        // }
+
+        $organization = auth()->user()->affiliate;
+        Schedule::create([
             'organizationID'=>$organization->organizationID,
             'scheduleName' => $request->input('scheduleName'),
-            'scheduleDate' => $request->input('ScheduleDate'),
+            'stateName'=>$stateSelection,
+            'scheduleDate' => $request->input('scheduleDate'),
             'scheduleTimeStart' => $request->input('scheduleTimeStart'),
-            'scheduleContent' =>$request->input('ScheduleContent'),
-            'recyclingCatagory'=>$request->input('recyclingCatagory'),
-            'stateName'=>$request->input('stateName')
+            'scheduleContent' =>$request->input('scheduleContent'),
+            'recyclingCatagory'=>$catSelection,
         ]);
 
-        $schedule->save();
+        return redirect()->back()->with('success', 'Schedule created. DESIGN THIS');
     }
 }

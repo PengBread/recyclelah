@@ -92,6 +92,7 @@ Route::group([
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
+        Route::post('profile/organization', 'ProfileController@createSchedule')->name('createSchedule');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
         Route::get('map', 'MapController@mapPage')->name('map');
 
@@ -125,4 +126,3 @@ Route::group([
 //Route::post('/profile/organization', 'ProfileController@createSchedule');
 
 //Route::get('/profile/organization', [ProfileController::class, 'createSchedule']);
-

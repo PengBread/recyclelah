@@ -58,7 +58,7 @@ class ScheduleSeeder extends Seeder
                 'scheduleTimeStart'=>Carbon::now()->toTimeString(),
                 'scheduleTimeEnd'=>Carbon::now()->toTimeString(),
                 'scheduleStatus'=>false,
-                'scheduleContent'=>'I JUST POPPED YOUR SKULL SO HARD YOUR EYEBALL JUST POPPED OUT...GROSS AS SHIT',
+                'scheduleContent'=>'I JUST POPPED YOUR SKULL SO HARD YOUR EYEBALL JUST POPPED OUT...GROSS AS SHIT wtf ks?',
                 'recyclingCatagory'=>'paper',
                 'stateName'=>'kelantan',
             ]
