@@ -3,10 +3,6 @@
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 
-<!-- Note
-    After successful checking email, the otp will be sent to email and using javascript to change the display of this page into typing new password, cfm password and otp.
--->
-
 <div class="container mx-auto">
     <div class="content-container container">
         <div class="card">
@@ -17,13 +13,13 @@
                     @csrf
 
                     @if(session('error'))
-                    <div>
+                    <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
                     </div>
                     @endif
 
                     @if(session('success'))
-                    <div>
+                    <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                     </div>
                     @endif

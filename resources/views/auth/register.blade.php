@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 
 <script>
-    function handleClick(flexRadioDefault) {
+    function handleClick() {
+        
         if(document.getElementById('radioBtn1').checked) {
             document.getElementById('organizationDiv').style.display = 'none';
         } else if(document.getElementById('radioBtn2').checked) {
@@ -26,7 +27,7 @@
                     <div class="radioButtonDiv row p-2">
                         <div class="form-check d-flex col justify-content-center">
                             <div>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="household_worker" id="radioBtn1" onclick="handleClick(this);" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="household_worker" id="radioBtn1" onclick="handleClick();">
                             </div>
                             <div>
                                 <label class="form-check-label" for="radioBtn1">House-Hold/Worker</label>
@@ -34,7 +35,7 @@
                         </div>
                         <div class="form-check d-flex col justify-content-center">
                             <div>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="organization" id="radioBtn2" onclick="handleClick(this);">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="organization" id="radioBtn2" onclick="handleClick();" checked>
                             </div>
                             <div>
                                 <label class="form-check-label" for="radioBtn2">Organization</label>
@@ -42,11 +43,19 @@
                         </div>
                     </div>
 
-                    <div id="organizationDiv" class="form-group row p-2" style="display: none;">
+                    <div id="organizationDiv" class="form-group row p-2" >
+                        {{-- style="display: none;" --}}
                         <label for="organizationName" class="col-md-3 col-form-label text-md-right">{{ __('Organization Name') }}</label>
 
                         <div class="col-md-9">
-                            <input id="organizationName" type="text" class="form-control" name="organizationName" value="{{ old('organizationName') }}"  autocomplete="organizationName">
+                            <input id="organizationName" type="text" class="form-control @error('organizationName') is-invalid @enderror" name="organizationName" value="{{ old('organizationName') }}"  autocomplete="organizationName">
+                            
+                            @error('organizationName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            
                         </div>
                     </div>
 

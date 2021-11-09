@@ -49,7 +49,7 @@ class ForgotPassword2 extends Controller
         $user = User::whereEmail($request->email)->first();
 
         if (($user) == null) {
-            return redirect()->back()->with(['error' => 'Email not exists']);
+            return redirect()->back()->withErrors(['email' => 'Email not exists']);
         }
 
         $userPassword = [Input::get('password')];
