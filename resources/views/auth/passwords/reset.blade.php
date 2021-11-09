@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.navfoot2')
 
-@section('content')
-<div class="container">
+@section('navfoot2')
+<div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -11,16 +11,9 @@
                     <form method="POST" action="{{ url('updatePassword') }}">
                         @csrf
 
-                        @if(session('error'))
-                            <div>
-                                {{ session('error') }}
-                            </div>
-                        @endif
-
                         <input type="hidden" name="token" >
-                        {{-- value="{{ $token }}" --}}
 
-                        <div class="form-group row">
+                        <div class="form-group row p-2">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -34,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row p-2">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -48,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row p-2">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -56,8 +49,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group row p-3">
+                            <div class="d-flex col justify-content-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Reset Password') }}
                                 </button>

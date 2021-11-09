@@ -111,12 +111,12 @@
                 </div>
                 <div class="faq-panelsLast accordion">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
                                 Report an organization/ service error. 
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                             <div class="accordion-body">
                                 <p>
                                     Kindly make your report at the report/feedback page and we will look into it soon. 

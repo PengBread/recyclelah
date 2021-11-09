@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Mail;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class registerController2 extends Controller
 {
@@ -54,6 +55,13 @@ class registerController2 extends Controller
                 'password' => 'required|string|min:8|confirmed',
             ]);
 
+            // $validator = Validator::make($request->all(), [
+            //     'name' => 'required|string|max:50',
+            //     'email' => 'required|string|email|max:50|unique:users',
+            //     'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,10}/',
+            //     'password' => 'required|string|min:8|confirmed',
+            // ]);
+
             $user = User::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
@@ -70,6 +78,7 @@ class registerController2 extends Controller
                 'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,9}/|unique:users',
                 'password' => 'required|string|min:8|confirmed',
             ]);
+
             $user = User::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
