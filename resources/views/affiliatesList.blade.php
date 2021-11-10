@@ -48,28 +48,19 @@
                                     </thead>
                                     <tbody>
                                     @foreach($userOrg as $target)
-                                        {{-- <form class="form" method="POST" action="{{ route('profile.kickUser') }}"> --}}
                                             <tr>
                                             <th scope="row" style="width: 5%">
                                                 {{ $loop->iteration }}
-                                                {{-- <input name="user_userID" value="{{ $user->userID }}" style="width: 20px" readonly> --}}
                                             </th>
                                             <td>{{ $target->name }}</td>
                                             <td>{{ $target->phoneNumber }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-end">
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#kickUserModal{{ $target->userID }}">Kick User</button>
-                                                @include('components.ownerViewModal', ['target' => $target])
-                                                    {{-- @csrf
-                                                    @method('put')
-                                                    <div style="text-align: right;">
-                                                    <button type="submit" class="thisUser btn btn-danger" value="GET VALUE">Kick User</button>
-                                                    </div>
-                                                    @include('components.organizationModal') --}}
+                                                @include('components.kickUserModal', ['target' => $target])
                                                 </div>
                                             </td>
                                             </tr>
-                                        {{-- </form> --}}
                                     @endforeach
                                     </tbody>
                                 </table>

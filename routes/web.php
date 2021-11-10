@@ -82,17 +82,17 @@ Route::group([
         Route::get('schedules', 'ScheduleController@index')->name('schedules');
         Route::post('schedules', 'ScheduleController@display')->name('display');
         Route::get('faq', function () { return view('faq'); })->name('faq');
-        Route::get('support', function () { return view('support'); })->name('support');
+        Route::get('support', 'SupportController@getInfo')->name('support');
     });
     Route::group([
-        'middleware' => 'auth'
+        'middleware' => ['auth', 'verifyCheck']
     ], function () {
         /**
          * AuthController Section - Put route here if you want the don't want non-account users to open the page.
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
-        Route::post('profile/organization', 'ProfileController@createSchedule')->name('createSchedule');
+        Route::post('profile/organization/createSchedule', 'ProfileController@createSchedule')->name('createSchedule');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
         Route::get('map', 'MapController@mapPage')->name('mapPage');
         Route::get('organizationMap', 'MapController@workerPage')->name('workerPage');
@@ -131,6 +131,15 @@ Route::group([
             Route::put('status', 'MapController@changeStatus')->name('map.changeStatus');
             Route::put('userConfirmation', 'MapController@userConfirm')->name('map.userConfirm');
             // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
+        });
+
+        /**
+         * Support Section
+         */
+        Route::group([
+            'prefix' => 'support'
+        ], function () {
+            Route::put('send', 'SupportController@sendMail')->name('support.sendMail');
         });
     });
 });

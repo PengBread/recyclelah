@@ -107,9 +107,13 @@
                             <div class="px-4">
                             <label for="date-dropdown">Scheduled Date: </label>
                             <select name="dateSchedules" id="date-dropdown">
+                                @if($filter->isEmpty())
+                                    <option value="empty">No Schedule Available</option>
+                                @else
                                 @foreach($filter as $scheduleDate)
                                     <option value="{{ $scheduleDate->scheduleID}}">{{ $scheduleDate->scheduleDateStart }}</option>
                                 @endforeach
+                                @endIf
                             </select>
                             </div>
                             <div>

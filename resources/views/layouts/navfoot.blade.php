@@ -101,8 +101,8 @@
                   Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                  <li><a class="dropdown-item" href="/support">Support</a></li>
+                  <li><a class="dropdown-item" href="{{ route('authProfile') }}">Profile</a></li>
+                  <li><a class="dropdown-item" href="{{ route('support') }}">Support</a></li>
                   <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                 </ul>
               </div>

@@ -83,7 +83,7 @@
                     <div>
                         <p id="matching" style="color: red; font-size: 12px;"></p>
                         <label for="passwordModalInput">Password:</label>
-                        <input type="password" id="passwordModalInput" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Must contain at least one number and one letter, and at least 8 or more characters" value="" required>
+                        <input type="password" id="passwordModalInput" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Must contain at least one number, one letter, and 8 or more characters" value="" required>
                     </div>
                     <div>
                         <label for="cfmpasswordModalInput">Confirm Password:</label>

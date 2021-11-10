@@ -18,41 +18,55 @@
     </div>
 
     <div id="support-formArea" class="container mx-auto">
-        <div class="row">
-            <div class="col">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Name *" aria-label="Name">
+        <form method="POST" action="{{ route("support.sendMail") }}">
+            @csrf
+            @method("put")
+
+            <div class="row">
+                <div class="col">
+                    @if(!auth()->user())
+                        <div class="input-group">
+                            <input type="text" name="nameInput" class="form-control" placeholder="Name *" aria-label="Name" value="">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="emailInput" class="form-control" placeholder="E-mail *" aria-label="E-mail" value="">
+                        </div>
+                    @else
+                        <div class="input-group">
+                            <input type="text" name="nameInput" class="form-control" placeholder="Name *" aria-label="Name" value="{{ $userInfo->name }}">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="emailInput" class="form-control" placeholder="E-mail *" aria-label="E-mail" value="{{ $userInfo->email }}">
+                        </div>
+                    @endIf
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <span class="mdi mdi-recycle-variant"></span>
+                        </span>
+                        <select name="categoryInput" class="form-select" id="catScheduleSelection">
+                            <option selected>Select a Category *</option>
+                            <option>Support</option>
+                            <option>Suggestion</option>
+                            <option>Report</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="E-mail *" aria-label="E-mail">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <span class="mdi mdi-recycle-variant"></span>
-                    </span>
-                    <select class="form-select" id="catScheduleSelection">
-                        <option selected>Select a Category *</option>
-                        <option>Support</option>
-                        <option>Suggestion</option>
-                        <option>Report</option>
-                    </select>
+                <div class="col">
                 </div>
             </div>
-            <div class="col">
+            <div class="input-group">
+                <input type="text" name="titleInput" class="form-control" placeholder="Title *" aria-label="Title">
             </div>
-        </div>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Title *" aria-label="Title">
-        </div>
-        <div class="mb-3">
-            <div class="p-1" style="background-color: rgba(128, 128, 128, 0.5); width: 120px;">
-                <label class="form-label" style="font-weight: bold;">Description *</label>
+            <div class="mb-3">
+                <div class="p-1" style="background-color: rgba(128, 128, 128, 0.5); width: 120px;">
+                    <label class="form-label" style="font-weight: bold;">Description *</label>
+                </div>
+                <textarea name="descriptionInput" class="form-control" id="descInput" name="description" placeholder="Enter your message here (max 1500 words)" maxlength="1500" style="resize: none; height: 500px"></textarea>
             </div>
-            <textarea class="form-control" id="descInput" name="description" placeholder="Enter your message here (max 1500 words)" maxlength="1500" style="resize: none; height: 500px"></textarea>
-        </div>
-        <div class="d-flex justify-content-center p-3">
-            <button id="searchBtn" type="button" class="btn btn-primary" style="width: 250px; height: 80px;">SEND</button>
-        </div>
+            <div class="d-flex justify-content-center p-3">
+                <button name="sendBtn" id="sendBtn" type="submit" class="btn btn-primary" style="width: 250px; height: 80px;">SEND</button>
+            </div>
+        </form>
     </div>
 </div>
 

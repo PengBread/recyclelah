@@ -14,22 +14,12 @@ class MapController extends Controller
 {
     public function mapPage(Request $request) {
         if(!auth()->user()->pointer) {
-            return view('map');
+            //For the sake of prevent error on javascript.
+            return view('map', ['userInfo' => $request]);
         } else {
-            // if(auth()->user()->affiliate) {
-            //     //worker
-            //     $user = auth()->user()->pointer;
-            //     $organization = auth()->user()->affiliate;
-            //     $schedules = $organization
-            //                 -> schedules;
+            $user = auth()->user()->pointer;
 
-            //     return view('map', ['userInfo' => $user, 'schedules' => $schedules]);
-            // } else {
-                //non worker
-                $user = auth()->user()->pointer;
-
-                return view('map', ['userInfo' => $user]);
-            // }
+            return view('map', ['userInfo' => $user]);
         }
     }
 
@@ -37,6 +27,7 @@ class MapController extends Controller
     public function addLocation(Request $request) {
         //save location
         if(!auth()->user()->pointer) {
+            //Create new pointer column
             $create =
             MapPointer::create([
                 'longitude' => $request->lng,
@@ -45,6 +36,8 @@ class MapController extends Controller
                 'pointerStatus' => 'Active',
                 'recycleCategory' => 'Paper',
             ]);
+            //Insert pointerID into User
+            auth()->user()->update(['pointerID' => $create->pointerID]);
         } else {
             auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo, 'longitude' => $request->lng, "latitude" => $request->lat], ['recycleCategory' => 'Paper']);
         }
@@ -56,12 +49,14 @@ class MapController extends Controller
         if(!auth()->user()->affiliate) {
             return redirect()->route('mapPage');
         } else {
-            //worker
+            //Check which organization user is affiliate to
             $organization = auth()->user()->affiliate;
-            $selectedDate = $request->input('dateSchedules');
 
-            //for listing list of schedules in the dropdownlist
+            //Find schedules under this organization
             $scheduleFilter = $organization->schedules();
+
+            //Check the input of the drop down list
+            $selectedDate = $request->input('dateSchedules');
 
             if($selectedDate != null) {
                 $scheduleFilter->where('scheduleID', $selectedDate);

@@ -6,6 +6,10 @@
 {{-- <script src="{{ asset('js/mapJS.js') }}"></script> --}}
 <!-- Google Map Script -->
 <script>
+let infowindow;
+let map;
+var userLoc;
+
 function initMap() {
     const input = document.getElementById("placeAddress");
     const searchBox = new google.maps.places.SearchBox(input);
@@ -19,24 +23,40 @@ function initMap() {
         '<div id="bodyContent">' +
         "</div>" +
     "</div>";
+    console.log(longitude);
     if(!longitude || !latitude) {
         longitude = 100.3530;
         latitude = 5.3528;
+        userLoc = "Penang, Malaysia";
+    } else {
+        userLoc = @json($userInfo->pointerAddress);
     }
 
     console.log(longitude);
     console.log(latitude);
-    
-    var map = new google.maps.Map(document.getElementById('googleMap'), {
-        center: {lat: longitude, lng: latitude},
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoom: 11
-    });
 
-    const infowindow = new google.maps.InfoWindow({
+    infowindow = new google.maps.InfoWindow({
         content: contentString,
         maxWidth: 400,
     });
+    
+    map = new google.maps.Map(document.getElementById('googleMap'), {
+        // center: {lat: longitude, lng: latitude},
+        zoom: 11
+    });
+
+    //Load Map And Set Map Center, solving gray screen problem
+    const request = {
+        query: userLoc,
+        fields: ["name", "geometry"],
+    };
+    service = new google.maps.places.PlacesService(map);
+    service.findPlaceFromQuery(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+            map.setCenter(results[0].geometry.location);
+        }
+    });
+    
 
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
@@ -55,14 +75,14 @@ function initMap() {
         map.setCenter(marker.getPosition());
     });
 
-    //Onclick Add Marker
-    google.maps.event.addListener(map, 'click', function(event) {
-        placeMarker(event.latLng);
-    });
+    // //Onclick Add Marker
+    // google.maps.event.addListener(map, 'click', function(event) {
+    //     placeMarker(event.latLng);
+    // });
 
-    function placeMarker(location) {
-        marker.setPosition(location);
-    }
+    // function placeMarker(location) {
+    //     marker.setPosition(location);
+    // }
 
     //SearchBox Add Marker
     google.maps.event.addListener(searchBox, 'places_changed', function(){

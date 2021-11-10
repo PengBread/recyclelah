@@ -37,7 +37,7 @@ class ProfileRequest extends FormRequest
             $rules['phoneNumber'] = 'required|regex:/(6?01)[0-9]{8,10}/';
         }
         else if($link == route('profile.editPassword')) {
-            $rules['password'] = 'required|string|regex:/^[a-zA-Z0-9]{7,}$/';
+            $rules['password'] = 'required|string|regex:/^[a-zA-Z0-9]{8,}$/';
         }
         else if($link == route('profile.joinOrganization')) {
             $rules['code'] = 'required|string|regex:/^[a-zA-Z0-9]{7}$/';
