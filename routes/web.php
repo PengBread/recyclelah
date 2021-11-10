@@ -4,17 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Client\Request as ClientRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\registerController2;
-use App\Models\User;
-use App\Models\User as Model;
-use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,10 +38,6 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('login', '\App\Http\Controllers\Auth\LoginController2@authentication');
-
-Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
-
 Route::get('/email/verify', function () {
     return view('auth.verify');
 });
@@ -58,6 +45,9 @@ Route::get('/email/verify', function () {
 Route::group([
     'namespace' => 'App\Http\Controllers\Auth'
 ], function() {
+
+    Route::post('login', 'LoginController2@authentication');
+    Route::get('logout', 'LogoutController@logout');
 
     Route::get('register', 'registerController2@index');
     Route::post('register', 'registerController2@register');
