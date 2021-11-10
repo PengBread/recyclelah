@@ -109,7 +109,7 @@
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ $message }} Password must be at least 8 characters long, and contains mixture of letters and numbers.</strong>
                                 </span>
                             @enderror
                         </div>
@@ -119,7 +119,13 @@
                         <label for="password-confirm" class="col-md-3 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                         <div class="col-md-9">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password-confirm" required autocomplete="new-password">
+
+                            @error('password-confirm')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>The password and confirm password must match.</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 

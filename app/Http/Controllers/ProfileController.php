@@ -41,7 +41,6 @@ class ProfileController extends Controller
     }
 
     public function editPassword(ProfileRequest $request) {
-        // auth()->user()->password = Hash::make($request->safe()->password);
         auth()->user()->update(['password' => Hash::make($request->safe()->password)]);
 
         return redirect()->route('authProfile');
@@ -129,6 +128,6 @@ class ProfileController extends Controller
             'recyclingCatagory'=>$catSelection,
         ]);
 
-        return redirect()->route('organization')->with('success', 'Schedule created. DESIGN THIS');
+        return redirect()->route('organization')->with('success', 'Schedule created.');
     }
 }

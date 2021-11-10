@@ -31,9 +31,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
+// Route::get('/test', function () {
+//     return view('test');
+// });
 
 Route::get('/verify', function () {
     return view('auth.verify');
@@ -53,8 +53,14 @@ Route::post('/login', '\App\Http\Controllers\Auth\LoginController2@authenticatio
 
 Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
 
-Route::resource('/register', registerController2::class);
+//Route::resource('/register', registerController2::class);
+Route::get('register', '\App\Http\Controllers\Auth\registerController2@index');
 
+Route::post('register', '\App\Http\Controllers\Auth\registerController2@register');
+
+Route::get('verified', 'App\Http\Controllers\Auth\registerController2@verified');
+
+Route::post('resendEmail', 'App\Http\Controllers\Auth\registerController2@sendEmail');
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
@@ -68,7 +74,7 @@ Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPas
 
 Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@updatePassword');
 
-Route::get('userLogin', 'App\Http\Controllers\Auth\LoginController2@userLogin');
+
 
 Route::group([
     'namespace' => 'App\Http\Controllers'

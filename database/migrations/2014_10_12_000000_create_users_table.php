@@ -20,12 +20,11 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('organizationID')->default(null)->nullable();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('phoneNumber')->unique();
             $table->string('status')->default('active');
             $table->unsignedInteger('pointerID')->default(null)->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->boolean('isVerified')->default(0);
             $table->timestamps();
             
             $table->foreign('organizationID')
