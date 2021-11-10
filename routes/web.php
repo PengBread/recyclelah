@@ -47,33 +47,28 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', '\App\Http\Controllers\Auth\LoginController2@authentication');
-
-//Auth::routes(['verify' => true]);
+Route::post('login', '\App\Http\Controllers\Auth\LoginController2@authentication');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LogoutController@logout');
-
-//Route::resource('/register', registerController2::class);
-Route::get('register', '\App\Http\Controllers\Auth\registerController2@index');
-
-Route::post('register', '\App\Http\Controllers\Auth\registerController2@register');
-
-Route::get('verified', 'App\Http\Controllers\Auth\registerController2@verified');
-
-Route::post('resendEmail', 'App\Http\Controllers\Auth\registerController2@sendEmail');
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
 });
 
-Route::get('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@forgotPassword');
+Route::group([
+    'namespace' => 'App\Http\Controllers\Auth'
+], function() {
 
-Route::post('forgotPassword', '\App\Http\Controllers\Auth\ForgotPassword2@sendResetPassword');
+    Route::get('register', 'registerController2@index');
+    Route::post('register', 'registerController2@register');
+    Route::get('verified', 'registerController2@verified');
+    Route::post('resendEmail', 'registerController2@sendEmail');
 
-Route::get('resetPassword', '\App\Http\Controllers\Auth\ForgotPassword2@resetPassword');
-
-Route::Post('updatePassword', '\App\Http\Controllers\Auth\ForgotPassword2@updatePassword');
-
+    Route::get('forgotPassword', 'ForgotPassword2@forgotPassword');
+    Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword');
+    Route::get('resetPassword', 'ForgotPassword2@resetPassword');
+    Route::Post('updatePassword', 'ForgotPassword2@updatePassword');
+});
 
 
 Route::group([
