@@ -72,16 +72,13 @@
                             <form class="form" method="POST" action="{{ route('organization')}}">
                                 @csrf
 
-                                @if (Session::has('success'))
-                                    <div class="alert alert-success">{{ Session::get('success') }}</div>
-                                @endif
-
                                 <div class="container mx-auto align-items-center" style="padding: 20px;">
                                     <div style="text-align: center;">
                                         <h5>{{ $organizationInfo->organizationName }}</h5>
                                         <p class="pb-3" style="font-size: 14px;">You are the owner of this organization<p>
                                         <div class="py-3">
-                                            <button type="button" id="btnMakeSchedule" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#makeSchedule">Organization Schedule</button>
+                                            <a type="button" class="btn btn-dark" href="{{ route('orgSchedule.schedules') }}">Organization Schedules</a>
+                                            {{-- <button type="button" id="btnMakeSchedule" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#makeSchedule">Organization Schedule</button> --}}
                                         </div>
                                         <div class="py-2">
                                             <a type="button" class="btn btn-dark" href="{{ route('memberList') }}">List Workers</a>
@@ -101,7 +98,7 @@
                                         <h5>{{ $organizationInfo->organizationName }}</h5>
                                         <p class="pb-3" style="font-size: 14px;">You are working under this organization as a worker<p>
                                         <div class="py-3">
-                                            <button type="button" class="btn btn-dark" onclick="">Organization Schedule</button>
+                                            <a type="button" class="btn btn-dark" href="{{ route('orgSchedule.schedules') }}">Organization Schedules</a>
                                         </div>
                                         <div class="py-2">
                                             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#leaveOrgModal">Leave Organization</button>
@@ -123,7 +120,6 @@
     <div style="height: 19vh;">
     </div>
     @include('components.organizationModal')
-    @include('components.scheduleCreateModal')    
 </div>
 
 @endsection

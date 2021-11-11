@@ -1,19 +1,20 @@
 <!-- Organization Schedules Create Modal -->
-<div class="modal fade bd-example-modal-lg" id="makeSchedule" tabindex="-1">     
+<div class="modal fade bd-example-modal-lg" id="createScheduleModal" tabindex="-1">     
     <div class="modal-dialog modal-lg">
         <div class="modal-content">     
             <div class="modal-header">                                      
                 <h5 class="modal-title" id="scheduleModel">Create Schedule</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ url('/profile/organization') }}">
+            <form method="POST" action=" {{ route('orgSchedule.createSchedule') }}">
                 @csrf
+                
                 <div class="modal-body">
                     <div class="form-group row p-2">
-                        <label for="scheduleName" class="col-md-3 col-form-label text-md-right">{{ __('Schedule Title') }}</label>
+                        <label for="scheduleName" class="col-md-3 col-form-label text-md-right">Title: </label>
 
                         <div class="col-md-9">
-                            <input id="scheduleName" type="text" class="form-control @error('scheduleName') is-invalid @enderror" name="scheduleName" value="{{ old('scheduleName') }}" required>
+                            <input id="scheduleName" type="text" class="form-control @error('scheduleName') is-invalid @enderror" name="scheduleName" value="" required>
                         </div>
 
                         @error('scheduleName')
@@ -23,11 +24,11 @@
                         @enderror
                     </div>
                     <div class="form-group row p-2">
-                        <label for="stateName" class="col-md-3 col-form-label text-md-right">{{ __('State') }}</label>
+                        <label for="stateName" class="col-md-3 col-form-label text-md-right">State: </label>
                         <div class="col-md-9">
 
                             <select class="form-select @error('stateName') is-invalid @enderror" id="stateName" name="stateName">
-                                <option value="Select a State">Select a State</option>
+                                {{-- <option value="Select a State">Select a state</option> --}}
                                 <option value="Johor">Johor</option>
                                 <option value="Kedah">Kedah</option>
                                 <option value="Kelantan">Kelantan</option>
@@ -52,17 +53,17 @@
                         </div>
                     </div>
                     <div class="form-group row p-2">
-                        <label for="recyclingCatagory" class="col-md-3 col-form-label text-md-right">{{ __('Catagory') }}</label>
+                        <label for="recyclingCategory" class="col-md-3 col-form-label text-md-right">Category: </label>
                         <div class="col-md-9">
 
-                            <select class="form-select" id="recyclingCatagory" name="recyclingCatagory">
-                                <option value="Select a Catagory">Select a Catagory</option>
+                            <select class="form-select" id="recyclingCatagory" name="recyclingCategory">
+                                {{-- <option value="Select a Category">Select a category</option> --}}
                                 <option value="Plastic">Plastic</option>
                                 <option value="Metal">Metal</option>
                                 <option value="Paper">Paper</option>
                             </select>
 
-                            @error('recyclingCatagory')
+                            @error('recyclingCategory')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -71,10 +72,10 @@
                         </div>
                     </div>
                     <div class="form-group row p-2">
-                        <label for="scheduleDate" class="col-md-3 col-form-label text-md-right">{{ __('Date') }}</label>
+                        <label for="scheduleDateStart" class="col-md-3 col-form-label text-md-right">Date Start: </label>
                         <div class="col-md-9">
                             <div class="md-form">
-                                <input class="date form-control @error('scheduleDate') is-invalid @enderror" type="text" placeholder="Select a date" id="scheduleDate" name="scheduleDate" data-bs-target=".date" value="{{ old('scheduleDate') }}" required>
+                                <input class="date form-control @error('scheduleDateStart') is-invalid @enderror" type="text" placeholder="Select a date" id="scheduleDateStart" name="scheduleDateStart" data-bs-target=".date" value="" required>
                             </div>
                             
                             <script type="text/javascript">
@@ -94,31 +95,31 @@
                         </div>
                     </div>          
                     <div class="form-group row p-2">
-                        <label for="scheduleTimeStart" class="col-md-3 col-form-label text-md-right">{{ __('Time') }}</label>
-
+                        <label for="scheduleDateEnd" class="col-md-3 col-form-label text-md-right">Date End: </label>
                         <div class="col-md-9">
-                            <div class="form-group col-sm d-flex justify-content-center align-items-center">
-                                <input class="time form-control @error('scheduleTimeStart') is-invalid @enderror" type="text" placeholder="Set time" id="scheduleTimeStart" name="scheduleTimeStart" data-bs-target=".time" value="{{ old('scheduleTimeStart') }}" required>
+                            <div class="md-form">
+                                <input class="date form-control @error('scheduleDateEnd') is-invalid @enderror" type="text" placeholder="Select a date" id="scheduleDateEnd" name="scheduleDateEnd" data-bs-target=".date" value="" required>
                             </div>
-
                             <script type="text/javascript">
-                                $('.time').datetimepicker({ 
-                                    format: 'hh:mm a'
+                                $('.date').datetimepicker({  
+                                    defaultDate: new Date(),
+                                    minDate: new Date(),
+                                    format:'DD/MM/YYYY'
                                 });  
                             </script>
-
-                            @error('scheduleTimeStart')
+                            @error('scheduleDate')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
-                    </div>
+                    </div>          
+                    
                     <div class="form-group row p-2">
-                        <label for="scheduleContent" class="col-md-3 col-form-label text-md-right">{{ __('Content') }}</label>
+                        <label for="scheduleContent" class="col-md-3 col-form-label text-md-right">Post: </label>
 
                         <div class="col-md-9">
-                            <input id="scheduleContent" type="text" class="form-control @error('scheduleContent') is-invalid @enderror" name="scheduleContent" value="{{ old('scheduleContent') }}" required>
+                            <textarea id="scheduleContent" type="text" class="form-control @error('scheduleContent') is-invalid @enderror" style="resize: none"  name="scheduleContent" rows='5' required></textarea>
                         </div>
 
                         @error('scheduleContent')
@@ -127,9 +128,9 @@
                             </span>
                         @enderror
                     </div>
-                </div>                                      
+                </div>                                                         
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Create Schedule</button>
                 </div>
             </form>

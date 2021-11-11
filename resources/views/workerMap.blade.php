@@ -111,7 +111,7 @@
                                     <option value="empty">No Schedule Available</option>
                                 @else
                                 @foreach($filter as $scheduleDate)
-                                    <option value="{{ $scheduleDate->scheduleID}}">{{ $scheduleDate->scheduleDateStart }}</option>
+                                    <option value="{{ $scheduleDate->scheduleID}}" {{ request()->get("dateSchedules") == $scheduleDate->scheduleID ? "selected" : " "}}>{{ $scheduleDate->scheduleDateStart }}</option>
                                 @endforeach
                                 @endIf
                             </select>

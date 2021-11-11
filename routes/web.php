@@ -92,25 +92,9 @@ Route::group([
          */
         Route::get('profile', 'ProfileController@profile')->name('authProfile');
         Route::get('profile/organization', 'ProfileController@organization')->name('organization');
-        Route::post('profile/organization/createSchedule', 'ProfileController@createSchedule')->name('createSchedule');
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
         Route::get('map', 'MapController@mapPage')->name('mapPage');
         Route::get('organizationMap', 'MapController@workerPage')->name('workerPage');
-
-        /**
-         * ProfileController Section
-         */
-        Route::group([
-            'prefix' => 'profile'
-        ], function () {
-            Route::put('editName', 'ProfileController@editName')->name('profile.editName');
-            Route::put('editPhone', 'ProfileController@editPhone')->name('profile.editPhone');
-            Route::put('editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
-            Route::get('listUsers', 'ProfileController@listUsers')->name('profile.listUsers');
-            Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
-            Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
-            Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
-        });
 
         /**
          * ScheduleController Section
@@ -131,6 +115,34 @@ Route::group([
             Route::put('status', 'MapController@changeStatus')->name('map.changeStatus');
             Route::put('userConfirmation', 'MapController@userConfirm')->name('map.userConfirm');
             // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
+        });
+
+        /**
+         * ProfileController Section
+         */
+        Route::group([
+            'prefix' => 'profile'
+        ], function () {
+            Route::put('editName', 'ProfileController@editName')->name('profile.editName');
+            Route::put('editPhone', 'ProfileController@editPhone')->name('profile.editPhone');
+            Route::put('editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
+            Route::get('listUsers', 'ProfileController@listUsers')->name('profile.listUsers');
+            Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
+            Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
+            Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
+        });
+
+        /**
+         * Organization ScheduleController Section
+         */
+        Route::group([
+            'prefix' => 'orgSchedule'
+        ], function () {
+            Route::get('schedules', 'orgScheduleController@index')->name('orgSchedule.schedules');
+            // Route::post('schedules', 'orgScheduleController@display')->name('orgSchedule.filter');
+            Route::put('update', 'orgScheduleController@updateSchedule')->name('orgSchedule.updateSchedule');
+            Route::put('delete', 'orgScheduleController@deleteSchedule')->name('orgSchedule.deleteSchedule');
+            Route::post('createSchedule', 'orgScheduleController@createSchedule')->name('orgSchedule.createSchedule');
         });
 
         /**

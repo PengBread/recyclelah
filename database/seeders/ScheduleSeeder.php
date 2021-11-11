@@ -30,7 +30,7 @@ class ScheduleSeeder extends Seeder
             [
                 'organizationID' => '1',
                 'scheduleName'=> 'testOrg',
-                'scheduleDateStart'=>Carbon::now(),
+                'scheduleDateStart'=>Carbon::now()->addHours(1),
                 'scheduleDateEnd'=>Carbon::now()->addHours(2),
                 'scheduleStatus'=> true,
                 'scheduleContent'=> 'Schedule Time: 1PM - 4PM',
@@ -41,7 +41,7 @@ class ScheduleSeeder extends Seeder
             [
                 'organizationID' => '1',
                 'scheduleName'=>'testOrg',
-                'scheduleDateStart'=>Carbon::now(),
+                'scheduleDateStart'=>Carbon::now()->addHours(2),
                 'scheduleDateEnd'=>Carbon::now()->addHours(4),
                 'scheduleStatus'=> false,
                 'scheduleContent'=> 'Schedule Time: 2PM - 6PM',
@@ -51,7 +51,7 @@ class ScheduleSeeder extends Seeder
             [
                 'organizationID' => '1',
                 'scheduleName'=>'testOrg',
-                'scheduleDateStart'=>Carbon::now(),
+                'scheduleDateStart'=>Carbon::now()->addHours(3),
                 'scheduleDateEnd'=>Carbon::now()->addHours(6),
                 'scheduleStatus'=> false,
                 'scheduleContent'=> 'Schedule Time: 2PM - 6PM',
