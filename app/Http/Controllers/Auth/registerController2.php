@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\LoginController2;
-use App\Http\Requests\CreateValidationRequest;
 use App\Models\User;
 use App\Models\User as Model;
 use App\Models\Organization;
@@ -13,7 +11,6 @@ use Illuminate\Support\Str;
 use Mail;
 use Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Mail\ActivationMail;
 
 class registerController2 extends Controller
@@ -112,7 +109,7 @@ class registerController2 extends Controller
         $user->isVerified = 1;
         $user->save();
         Auth::login($user);
-        return Redirect("http://127.0.0.1:8000/profile");
+        return redirect("/profile");
     }
 
     public function sendEmail(){

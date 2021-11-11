@@ -42,6 +42,11 @@ Route::get('/email/verify', function () {
     return view('auth.verify');
 });
 
+//pull out from group for testing
+Route::get('support', 'App\Http\Controllers\SupportController@getInfo')->name('support');
+Route::post('send', 'App\Http\Controllers\SupportController@sendMail')->name('support.sendMail');
+Route::get('feedbackSuccess', 'App\Http\Controllers\SupportController@feedbackSuccess');
+
 Route::group([
     'namespace' => 'App\Http\Controllers\Auth'
 ], function() {
@@ -57,8 +62,9 @@ Route::group([
     Route::get('forgotPassword', 'ForgotPassword2@forgotPassword');
     Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword');
     Route::get('resetPassword', 'ForgotPassword2@resetPassword');
-    Route::Post('updatePassword', 'ForgotPassword2@updatePassword');
+    Route::post('updatePassword', 'ForgotPassword2@updatePassword');
 });
+
 
 
 Route::group([
@@ -73,7 +79,7 @@ Route::group([
         Route::get('schedules', 'ScheduleController@index')->name('schedules');
         Route::post('schedules', 'ScheduleController@display')->name('display');
         Route::get('faq', function () { return view('faq'); })->name('faq');
-        Route::get('support', 'SupportController@getInfo')->name('support');
+        // Route::get('support', 'SupportController@getInfo')->name('support');
     });
     Route::group([
         'middleware' => ['auth', 'verifyCheck']
@@ -130,7 +136,7 @@ Route::group([
         Route::group([
             'prefix' => 'support'
         ], function () {
-            Route::put('send', 'SupportController@sendMail')->name('support.sendMail');
+            // Route::post('send', 'SupportController@sendMail')->name('support.sendMail');
         });
     });
 });
