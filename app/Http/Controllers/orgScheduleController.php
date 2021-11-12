@@ -66,18 +66,12 @@ class orgScheduleController extends Controller
         $request->validate([
             'scheduleName' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
-            // 'scheduleDateEnd' => 'required|string|max:10',
+            'scheduleDateEnd' => 'required|date',
             'scheduleContent'=>'required|string|max:500'
         ]);
 
         $stateSelection = $request->get('stateName');
         $catSelection = $request->get('recyclingCategory');
-
-        // if ($stateSelection == 'Select a State'){
-        //     return redirect()->back()->withErrors(['stateName' => 'Please select a state'])->withInput();
-        // } else if ($catSelection == 'Select a Category'){
-        //     return redirect()->back()->withErrors(['recyclingCategory' => 'Please select a category'])->withInput();
-        // }
         
         $organization = auth()->user()->affiliate;
         Schedule::create([
