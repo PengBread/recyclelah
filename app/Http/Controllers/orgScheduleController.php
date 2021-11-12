@@ -67,7 +67,7 @@ class orgScheduleController extends Controller
             'scheduleName' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
             'scheduleDateEnd' => 'required|date',
-            'scheduleContent'=>'required|string|max:500'
+            'scheduleContent'=>'required|string|max:600'
         ]);
 
         $stateSelection = $request->get('stateName');
