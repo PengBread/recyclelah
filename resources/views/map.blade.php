@@ -128,7 +128,11 @@ function initMap() {
         <div class="container mx-auto">
         <!-- Google Map -->
             <div>
+                @if (Session::has('success'))
+                    <div class="alert alert-success" style="text-align: center;">{{ Session::get('success') }}</div>
+                @endif
                 <div id="googleMap" style="width:100%; height:700px;"></div>
+
                     @if(auth()->user()->pointer != null)
                         @if(auth()->user()->pointer->pointerStatus == 'Done')
                             <form method="POST" action="{{ route('map.userConfirm') }}">

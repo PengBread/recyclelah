@@ -42,7 +42,7 @@ class MapController extends Controller
             auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo, 'longitude' => $request->lng, "latitude" => $request->lat], ['recycleCategory' => 'Paper']);
         }
 
-        return redirect()->route('mapPage');
+        return redirect()->route('mapPage')->with('success', 'Successfully added your location');
     }
 
     public function workerPage(Request $request) {
