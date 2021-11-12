@@ -16,8 +16,6 @@ function initMap() {
     var latitude = parseFloat(document.getElementById("lat").value);
     var longitude = parseFloat(document.getElementById("lng").value);
     const contentString =
-    // '<meta name="csrf-token" content="{{ csrf_token() }}">' +
-    // "@method('put')" +
     '<div id="content">' +
         "<p><b>You placed your location here!</b></p>" +
         '<div id="bodyContent">' +

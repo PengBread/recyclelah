@@ -22,6 +22,7 @@
                 <div id="searchSchedule-Container" class="container h-100">
                     <form class="form" method="POST" action="{{ route('schedules') }}">
                         @csrf
+
                         <div class="row">
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
                                 
