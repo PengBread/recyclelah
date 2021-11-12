@@ -106,12 +106,20 @@
                                 <input class="form-control @error('scheduleDateEnd') is-invalid @enderror" type="datetime-local" placeholder="Select a date" id="scheduleDateEnd" name="scheduleDateEnd" data-bs-target="#scheduleDateEnd" required>
                             </div>
                             <script type="text/javascript">
+
+                                var dateTime = document.getElementById("scheduleDateStart").value;
+
+                                var getDate = dateTime.split('-');
+                                var getTime = getDate[2].split(' ');
+                                var getHour = getTime[1].split(':');
+                                var hour = parseInt(getHour[0], 10) + 1;
+
                                 config = {
                                     enableTime: true,
                                     dateFormat: "Y-m-d H:i",
                                     altInput: true,
-                                    minDate: Date.now(),
-                                    defaultDate: Date.now(),
+                                    minDate: getDate[0] + '-' + getDate[1] + '-' + getTime[0] + ' ' + hour + ':' + getHour[1],
+                                    defaultDate: getDate[0] + '-' + getDate[1] + '-' + getTime[0] + ' ' + hour + ':' + getHour[1],
                                 }
 
                                 flatpickr("input[type=datetime-local]", config);
@@ -137,7 +145,25 @@
                             </span>
                         @enderror
                     </div>
-                </div>                                                         
+
+                    {{-- <div class="form-group row p-2">
+                        <label for="testing" class="col-md-3 col-form-label text-md-right">Date End: </label>
+                        <div class="col-md-9">
+                            <div class="md-form">
+                                <input class="form-control" id="testing" name="testing" data-bs-target="#testing" required>
+                            </div>
+                            <script type="text/javascript">
+                                var dateTime = document.getElementById("scheduleDateStart").value;
+
+                                var getDate = dateTime.split('-');
+                                var getTime = getDate[2].split(' ');
+                                var getHour = getTime[1].split(':');
+                                var hour = parseInt(getHour[0], 10) + 1;
+
+                                document.getElementById("testing").value = getDate[0] + '-' + getDate[1] + '-' + getTime[0] + ' ' + hour + ':' + getHour[1];
+                            </script>
+                        </div>
+                    </div>                                                          --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Create Schedule</button>
