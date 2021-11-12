@@ -44,11 +44,8 @@ class orgScheduleController extends Controller
         // dd($request->recyclingCategory);
 
         Schedule::where('scheduleID', $target)
-                ->update([
-                    'scheduleName' => $request->scheduleTitle, 
-                    'stateName' => $request->scheduleState, 
-                    'recyclingCategory' => $request->recyclingCategory, 
-                    'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => $request->scheduleDateEnd, 'scheduleContent' => $request->scheduleContent]);
+                ->update(['scheduleName' => $request->scheduleName, 'stateName' => $request->stateName, 'recyclingCategory' => $request->recyclingCategory, 
+                        'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => $request->scheduleDateEnd, 'scheduleContent' => $request->scheduleContent]);
 
         return redirect()->route('orgSchedule.schedules');
 
@@ -65,43 +62,18 @@ class orgScheduleController extends Controller
 
     public function createSchedule(Request $request) {
 
+
         $request->validate([
-<<<<<<< HEAD
-            'scheduleTitle' => 'required|string|max:50',
-            'scheduleDateStart' => 'required|string|max:50',
-            'scheduleDateEnd' => 'required|string|max:50',
-            'scheduleContent'=>'required|string|max:500',
-=======
             'scheduleName' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
-            // 'scheduleDateEnd' => 'required|string|max:10',
+            'scheduleDateEnd' => 'required|date',
             'scheduleContent'=>'required|string|max:500'
->>>>>>> 2031580 (+ Radiobutton in register retains after error.)
         ]);
 
-        $stateSelection = $request->get('scheduleState');
-        $catSelection = $request->get('scheduleCategory');
+        $stateSelection = $request->get('stateName');
+        $catSelection = $request->get('recyclingCategory');
 
         // if ($stateSelection == 'Select a State'){
-<<<<<<< HEAD
-        //     return redirect()->back()->withErrors(['scheduleState' => 'Please select a state'])->withInput();
-        // } else if ($catSelection == 'Select a Category'){
-        //     return redirect()->back()->withErrors(['scheduleCategory' => 'Please select a category'])->withInput();
-        // } else {
-            $organization = auth()->user()->affiliate;
-            Schedule::create([
-                'organizationID'=>$organization->organizationID,
-                'scheduleName' => $request->input('scheduleTitle'),
-                'stateName'=>$stateSelection,
-                'scheduleDateStart' => $request->input('scheduleDateStart'),
-                'scheduleDateEnd' => $request->input('scheduleDateEnd'),
-                'scheduleContent' =>$request->input('scheduleContent'),
-                'recyclingCategory'=>$catSelection,
-                'scheduleStatus' => true,
-            ]);
-            return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
-        //}
-=======
         //     return redirect()->back()->withErrors(['stateName' => 'Please select a state'])->withInput();
         // } else if ($catSelection == 'Select a Category'){
         //     return redirect()->back()->withErrors(['recyclingCategory' => 'Please select a category'])->withInput();
@@ -119,7 +91,6 @@ class orgScheduleController extends Controller
             'scheduleStatus' => true,
         ]);
         return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
->>>>>>> 2b99c42 (+ Fixed error in schedule when user trying to join a schedule without any pointer created.)
     }
 
     // public function display(Request $request)
