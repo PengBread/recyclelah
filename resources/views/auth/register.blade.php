@@ -4,13 +4,18 @@
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 
 <script>
+    $(document).ready(function () {
+        if(document.getElementById('radioBtn1').checked) {
+            document.getElementById('organizationDiv').style.display = 'none';
+        } else if(document.getElementById('radioBtn2').checked) {
+            document.getElementById("organizationDiv").style.display = "";
+        }
+    });
     function handleClick(flexRadioDefault) {
         if(document.getElementById('radioBtn1').checked) {
             document.getElementById('organizationDiv').style.display = 'none';
         } else if(document.getElementById('radioBtn2').checked) {
             document.getElementById("organizationDiv").style.display = "";
-        } else {
-            alert("nope");
         }
     }
 </script>
@@ -26,7 +31,7 @@
                     <div class="radioButtonDiv row p-2">
                         <div class="form-check d-flex col justify-content-center">
                             <div>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="household_worker" id="radioBtn1" onclick="handleClick(this);" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="household_worker" id="radioBtn1" onclick="handleClick(this);" {{(old("flexRadioDefault") == "household_worker" || !old("flexRadioDefault")) ? "checked" : null}}>
                             </div>
                             <div>
                                 <label class="form-check-label" for="radioBtn1">House-Hold/Worker</label>
@@ -34,7 +39,7 @@
                         </div>
                         <div class="form-check d-flex col justify-content-center">
                             <div>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="organization" id="radioBtn2" onclick="handleClick(this);">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="organization" id="radioBtn2" onclick="handleClick(this);" {{(old("flexRadioDefault") == "organization") ? "checked" : null}}>
                             </div>
                             <div>
                                 <label class="form-check-label" for="radioBtn2">Organization</label>

@@ -20,7 +20,7 @@
             <div id="searchSchedule-Main" class="container mx-auto" style="height: 100%;">
                 <div id="searchSchedule-Container" class="container h-100">
                     @include('components.errors')
-                    
+
                     @if (Session::has('success'))
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
@@ -116,13 +116,13 @@
                                     <p id="cardState" class="card-text">{{$data->stateName}}</p>
                                     <p id="cardDate" class="card-text">{{$data->scheduleDateStart}}</p>
                                     {{-- <p id="cardTime" class="card-text">{{$data->scheduleDateStart}}</p> --}}
-                                    <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#{{$data->scheduleName}}">Click Me</a>
+                                    <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}">Click Me</a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- SCHEDULE MODAL -->
-                        <div class="modal fade" id="{{$data->scheduleName}}" tabindex="-1">                   
+                        <div class="modal fade" id="modal{{$data->scheduleID}}" tabindex="-1">                   
                             <div class="modal-dialog">
                                 <div class="modal-content">                                 
                                     <div class="modal-header">                                      

@@ -24,7 +24,7 @@ class CreateOrganizationsTable extends Migration
             $table->foreign('userID')
                 ->references('userID')
                 ->on('users')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
         Schema::enableForeignKeyConstraints();
     }

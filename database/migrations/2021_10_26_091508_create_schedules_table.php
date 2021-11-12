@@ -28,8 +28,7 @@ class CreateSchedulesTable extends Migration
             $table->foreign('organizationID')
                 ->references('organizationID')
                 ->on('organizations')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onDelete('cascade');
         });
         Schema::enableForeignKeyConstraints();
     }

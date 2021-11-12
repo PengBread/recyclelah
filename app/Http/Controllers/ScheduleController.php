@@ -68,6 +68,7 @@ class ScheduleController extends Controller
         if(!auth()->user()->pointer) {
             return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);
         } else {
+
             auth()->user()->pointer->update(['scheduleID' => $request->sch]);
             return redirect()->route('schedules')->with('success', 'Successfully joined a schedule');
         }

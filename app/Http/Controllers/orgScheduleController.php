@@ -65,7 +65,7 @@ class orgScheduleController extends Controller
 
         $request->validate([
             'scheduleName' => 'required|string|max:50',
-            // 'scheduleDateStart' => 'required|string|max:20',
+            'scheduleDateStart' => 'required|date',
             // 'scheduleDateEnd' => 'required|string|max:10',
             'scheduleContent'=>'required|string|max:500'
         ]);
@@ -84,8 +84,8 @@ class orgScheduleController extends Controller
             'organizationID'=>$organization->organizationID,
             'scheduleName' => $request->input('scheduleName'),
             'stateName'=>$stateSelection,
-            'scheduleDate' => $request->input('scheduleDate'),
-            'scheduleTimeStart' => $request->input('scheduleDateStart'),
+            'scheduleDateStart' => $request->input('scheduleDateStart'),
+            'scheduleDateEnd' => $request->input('scheduleDateEnd'),
             'scheduleContent' =>$request->input('scheduleContent'),
             'recyclingCatagory'=>$catSelection,
             'scheduleStatus' => true,

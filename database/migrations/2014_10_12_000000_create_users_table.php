@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->foreign('pointerID')
                 ->references('pointerID')
                 ->on('map_pointers')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
 
         Schema::enableForeignKeyConstraints();

@@ -37,6 +37,8 @@
                             <p>Check your organization schedules here</p>
                         </div>
 
+                        @include('components.errors')
+                        
                         @if (Session::has('success'))
                             <div class="alert alert-success">{{ Session::get('success') }}</div>
                         @endif
