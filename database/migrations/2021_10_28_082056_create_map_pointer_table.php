@@ -28,7 +28,7 @@ class CreateMapPointerTable extends Migration
             $table->foreign('scheduleID')
                 ->references('scheduleID')
                 ->on('schedules')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
 
         Schema::enableForeignKeyConstraints();

@@ -66,10 +66,17 @@ class orgScheduleController extends Controller
     public function createSchedule(Request $request) {
 
         $request->validate([
+<<<<<<< HEAD
             'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|string|max:50',
             'scheduleDateEnd' => 'required|string|max:50',
             'scheduleContent'=>'required|string|max:500',
+=======
+            'scheduleName' => 'required|string|max:50',
+            'scheduleDateStart' => 'required|date',
+            // 'scheduleDateEnd' => 'required|string|max:10',
+            'scheduleContent'=>'required|string|max:500'
+>>>>>>> 2031580 (+ Radiobutton in register retains after error.)
         ]);
 
         $stateSelection = $request->get('scheduleState');
@@ -105,8 +112,8 @@ class orgScheduleController extends Controller
             'organizationID'=>$organization->organizationID,
             'scheduleName' => $request->input('scheduleName'),
             'stateName'=>$stateSelection,
-            'scheduleDate' => $request->input('scheduleDate'),
-            'scheduleTimeStart' => $request->input('scheduleDateStart'),
+            'scheduleDateStart' => $request->input('scheduleDateStart'),
+            'scheduleDateEnd' => $request->input('scheduleDateEnd'),
             'scheduleContent' =>$request->input('scheduleContent'),
             'recyclingCatagory'=>$catSelection,
             'scheduleStatus' => true,
