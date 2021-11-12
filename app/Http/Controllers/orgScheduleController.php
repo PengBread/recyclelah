@@ -66,7 +66,7 @@ class orgScheduleController extends Controller
         $request->validate([
             'scheduleName' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
-            'scheduleDateEnd' => 'required|date',
+            // 'scheduleDateEnd' => 'required|string|max:10',
             'scheduleContent'=>'required|string|max:500'
         ]);
 
