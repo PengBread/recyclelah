@@ -17,9 +17,13 @@
             </div>
 
             <!-- Search -->
-            
             <div id="searchSchedule-Main" class="container mx-auto" style="height: 100%;">
                 <div id="searchSchedule-Container" class="container h-100">
+                    @include('components.errors')
+                    
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    @endif
                     <form class="form" method="POST" action="{{ route('schedules') }}">
                         @csrf
 

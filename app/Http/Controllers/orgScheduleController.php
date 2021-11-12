@@ -73,24 +73,24 @@ class orgScheduleController extends Controller
         $stateSelection = $request->get('stateName');
         $catSelection = $request->get('recyclingCategory');
 
-        if ($stateSelection == 'Select a State'){
-            return redirect()->back()->withErrors(['stateName' => 'Please select a state'])->withInput();
-        } else if ($catSelection == 'Select a Category'){
-            return redirect()->back()->withErrors(['recyclingCategory' => 'Please select a category'])->withInput();
-        } else {
-            $organization = auth()->user()->affiliate;
-            Schedule::create([
-                'organizationID'=>$organization->organizationID,
-                'scheduleName' => $request->input('scheduleName'),
-                'stateName'=>$stateSelection,
-                'scheduleDate' => $request->input('scheduleDate'),
-                'scheduleTimeStart' => $request->input('scheduleDateStart'),
-                'scheduleContent' =>$request->input('scheduleContent'),
-                'recyclingCatagory'=>$catSelection,
-                'scheduleStatus' => true,
-            ]);
-            return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
-        }
+        // if ($stateSelection == 'Select a State'){
+        //     return redirect()->back()->withErrors(['stateName' => 'Please select a state'])->withInput();
+        // } else if ($catSelection == 'Select a Category'){
+        //     return redirect()->back()->withErrors(['recyclingCategory' => 'Please select a category'])->withInput();
+        // }
+        
+        $organization = auth()->user()->affiliate;
+        Schedule::create([
+            'organizationID'=>$organization->organizationID,
+            'scheduleName' => $request->input('scheduleName'),
+            'stateName'=>$stateSelection,
+            'scheduleDate' => $request->input('scheduleDate'),
+            'scheduleTimeStart' => $request->input('scheduleDateStart'),
+            'scheduleContent' =>$request->input('scheduleContent'),
+            'recyclingCatagory'=>$catSelection,
+            'scheduleStatus' => true,
+        ]);
+        return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
     }
 
     // public function display(Request $request)
