@@ -76,6 +76,7 @@ class orgScheduleController extends Controller
         $catSelection = $request->get('scheduleCategory');
 
         // if ($stateSelection == 'Select a State'){
+<<<<<<< HEAD
         //     return redirect()->back()->withErrors(['scheduleState' => 'Please select a state'])->withInput();
         // } else if ($catSelection == 'Select a Category'){
         //     return redirect()->back()->withErrors(['scheduleCategory' => 'Please select a category'])->withInput();
@@ -93,6 +94,25 @@ class orgScheduleController extends Controller
             ]);
             return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
         //}
+=======
+        //     return redirect()->back()->withErrors(['stateName' => 'Please select a state'])->withInput();
+        // } else if ($catSelection == 'Select a Category'){
+        //     return redirect()->back()->withErrors(['recyclingCategory' => 'Please select a category'])->withInput();
+        // }
+        
+        $organization = auth()->user()->affiliate;
+        Schedule::create([
+            'organizationID'=>$organization->organizationID,
+            'scheduleName' => $request->input('scheduleName'),
+            'stateName'=>$stateSelection,
+            'scheduleDate' => $request->input('scheduleDate'),
+            'scheduleTimeStart' => $request->input('scheduleDateStart'),
+            'scheduleContent' =>$request->input('scheduleContent'),
+            'recyclingCatagory'=>$catSelection,
+            'scheduleStatus' => true,
+        ]);
+        return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
+>>>>>>> 2b99c42 (+ Fixed error in schedule when user trying to join a schedule without any pointer created.)
     }
 
     // public function display(Request $request)
