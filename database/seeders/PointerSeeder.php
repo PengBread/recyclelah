@@ -16,8 +16,8 @@ class PointerSeeder extends Seeder
     {
         MapPointer::insert([
             [
-                'longitude' => 0,
-                'latitude' => 0,
+                'longitude' => 100.3287506,
+                'latitude' => 5.414130699999999,
                 'pointerAddress' => 'Georgetown',
                 'pointerStatus' => 'Active',
                 'recycleCategory' => 'Paper',
