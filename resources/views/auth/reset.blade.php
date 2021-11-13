@@ -3,7 +3,7 @@
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 
-<div class="container mx-auto">
+<div class="container">
     <div class="content-container container">
         <div class="card">
             <div class="card-header"><h4>Reset password</h4></div>

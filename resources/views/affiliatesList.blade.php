@@ -6,7 +6,7 @@
 <div style="height: 100%">
     <div id="" class="container mx-auto">
         <div class="row">
-            <div class="profile-sidebar p-5">
+            <div class="profile-sidebar pt-5">
                 <div class="border justify-content-center align-items-center">
                     <div class="profile-sidebar-container">
                         <div class="pt-3 px-3">
@@ -14,14 +14,15 @@
                             <hr>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="{{ route('authProfile') }}">Account Information</a>
+                            <a class="profilesideBtn btn" href="{{ route('authProfile') }}">Account Information</a>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="{{ route('organization') }}">Organization Information</a>
+                            <a class="profilesideBtn btn" href="{{ route('organization') }}">Organization Information</a>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="profile-content col col-sm pt-5 pb-5">
                 <!--Members List Container -->
                 <div class="profile-content-container border">

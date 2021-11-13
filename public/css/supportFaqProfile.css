@@ -12,11 +12,17 @@
 .border {
     border: 1px solid rgb(114, 114, 114, 1);
     border-radius: 7px;
+    background-color: white;
+}
+
+.btn:hover {
+    color: rgb(172, 208, 255);
 }
 
 .profile-sidebar-items {
     padding: 15px 0px 15px 15%;
 }
+
 
 @media screen and (min-width: 768px) {
     .profile-sidebar {
@@ -25,11 +31,17 @@
     #input-Code-Container {
         padding: 50px;
     }
+    .btnOrg {
+        width: 200px;
+    }
 }
 
 @media screen and (max-width: 767px) {
     .profile-sidebar {
         width: 100%;
+    }
+    .btnOrg {
+        width: 150px;
     }
 
 }

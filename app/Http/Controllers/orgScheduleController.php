@@ -40,11 +40,17 @@ class orgScheduleController extends Controller
     }
 
     public function updateSchedule(Request $request) {
+        $request->validate([
+            'scheduleTitle' => 'required|string|max:50',
+            'scheduleDateStart' => 'required|date',
+            'scheduleDateEnd' => 'required|date',
+            'scheduleContent'=>'required|string|max:500'
+        ]);
+
         $target = $request->schedule;
-        // dd($request->recyclingCategory);
 
         Schedule::where('scheduleID', $target)
-                ->update(['scheduleName' => $request->scheduleName, 'stateName' => $request->stateName, 'recyclingCategory' => $request->recyclingCategory, 
+                ->update(['scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
                         'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => $request->scheduleDateEnd, 'scheduleContent' => $request->scheduleContent]);
 
         return redirect()->route('orgSchedule.schedules');
@@ -64,19 +70,19 @@ class orgScheduleController extends Controller
 
 
         $request->validate([
-            'scheduleName' => 'required|string|max:50',
+            'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
             'scheduleDateEnd' => 'required|date',
             'scheduleContent'=>'required|string|max:500'
         ]);
 
-        $stateSelection = $request->get('stateName');
+        $stateSelection = $request->get('scheduleState');
         $catSelection = $request->get('recyclingCategory');
         
         $organization = auth()->user()->affiliate;
         Schedule::create([
             'organizationID'=>$organization->organizationID,
-            'scheduleName' => $request->input('scheduleName'),
+            'scheduleName' => $request->input('scheduleTitle'),
             'stateName'=>$stateSelection,
             'scheduleDateStart' => $request->input('scheduleDateStart'),
             'scheduleDateEnd' => $request->input('scheduleDateEnd'),

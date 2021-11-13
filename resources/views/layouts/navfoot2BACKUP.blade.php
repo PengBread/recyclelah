@@ -15,7 +15,7 @@
         <!-- Styles -->
         <style>
           #navigationBar {
-            background-color: #4ea4dc;
+            background-color: rgba(0, 0, 0, 0.0);
           }
           .navbar-nav {
             margin-left: 50px;
@@ -24,39 +24,32 @@
             padding: 0 10px;
           }
           .nav-link {
-            color: #ffffff;
+            color: #004b4d;
             font-size: 30px;
           }
-          body {
-            background-color: #f8f8f8;
-          }
-          html {
-            background-color: #f8f8f8;
-          }
+
           .footer {
+            position: relative;
             left: 0;
             bottom: 0;
-            background-color: #f8f8f8;
+            width: 100%;
+            background-color: #181818;
+            color: white;
             text-align: center;
           }
-          .navBtn {
-            color: #a6a6a6;
-          }
-          .navBtn:hover {
-            color: rgb(172, 208, 255);
-          }
-          /* .footer-bottom {
+          .footer-bottom {
             height: 50px;
-          } */
+            background-color: #181818;
+          }
         </style>
 
     </head>
     <body class="antialiased">
       <header>
-        <nav id="navigationBar" class="navbar navbar-expand-lg">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="/" style="padding: 0 0 0 20px;">
-              <img src="{{asset('/images/TempLogoWhite.png')}}" alt="" width="85" height="50" class="d-inline-block align-text-top">
+              <img src="{{asset('/images/TempLogo.png')}}" alt="" width="85" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -91,7 +84,7 @@
 
               @guest
               <div class="d-flex">
-                <a class="btn btn-outline-light btn-lg" style="width: 150px" href="/login">Login</a>
+                <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/login">Login</a>
               </div>
               @endguest
 
@@ -100,7 +93,7 @@
                 If user is logged in, the nav bar will change to "Profile/Account"
               -->
               <div class="d-flex nav-item dropdown">
-                <a class="btn btn-outline-light btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false"> 
+                <a class="btn btn-outline-success btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false"> 
                   <span class="mdi mdi-account-circle-outline"></span>
                   Account
                 </a>
@@ -121,16 +114,10 @@
 
       <footer>
         <div class="footer">
-          <div class="">
-            <a class="navBtn btn" href="/" role="button">Home</a>
-            <a class="navBtn btn" href="" role="button">Terms of Service</a>
-            <a class="navBtn btn" href="" role="button">Privacy Policy</a>
-            <a class="navBtn btn" href="{{ route('faq') }}" role="button">FAQ</a>
-            <a class="navBtn btn" href="{{ route('support') }}" role="button">Support</a>
+          <div class="text-center navbar-static-bottom p-5" style="background-color: #313a43;">
+            <p class="text-white">Website by Bird-Bird</p>
           </div>
-          <div class="" style="font-size: 12px; color: #ccccd5">
-            <p>Copyright @ 2021 Bird-Bird - UOW KDU PENANG Final Year Project, All Rights Reserved.</p>
-          </div>
+          <div class="footer-bottom" style=""></div>
         </div>
       </footer>
     </body>
