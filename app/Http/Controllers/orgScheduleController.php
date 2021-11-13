@@ -40,10 +40,14 @@ class orgScheduleController extends Controller
     }
 
     public function updateSchedule(Request $request) {
+        $startDate = $request->scheduleDateStart;
+        $hours = $request->scheduleDateEnd;
+
         $request->validate([
             'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
-            'scheduleDateEnd' => 'required|date',
+            'scheduleDateEnd' => 'required',
+            // 'scheduleDateEnd' => 'required|date|after:'.$startDate,
             'scheduleContent'=>'required|string|max:500'
         ]);
 
@@ -51,7 +55,7 @@ class orgScheduleController extends Controller
 
         Schedule::where('scheduleID', $target)
                 ->update(['scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
-                        'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => $request->scheduleDateEnd, 'scheduleContent' => $request->scheduleContent]);
+                        'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours), 'scheduleContent' => $request->scheduleContent]);
 
         return redirect()->route('orgSchedule.schedules');
 
@@ -67,12 +71,13 @@ class orgScheduleController extends Controller
     }
 
     public function createSchedule(Request $request) {
-
+        $startDate = $request->scheduleDateStart;
+        $hours = $request->scheduleDateEnd;
 
         $request->validate([
             'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
-            'scheduleDateEnd' => 'required|date',
+            'scheduleDateEnd' => 'required',
             'scheduleContent'=>'required|string|max:500'
         ]);
 
@@ -85,7 +90,7 @@ class orgScheduleController extends Controller
             'scheduleName' => $request->input('scheduleTitle'),
             'stateName'=>$stateSelection,
             'scheduleDateStart' => $request->input('scheduleDateStart'),
-            'scheduleDateEnd' => $request->input('scheduleDateEnd'),
+            'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours),
             'scheduleContent' =>$request->input('scheduleContent'),
             'recyclingCatagory'=>$catSelection,
             'scheduleStatus' => true,

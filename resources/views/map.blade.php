@@ -1,6 +1,6 @@
-@extends('layouts.navfoot2')
+@extends('layouts.navfoot')
 
-@section('navfoot2')
+@section('navfoot')
 <link rel="stylesheet" href="{{ asset('css/map.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {{-- <script src="{{ asset('js/mapJS.js') }}"></script> --}}
@@ -203,7 +203,7 @@ function initMap() {
                         <div class="row">
                             <h2 class="d-flex justify-content-center">Guide</h2>
                             <p class="d-flex justify-content-center" style="text-align: center;">
-                                Find your house location and Click on the map/type inside the input boxes to pinpoint the pointer on the map.
+                                Select your house location and typing inside the input box to pinpoint your location as a pointer in the map.
                                 <br>Once you are done with pointing your house location, click the "SAVE LOCATION" button.
                             </p>
                         </div>

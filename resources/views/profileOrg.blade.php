@@ -24,7 +24,7 @@
                         <div class="profile-sidebar-items">
                             <a class="profilesideBtn btn" href="{{ route('authProfile') }}">Account Information</a>
                         </div>
-                        <div class="profile-sidebar-items">
+                        <div class="profile-sidebar-items pb-4">
                             <a class="profilesideBtn btn" href="{{ route('organization') }}">Organization Information</a>
                         </div>
                     </div>
@@ -83,6 +83,9 @@
                                         </div>
                                         <div class="py-2">
                                             <a type="button" class="btnOrg btn btn-dark" href="{{ route('memberList') }}">List Workers</a>
+                                        </div>
+                                        <div class="py-3">
+                                            <a type="button" class="btnOrg btn btn-dark" href="{{ route('profile.refreshCode') }}">Refresh Organization Code</a>
                                         </div>
                                     </div>
                                 </div>

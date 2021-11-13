@@ -105,7 +105,7 @@
         <!-- Schedules Boxes -->
         <div id="schedule-BottomSection">
             <div class="container mx-auto mt-5" style="min-height: 60vh">
-                <div class="container h-100">
+                <div class="container">
                     <div class="row">
 
                         @foreach($schedules as $data)

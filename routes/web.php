@@ -127,6 +127,7 @@ Route::group([
             Route::put('profile/organization', 'ProfileController@joinOrganization')->name('profile.joinOrganization');
             Route::put('leaveOrganization', 'ProfileController@leaveOrganization')->name('profile.leaveOrganization');
             Route::put('organization/affiliates/{kicked}', 'ProfileController@kickUser')->name('profile.kickUser');
+            Route::get('refreshCode', 'ProfileController@refreshCode')->name('profile.refreshCode');
         });
 
         /**

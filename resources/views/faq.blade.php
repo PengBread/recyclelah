@@ -1,6 +1,6 @@
-@extends('layouts.navfoot2')
+@extends('layouts.navfoot')
 
-@section('navfoot2')
+@section('navfoot')
 <link rel="stylesheet" href="{{ asset('css/supportFaqProfile.css') }}">
 
     <div>

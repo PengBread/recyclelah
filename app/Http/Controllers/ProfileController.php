@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Session;
 
 class ProfileController extends Controller
@@ -96,6 +97,15 @@ class ProfileController extends Controller
         $kicked->update(['organizationID' => null]);
         
         return redirect()->route('memberList');
+    }
+
+    public function refreshCode(Request $request) {
+        $organization = auth()->user()->affiliate;
+
+        Organization::where('organizationID', $organization->organizationID)
+                    ->update(['organizationCode' => Str::random(7)]);
+
+        return redirect()->route('organization');
     }
 
     // public function createSchedule(Request $request) {

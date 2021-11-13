@@ -1,6 +1,6 @@
-@extends('layouts.navfoot2')
+@extends('layouts.navfoot')
 
-@section('navfoot2')
+@section('navfoot')
 <link rel="stylesheet" href="{{ asset('css/map.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {{-- <script src="{{ asset('js/orgMapJS.js') }}"></script> --}}
