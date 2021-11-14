@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-panelsLast accordion">
+                <div class="faq-panels accordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
@@ -120,6 +120,39 @@
                             <div class="accordion-body">
                                 <p>
                                     Kindly make your report at the report/feedback page and we will look into it soon. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panels accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                                How to pin-point house location? 
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                            <div class="accordion-body">
+                                <p>
+                                    Head over to the "Map" button in the navigation bar. Once you're in the page, type in your location inside the input box and click the "Confirm" button.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panelsLast accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
+                                How to join a schedule? 
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+                            <div class="accordion-body">
+                                <p>
+                                    Head over to the "Schedules" button in the navigation bar, this will navigate you to the schedule page. Once you are inside the page, select a specific schedule and
+                                    click the join button in the schedule boxes.
                                 </p>
                             </div>
                         </div>

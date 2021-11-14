@@ -59,12 +59,13 @@ class MapController extends Controller
             $selectedDate = $request->input('dateSchedules');
 
             if($selectedDate != null) {
+                //If user selected Show All User Location, this will execute
+                if($selectedDate == 'showAll') {
+                    return redirect()->route('workerPage');
+                }
+                
                 $scheduleFilter->where('scheduleID', $selectedDate);
             }
-            // $schedules = $organization
-            // -> schedules()
-            // -> where('scheduleID', '=', $selectedDate)
-            // -> get();
 
             $schedules = $scheduleFilter->get();
 
@@ -75,8 +76,6 @@ class MapController extends Controller
                         -> join('schedules', 'schedules.scheduleID', '=', 'map_pointers.scheduleID')
                         -> whereIn('map_pointers.pointerID', $pointers->pluck('pointerID'))
                         -> get();
-            // whereIn('pointerID', $pointers->pluck('pointerID'))
-            //             -> get();
             
             return view('workerMap', ['schedules' => $schedules ,'pointers' => $userID, 'filter' => $organization->schedules]);
         }
@@ -84,10 +83,61 @@ class MapController extends Controller
 
     public function changeStatus(Request $request) {
         $pointer = $request->input('pointer_Input');
+        $organization = auth()->user()->affiliate;
+        $collectedBtn = $request->collectedBtn;
+
+        //From Organization Owner Email
+        $ownedBy = $organization->ownedBy;
+
+        $email = User::select('*')
+                -> where('pointerID', $pointer)
+                -> get();
+
+        if($collectedBtn == "collected") {
+            $target = MapPointer::select('pointerID')
+            -> where('pointerID', $pointer)
+            -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now()]);
+
+            // $message = [
+            //     'name' => $email->name,
+            //     'title' => 'Recycle Truck Confirmation - Recycle Lah',
+            //     'description' => 'The recycling truck has marked your pointer as completed. Please confirm by clicking a button below the map in the "Map" page.',
+            // ];
+
+            // Mail::to($email)
+            //     ->send(new SupportEmail($message, $ownedBy->email));
+        } else {
+            $target = MapPointer::select('pointerID')
+            -> where('pointerID', $pointer)
+            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now()]); 
+        }
+
+        return redirect()->route('workerPage');
+    }
+
+    public function alertUser(Request $request) {
+        $pointer = $request->input('pointer_Input');
+        $organization = auth()->user()->affiliate;
+
+        //From Organization Owner Email
+        $ownedBy = $organization->ownedBy;
+
+        $email = User::select('*')
+                -> where('pointerID', $pointer)
+                -> get();
         
         $target = MapPointer::select('pointerID')
                     -> where('pointerID', $pointer)
-                    -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now()]);
+                    -> update(['pointerStatus' => 'Alert']);
+
+        // $message = [
+        //     'name' => $email->name,
+        //     'title' => 'Recycle Truck Alert - Recycle Lah',
+        //     'description' => 'A recycling truck is heading towards your house now.',
+        // ];
+
+        // Mail::to($email)
+        //     ->send(new SupportEmail($message, $ownedBy->email));
 
         return redirect()->route('workerPage');
     }
@@ -98,24 +148,9 @@ class MapController extends Controller
         return redirect()->route('mapPage');
     }
 
-    // public function listLocation(Request $request) {
-    //     //load all location
-    //     $organization = auth()->user()->affiliate;
-    //     $selectedDate = $request->input('dateSchedules');
-    //     $schedules = $organization
-    //                 -> schedules()
-    //                 -> where('scheduleID', '=', $selectedDate)
-    //                 -> get();
+    public function alertOk(Request $request) {
+        $pointer = auth()->user()->pointer->update(['pointerStatus' => 'Active']);
 
-    //     $pointers = MapPointer::select('pointerID')
-    //                 -> where('scheduleID', '=', $schedules->pluck('scheduleID'))
-    //                 -> get();
-
-    //     //get user organizationID
-    //     //Use organizationID to find all schedules
-    //     //Get all schedules available, use $request input the find the selected schedule on the date.
-    //     //Get all pointers, then find all pointers under the specific schedule with scheduleID
-
-    //     return view('workerMap', ['userPointers' => $pointers]);
-    // }
+        return redirect()->route('mapPage');
+    }
 }

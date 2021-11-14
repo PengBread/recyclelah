@@ -16,13 +16,15 @@ class orgScheduleController extends Controller
     {
         //display everything at the beginning
         $organization = auth()->user()->affiliate;
+        $ownedBy = $organization->ownedBy;
+
         $page = ($request->page) ?? 1;
 
-
-        // $organizationName = Organization::join('schedules', 'schedules.organizationID', '=', 'organizations.organizationID')
-        //     ->orderBy('organizations.organizationName')
-        //     ->groupBy('organizations.organizationName')
-        //     ->get('organizations.organizationName');
+        //When user open the page, it will automatically check if any schedule date end is more than today's date.
+        $autoStatus = Schedule::select('*')
+                    ->where('organizationID', $organization->organizationID)
+                    ->whereDate('scheduleDateEnd', '<=', Carbon::now())
+                    ->update(['scheduleStatus' => false]);
 
         $schedules = Schedule::select('*')
                     ->where('organizationID', $organization->organizationID)
@@ -36,7 +38,7 @@ class orgScheduleController extends Controller
                 ->where('organizationID', $organization->organizationID)
                 ->count();
 
-        return view('orgSchedule', ['schedules' => $schedules, 'total' => $total, 'page' => $page]);
+        return view('orgSchedule', ['schedules' => $schedules, 'total' => $total, 'page' => $page, 'owner' => $ownedBy]);
     }
 
     public function updateSchedule(Request $request) {
@@ -73,26 +75,22 @@ class orgScheduleController extends Controller
     public function createSchedule(Request $request) {
         $startDate = $request->scheduleDateStart;
         $hours = $request->scheduleDateEnd;
-
         $request->validate([
             'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
             'scheduleDateEnd' => 'required',
             'scheduleContent'=>'required|string|max:500'
         ]);
-
-        $stateSelection = $request->get('scheduleState');
-        $catSelection = $request->get('recyclingCategory');
         
         $organization = auth()->user()->affiliate;
         Schedule::create([
-            'organizationID'=>$organization->organizationID,
+            'organizationID' => $organization->organizationID,
             'scheduleName' => $request->input('scheduleTitle'),
-            'stateName'=>$stateSelection,
+            'stateName' => $request->scheduleState,
             'scheduleDateStart' => $request->input('scheduleDateStart'),
             'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours),
-            'scheduleContent' =>$request->input('scheduleContent'),
-            'recyclingCatagory'=>$catSelection,
+            'scheduleContent' => $request->input('scheduleContent'),
+            'recyclingCategory'=> $request->scheduleCategory,
             'scheduleStatus' => true,
         ]);
         return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');

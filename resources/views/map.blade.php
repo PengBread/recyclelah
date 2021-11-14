@@ -118,13 +118,13 @@ function initMap() {
                     <h3>MAP</h3>
                 </div>
                 <div class="d-flex justify-content-center align-content-center">
-                    <p>Pin-point household location</p>
+                    <p>Select your household location to start joining schedules to recycle!</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="mapPage-Bottom">
+    <div id="mapPage-Bottom" class="p-4" style="background-image: url({{asset('/images/map1.jpg')}});">
         <div class="container mx-auto">
         <!-- Google Map -->
             <div>
@@ -132,8 +132,31 @@ function initMap() {
                     <div class="alert alert-success" style="text-align: center;">{{ Session::get('success') }}</div>
                 @endif
                 <div id="googleMap" style="width:100%; height:700px;"></div>
+            </div>
+        </div>
+    </div>
 
+    <div style="background: #aee8e2"> 
+        <div class="p-4">
+            <div class="container mx-auto">
+                <div>
                     @if(auth()->user()->pointer != null)
+                        @if(auth()->user()->pointer->pointerStatus == 'Alert')
+                            <form method="POST" action="{{ route('map.alertOk') }}">
+                                @csrf
+                                @method('put') 
+
+                                <div class="d-flex row p-5">
+                                    <div id="cfmDiv" class="p-3" style="text-align: center">
+                                        <h5>ALERT</h5>
+                                        <div>
+                                        <p>A recycling truck is on the way to your household.</p>
+                                        <button type="submit" id="markerBtn" class="btn btn-primary">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                         @if(auth()->user()->pointer->pointerStatus == 'Done')
                             <form method="POST" action="{{ route('map.userConfirm') }}">
                                 @csrf
@@ -157,9 +180,9 @@ function initMap() {
                         @method('put')
 
                         @if(!auth()->user()->pointer)
-                            <div class="d-flex justify-content-center pt-3">
+                            <div class="d-flex justify-content-center">
                                 <label for="placeAddress" class="px-2">Search Location:</label>
-                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="">
+                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="" placeholder="Enter your location">
                             </div>
                             <div class="d-flex justify-content-center row py-3">
                                 <div class="col-3">
@@ -175,9 +198,9 @@ function initMap() {
                                 <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
                             </div>
                         @else
-                            <div class="d-flex justify-content-center pt-3">
+                            <div class="d-flex justify-content-center">
                                 <label for="placeAddress" class="px-2">Search Location:</label>
-                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="{{ $userInfo->pointerAddress }}">
+                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="{{ $userInfo->pointerAddress }}" placeholder="Enter your location">
                             </div>
                             <div class="d-flex justify-content-center row py-3">
                                 <div class="col-3">
@@ -189,24 +212,24 @@ function initMap() {
                                     <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->latitude }}" readonly>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center pt-3">
+                            <div class="d-flex justify-content-center pt-5">
                                 <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
                             </div>
                         @endif
                     </form>
                 </div>
             </div>
+        </div>
 
-            <div id="mapSearch" class="p-5">
-                <div class="container mx-auto">
-                    <div id="mapSearch-Inside" class="p-5">
-                        <div class="row">
-                            <h2 class="d-flex justify-content-center">Guide</h2>
-                            <p class="d-flex justify-content-center" style="text-align: center;">
-                                Select your house location and typing inside the input box to pinpoint your location as a pointer in the map.
-                                <br>Once you are done with pointing your house location, click the "SAVE LOCATION" button.
-                            </p>
-                        </div>
+        <div id="mapSearch" class="p-3">
+            <div class="container mx-auto" style="">
+                <div id="mapSearch-Inside" class="p-5">
+                    <div class="row">
+                        <h2 class="d-flex justify-content-center">Guide</h2>
+                        <p class="d-flex justify-content-center" style="text-align: center;">
+                            Select your house location and typing inside the input box to pinpoint your location as a pointer in the map.
+                            <br>Once you are done with pointing your house location, click the "SAVE LOCATION" button.
+                        </p>
                     </div>
                 </div>
             </div>

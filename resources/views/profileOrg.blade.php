@@ -7,8 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
 
 <div style="height: 100%">
@@ -24,6 +22,7 @@
                         <div class="profile-sidebar-items">
                             <a class="profilesideBtn btn" href="{{ route('authProfile') }}">Account Information</a>
                         </div>
+                        
                         <div class="profile-sidebar-items pb-4">
                             <a class="profilesideBtn btn" href="{{ route('organization') }}">Organization Information</a>
                         </div>

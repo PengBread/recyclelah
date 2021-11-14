@@ -41,7 +41,7 @@ class SupportController extends Controller
                 'description' => $request->input('descriptionInput'),
             ];
 
-            Mail::to('pinyan2701@gmail.com')
+            Mail::to('pengbreadpersonal@gmail.com')
             // pengbreadpersonal@gmail.com
                 ->send(new SupportEmail($body, $request->input('emailInput')));
             return redirect('/feedbackSuccess');

@@ -2,7 +2,6 @@
 
 @section('navfoot2')
 <link rel="stylesheet" href="{{ asset('css/supportFaqProfile.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
@@ -62,8 +61,10 @@
                                     @foreach($schedules as $data)
                                             <tr style="text-align: center;">
                                                 <th scope="row">
-                                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteScheduleModal{{ $data->scheduleID }}"><i class="mdi mdi-trash-can-outline"></i></button>
-                                                    @include('components.deleteScheduleModal', ['data' => $data])
+                                                    @if(auth()->user()->userID == $owner->userID)
+                                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteScheduleModal{{ $data->scheduleID }}"><i class="mdi mdi-trash-can-outline"></i></button>
+                                                        @include('components.deleteScheduleModal', ['data' => $data])
+                                                    @endIf
                                                 </th>
                                                 <td>{{ $data->scheduleDateStart }}</td>
                                                 <td>{{ $data->scheduleDateEnd }}</td>
@@ -74,10 +75,12 @@
                                                     <td>Completed</td> 
                                                 @endif
                                                 <td>
+                                                    @if(auth()->user()->userID == $owner->userID)
                                                     <div class="d-flex justify-content-end">
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editScheduleModal{{ $data->scheduleID }}">EDIT</button>
-                                                    @include('components.editScheduleModal', ['$data' => $data])
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editScheduleModal{{ $data->scheduleID }}">EDIT</button>
+                                                        @include('components.editScheduleModal', ['$data' => $data])
                                                     </div>
+                                                    @endif
                                                 </td>
                                             </tr>
                                     @endforeach
@@ -85,8 +88,10 @@
                                 </table>
                                 <div class="row px-2">
                                     <div class="col">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createScheduleModal">Create Schedule</button>
-                                        @include('components.createScheduleModal')
+                                        @if(auth()->user()->userID == $owner->userID)
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createScheduleModal">Create Schedule</button>
+                                            @include('components.createScheduleModal')
+                                        @endIf
                                     </div>
                                     <div class="d-flex justify-content-end col">
                                         <nav aria-label="Page navigation">

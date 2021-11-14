@@ -40,12 +40,16 @@
             background-color: #181818;
             text-align: center;
           }
-          .footer-bottom {
-            height: 50px;
-            background-color: #181818;
+          .navBtn {
+            color: #ccccd5
+          }
           }
           .navBtn:hover {
             color: rgb(172, 208, 255);
+          }
+          .footer-bottom {
+            height: 50px;
+            background-color: #181818;
           }
         </style>
 
@@ -86,6 +90,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Ranking</a>
+                </li>
               </ul>
               
               @guest
@@ -122,11 +129,11 @@
         <div class="footer">
           <div class="text-center p-5" style="background-color: #313a43;">
             <div>
-              <a class="navBtn btn" style="color: #ccccd5" href="/" role="button">Home</a>
-              <a class="navBtn btn" style="color: #ccccd5" href="" role="button">Terms of Service</a>
-              <a class="navBtn btn" style="color: #ccccd5" href="" role="button">Privacy Policy</a>
-              <a class="navBtn btn" style="color: #ccccd5" href="{{ route('faq') }}" role="button">FAQ</a>
-              <a class="navBtn btn" style="color: #ccccd5" href="{{ route('support') }}" role="button">Support</a>
+              <a class="navBtn btn" href="/" role="button">Home</a>
+              <a class="navBtn btn" href="" role="button">Terms of Service</a>
+              <a class="navBtn btn" href="" role="button">Privacy Policy</a>
+              <a class="navBtn btn" href="{{ route('faq') }}" role="button">FAQ</a>
+              <a class="navBtn btn" href="{{ route('support') }}" role="button">Support</a>
             </div>
             <div style="font-size: 12px; color: #ccccd5">
               <p>Copyright @ 2021 Bird-Bird - UOW KDU PENANG Final Year Project, All Rights Reserved.</p>

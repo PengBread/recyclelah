@@ -34,10 +34,6 @@ Route::get('/reset', function () {
     return view('auth.reset');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
 Route::get('/email/verify', function () {
     return view('auth.verify');
 });
@@ -51,21 +47,20 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Auth'
 ], function() {
 
-    Route::post('login', 'LoginController2@authentication');
+    Route::get('/login', function () {return view('auth.login');})->name('login')->middleware('guest');
+    Route::post('login', 'LoginController2@authentication')->middleware('guest');
     Route::get('logout', 'LogoutController@logout');
 
-    Route::get('register', 'registerController2@index');
-    Route::post('register', 'registerController2@register');
-    Route::get('verified', 'registerController2@verified');
-    Route::post('resendEmail', 'registerController2@sendEmail');
+    Route::get('register', 'registerController2@index')->middleware('guest');
+    Route::post('register', 'registerController2@register')->middleware('guest');
+    Route::get('verified', 'registerController2@verified')->middleware('guest');
+    Route::post('resendEmail', 'registerController2@sendEmail')->middleware('guest');
 
-    Route::get('forgotPassword', 'ForgotPassword2@forgotPassword');
-    Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword');
-    Route::get('resetPassword', 'ForgotPassword2@resetPassword');
-    Route::post('updatePassword', 'ForgotPassword2@updatePassword');
+    Route::get('forgotPassword', 'ForgotPassword2@forgotPassword')->middleware('guest');
+    Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword')->middleware('guest');
+    Route::get('resetPassword', 'ForgotPassword2@resetPassword')->middleware('guest');
+    Route::post('updatePassword', 'ForgotPassword2@updatePassword')->middleware('guest');
 });
-
-
 
 Route::group([
     'namespace' => 'App\Http\Controllers'
@@ -111,6 +106,8 @@ Route::group([
             Route::put('add', 'MapController@addLocation')->name('map.addLocation');
             Route::put('status', 'MapController@changeStatus')->name('map.changeStatus');
             Route::put('userConfirmation', 'MapController@userConfirm')->name('map.userConfirm');
+            Route::put('alert', 'MapController@alertUser')->name('map.alertUser');
+            Route::put('alertDone', 'MapController@alertOk')->name('map.alertOk');
             // Route::put('list', 'MapController@listLocation')->name('map.listLocation');
         });
 

@@ -57,7 +57,10 @@
                                 <h4>SIMPLE & EASY</h4>
                             </div>
                             <div class="text-center">
-                                Content words etc etc
+                                <p class="px-2">
+                                    All you have to do is pin-point your household location and select a schedule to join. After that, you'll only need to wait
+                                    in your home!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +73,10 @@
                                 <h5>ECO-FRIENDLY</h5>
                             </div>
                             <div class="text-center">
-                                <p>Reduces the amount of vehicles.</p>
+                                <p class="px-2">
+                                    Recycle-Lah! reduces the amount of vehicles because people won't be needing to drive over to recycling
+                                    locations to dump their recycleables!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +89,10 @@
                                 <h5>ENCOURAGES RECYCLING</h5>
                             </div>
                             <div class="text-center">
-                                Content words etc etc
+                                <p class="px-2">
+                                    People are lazy these days. With Recycle-Lah! it encourages recycling because they don't have to go outside to find
+                                    a place to recycle!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -95,14 +104,14 @@
                 <div id="section3-Interested" class="wordColor">
                     <h1>Interested?</h1>
                     <p style="font-size: 20px;">
-                        You can view all the schedules available created by recycling organizations
-                        <br>that use our website here!
+                        You can start registering an account with us to start your
+                        <br>recycling adventure today!
                     </p>
                 </div>
             </div>
             <div id="section3-Btn" class="d-flex justify-content-center align-items-center">
                 <div>
-                    <a id="viewScheduleBtn" class="btn btn-success btn-lg" href="/schedule">VIEW ALL SCHEDULES</a>
+                    <a id="viewScheduleBtn" class="btn btn-success btn-lg d-flex justify-content-center align-items-center" href="/register">REGISTER NOW</a>
                 </div>
             </div>
         </div>
@@ -147,7 +156,7 @@
                                 Our mother earth is currently slowly collapsing day by day.
                                 Do mother earth a favor, start recycling today!
                             </p>
-                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="/schedule">Start Recycling</a>
+                            <a id="startRecyclingBtn" class="btn btn-success btn-lg d-flex justify-content-center align-items-center" href="/schedule">Start Recycling</a>
                         </div>
                     </div>
                 </div>
