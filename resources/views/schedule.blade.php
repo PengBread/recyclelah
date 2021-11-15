@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
     <div id="all">
-        <div id="schedule-TopSection" style="height: 100%;">
+        <div id="schedule-TopSection" style="height: 100%; background: #f3fdf5d7;">
             <div id="pageTitle" class="d-flex justify-content-center p-5">
                 <div id="pageTitle-Container">
                     <h3>SCHEDULES</h3>
@@ -105,53 +105,55 @@
         </div>
 
         <!-- Schedules Boxes -->
-        <div id="schedule-BottomSection">
-            <div class="container mx-auto mt-5" style="min-height: 60vh">
-                <div class="container">
-                    <div class="row">
+        <div id="schedule-BottomSection" style="background-image: url({{asset('/images/recyclebg1.jpg')}})">
+            <div style="min-height: 60vh; background: #f3fdf5b7;">
+                <div class="container mx-auto">
+                    <div class="container pt-4">
+                        <div class="row">
 
-                        @foreach($schedules as $data)
-                            @if($data->scheduleStatus != false)
-                            <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
-                                        <p id="cardState" class="card-text">{{$data->stateName}}</p>
-                                        <p id="cardDate" class="card-text">{{$data->scheduleDateStart}}</p>
-                                        {{-- <p id="cardTime" class="card-text">{{$data->scheduleDateStart}}</p> --}}
-                                        <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}">Click Me</a>
+                            @foreach($schedules as $data)
+                                @if($data->scheduleStatus != false)
+                                <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
+                                            <p id="cardState" class="card-text">{{$data->stateName}}</p>
+                                            <p id="cardDate" class="card-text">{{$data->scheduleDateStart}}</p>
+                                            {{-- <p id="cardTime" class="card-text">{{$data->scheduleDateStart}}</p> --}}
+                                            <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}">Click Me</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- SCHEDULE MODAL -->
-                            <div class="modal fade" id="modal{{$data->scheduleID}}" tabindex="-1">                   
-                                <div class="modal-dialog">
-                                    <div class="modal-content">                                 
-                                        <div class="modal-header">                                      
-                                        <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>    
-                                        <div class="modal-body">
-                                            <form class="form" method="POST" action="{{ route('schedule.joinSchedule', ['sch'=>$data->scheduleID]) }}">
-                                                @csrf
-                                                @method('put') 
+                                <!-- SCHEDULE MODAL -->
+                                <div class="modal fade" id="modal{{$data->scheduleID}}" tabindex="-1">                   
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">                                 
+                                            <div class="modal-header">                                      
+                                            <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>    
+                                            <div class="modal-body">
+                                                <form class="form" method="POST" action="{{ route('schedule.joinSchedule', ['sch'=>$data->scheduleID]) }}">
+                                                    @csrf
+                                                    @method('put') 
 
-                                                <textarea class="form-control" style="resize: none" rows='10' readonly>{{$data->scheduleContent}}</textarea>
-                        
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                                    <button type="submit" class="btn btn-primary">JOIN SCHEDULE</button>
-                                                </div>
-                                            </form>
-                                        </div>                                
-                                    </div>                           
-                                </div> 
-                            </div>
-                            @endif
-                        <!-- -------------------- -->
-                        @endforeach
+                                                    <textarea class="form-control" style="resize: none" rows='10' readonly>{{$data->scheduleContent}}</textarea>
+                            
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                        <button type="submit" class="btn btn-primary">JOIN SCHEDULE</button>
+                                                    </div>
+                                                </form>
+                                            </div>                                
+                                        </div>                           
+                                    </div> 
+                                </div>
+                                @endif
+                            <!-- -------------------- -->
+                            @endforeach
 
+                        </div>
                     </div>
                 </div>
             </div>

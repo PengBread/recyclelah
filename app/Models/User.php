@@ -26,8 +26,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'phoneNumber',
         'password',
         'organizationID',
+        'points',
         'pointerID',
-        'isVerified'
+        'isVerified',
     ];
 
     /**
@@ -56,4 +57,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pointer(){
         return $this->belongsTo(MapPointer::class, 'pointerID', 'pointerID');
     }
+
+    // public function ranking() {
+    //     $collection = collect(User::orderBy('points', 'ASC')->get());
+    //     $data = $collection->where('id', $this->id);
+    //     $value = $data->keys()->first() +1;
+
+    //     return $value;
+    // }
 }

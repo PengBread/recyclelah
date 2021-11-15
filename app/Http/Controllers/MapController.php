@@ -18,7 +18,7 @@ class MapController extends Controller
             return view('map', ['userInfo' => $request]);
         } else {
             $user = auth()->user()->pointer;
-
+            
             return view('map', ['userInfo' => $user]);
         }
     }
@@ -144,6 +144,8 @@ class MapController extends Controller
 
     public function userConfirm(Request $request) {
         $pointer = auth()->user()->pointer->update(['pointerStatus' => 'Inactive', 'scheduleID' => null,'confirmed_At' => Carbon::now()]);
+
+        $points = auth()->user()->increment('points', 1);
 
         return redirect()->route('mapPage');
     }

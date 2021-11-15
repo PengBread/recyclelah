@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-panelsLast accordion">
+                <div class="faq-panels">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingEight">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
@@ -153,6 +153,39 @@
                                 <p>
                                     Head over to the "Schedules" button in the navigation bar, this will navigate you to the schedule page. Once you are inside the page, select a specific schedule and
                                     click the join button in the schedule boxes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panels">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
+                                What do ranking do?
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+                            <div class="accordion-body">
+                                <p>
+                                    Rankings are only meant to be just for fun. There are no rewards other than displaying your name in the top 10 ranking list.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panelsLast accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTen">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
+                                How do you earn points?
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
+                            <div class="accordion-body">
+                                <p>
+                                    You will be given 1 point for every recycling you made using Recycle-Lah! platform. To receive the point, you will need to do the confirmation after a truck has marked your location as "completed".
+                                    The confirmation will be shown in the Map Page.
                                 </p>
                             </div>
                         </div>

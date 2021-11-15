@@ -91,7 +91,7 @@
                   <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">Ranking</a>
+                  <a class="nav-link" href="{{ route('rankings') }}">Rankings</a>
                 </li>
               </ul>
               
