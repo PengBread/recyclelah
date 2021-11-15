@@ -147,7 +147,7 @@ Route::group([
         Route::group([
             'prefix' => 'support'
         ], function () {
-            // Route::post('send', 'SupportController@sendMail')->name('support.sendMail');
+            /// Route::post('send', 'SupportController@sendMail')->name('support.sendMail');
         });
     });
 });

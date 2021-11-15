@@ -139,7 +139,7 @@
                         </div>
                         <div class=" col-md-11">
                             <label class="form-check-label" for="flexCheckDefault">
-                                I have read and agree to the <a href="">Terms of Service</a> & <a href="">Privacy Policy</a>
+                                I have read and agree to the <a data-bs-toggle="modal" data-bs-target="#termsModal" href="#termsModal">Terms of Service</a> & <a data-bs-toggle="modal" data-bs-target="#privacyModal" href="#privacyModal">Privacy Policy</a>
                             </label>
                         </div>
                     </div>
@@ -157,5 +157,7 @@
         </div>
     </div>
 </div>
+
+@include('components.termsModal')
 
 @endsection

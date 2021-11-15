@@ -9,11 +9,20 @@
 
     <div id="all">
         <div id="schedule-TopSection" style="height: 100%; background: #f3fdf5d7;">
-            <div id="pageTitle" class="d-flex justify-content-center p-5">
+            <div id="pageTitle" class="d-flex row justify-content-center p-5">
                 <div id="pageTitle-Container">
                     <h3>SCHEDULES</h3>
                     <p>Check on schedules and select the schedule you would like a specific organization to collect your materials</p>
                 </div>
+                @if(auth()->user())
+                @if(!auth()->user()->pointer)
+                <div id="pointerCheckDiv" class="d-flex justify-content-center">
+                    <div style="color: red; align-items: center;">
+                    <h5>You do not have a pointer selected. Click the button below to register a pointer under your location. <a href="{{ route('mapPage') }}">CLICK HERE</a></h5>
+                    </div>
+                </div>
+                @endIf
+                @endIf
             </div>
 
             <!-- Search -->

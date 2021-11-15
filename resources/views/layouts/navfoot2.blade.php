@@ -126,8 +126,8 @@
         <div class="footer">
           <div class="">
             <a class="navBtn btn" href="/" role="button">Home</a>
-            <a class="navBtn btn" href="" role="button">Terms of Service</a>
-            <a class="navBtn btn" href="" role="button">Privacy Policy</a>
+            <a class="navBtn btn" data-bs-toggle="modal" data-bs-target="#termsModal" role="button">Terms of Service</a>
+            <a class="navBtn btn" data-bs-toggle="modal" data-bs-target="#privacyModal" role="button">Privacy Policy</a>
             <a class="navBtn btn" href="{{ route('faq') }}" role="button">FAQ</a>
             <a class="navBtn btn" href="{{ route('support') }}" role="button">Support</a>
           </div>
@@ -138,3 +138,5 @@
       </footer>
     </body>
 </html>
+
+@include('components.termsModal')
