@@ -182,16 +182,16 @@ function initMap() {
                         @if(!auth()->user()->pointer)
                             <div class="d-flex justify-content-center">
                                 <label for="placeAddress" class="px-2">Search Location:</label>
-                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="" placeholder="Enter your location">
+                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="" placeholder="Enter your location" required>
                             </div>
                             <div class="d-flex justify-content-center row py-3">
                                 <div class="col-3">
                                     <label for="lng" class="">Latitude: </label>
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="" readonly>
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="" readonly required>
                                 </div>
                                 <div class="col-3">
                                     <label for="lat" class="">Longitude: </label>
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="" readonly>
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="" readonly required>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center pt-3">
