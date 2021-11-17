@@ -107,37 +107,4 @@ class ProfileController extends Controller
 
         return redirect()->route('organization');
     }
-
-    // public function createSchedule(Request $request) {
-    //     $request->validate([
-    //         'scheduleTitle' => 'required|string|max:50',
-    //         'scheduleDateStart' => 'required|string|max50',
-    //         'scheduleDateEnd' => 'required|string|max:50',
-    //         'scheduleContent'=>'required|string|max:50'
-    //     ]);
-
-    //     $stateSelection = $request->get('scheduleState');
-    //     $catSelection = $request->get('scheduleCategory');
-
-    //     // if ($stateSelection == 'Select a State'){
-    //     //     return redirect()->back()->withErrors(['scheduleState' => 'Select a state'])->withInput();
-    //     // }
-
-    //     // if ($catSelection == 'Select a Catagory'){
-    //     //     return redirect()->back()->with(['scheduleCategory' => 'Select a catagory'])->withInput();
-    //     // }
-
-    //     $organization = auth()->user()->affiliate;
-    //     Schedule::create([
-    //         'organizationID'=>$organization->organizationID,
-    //         'scheduleName' => $request->input('scheduleTitle'),
-    //         'stateName'=>$stateSelection,
-    //         'scheduleDateStart' => $request->input('scheduleDateStart'),
-    //         'scheduleDateEnd' => $request->input('scheduleDateEnd'),
-    //         'scheduleContent' =>$request->input('scheduleContent'),
-    //         'recyclingCategory'=>$catSelection,
-    //     ]);
-
-    //     return redirect()->route('organization')->with('success', 'Schedule created.');
-    // }
 }

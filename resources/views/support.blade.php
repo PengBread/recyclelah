@@ -21,7 +21,6 @@
         <div id="support-formArea" class="container mx-auto">
             <form method="POST" action="{{ route("support.sendMail") }}">
                 @csrf
- 
                 <div class="row">
                     <div class="col">
                         @if(!auth()->user())
@@ -32,7 +31,7 @@
                                         <strong>{{ $message }} </strong>
                                     </span>
                                 @enderror
- 
+                                
                             </div>
                             <div class="input-group">
                                 <input type="text" id="emailInput" name="emailInput" class="form-control @error('emailInput') is-invalid @enderror" placeholder="E-mail *" aria-label="E-mail" required>
@@ -41,7 +40,6 @@
                                         <strong>{{ $message }} </strong>
                                     </span>
                                 @enderror
- 
                             </div>
                         @else
                             <div class="input-group">
@@ -65,13 +63,11 @@
                                     <strong>{{ $message }} </strong>
                                 </span>
                             @enderror
- 
                         </div>
                     </div>
                     <div class="col">
                     </div>
                 </div>
- 
                 <div class="input-group">
                     <input type="text" name="titleInput" id="titleInput" class="form-control @error('titleInput') is-invalid @enderror" placeholder="Title *" aria-label="Title" value="{{ old('titleInput') }}">
                     @error('titleInput')
@@ -91,7 +87,6 @@
                             <strong>{{ $message }} </strong>
                         </span>
                     @enderror
- 
                 </div>
                 <div class="d-flex justify-content-center p-3">
                     <button name="sendBtn" id="sendBtn" type="submit" class="btn btn-primary" style="width: 250px; height: 80px;">SEND</button>

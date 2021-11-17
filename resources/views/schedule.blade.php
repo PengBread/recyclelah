@@ -47,7 +47,7 @@
                                         <option value="">Select a Category</option>
                                         @foreach ($category as $item)
                                             @if($item->recyclingCategory != "")
-                                            <option value="{{ $item->recyclingCategory }}">{{ $item->recyclingCategory }}</option>
+                                                <option value="{{ $item->recyclingCategory }}">{{ $item->recyclingCategory }}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -125,11 +125,32 @@
                                 <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
-                                            <p id="cardState" class="card-text">{{$data->stateName}}</p>
-                                            <p id="cardDate" class="card-text">{{$data->scheduleDateStart}}</p>
+                                            <div>
+                                                <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
+                                                <h6 id="cardState" class="card-subtitle text-muted p-1">{{$data->stateName}}</h6>
+                                            </div>
+                                            <div class="pt-5"> 
+                                                @if($data->scheduleStatus == true)
+                                                    <p id="cardStatus" class="card-text"><b>Status:</b> On-Going</p>
+                                                @else
+                                                    <p id="cardStatus" class="card-text"><b>Status:</b> Completed</p>
+                                                @endif
+                                            </div>
+                                            <div class="pt-3">
+                                                <p id="cardDate" class="card-text"><b>Date:</b> {{ Carbon\Carbon::parse($data->scheduleDateStart)->toDateString() }}</p>
+                                                <p id="cardTime" class="card-text"><b>Time:</b> {{ Carbon\Carbon::parse($data->scheduleDateStart)->toTimeString() }}</p>
+                                            </div>
                                             {{-- <p id="cardTime" class="card-text">{{$data->scheduleDateStart}}</p> --}}
-                                            <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}">Click Me</a>
+                                        </div>
+                                        <div class="card-footer" style="text-align: center;">
+                                            @if(auth()->user())
+                                                @if(!auth()->user()->pointer)
+                                                {{-- <p style="color: red; align-items: center;"></p> --}}
+                                                <button type="button" class="btn btn-light stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}" disabled>Click Me</a>   
+                                                @else 
+                                                    <button type="button" class="btn btn-primary stretched-link" data-bs-toggle="modal" data-bs-target="#modal{{$data->scheduleID}}">Click Me</a>   
+                                                @endif 
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +167,16 @@
                                                 <form class="form" method="POST" action="{{ route('schedule.joinSchedule', ['sch'=>$data->scheduleID]) }}">
                                                     @csrf
                                                     @method('put') 
-
+                                                    <p>
+                                                        Date Start: {{ Carbon\Carbon::parse($data->scheduleDateStart)->toDateString() }}
+                                                        <br>
+                                                        Time Start: {{ Carbon\Carbon::parse($data->scheduleDateStart)->toTimeString() }}
+                                                    </p>
+                                                    <p>
+                                                        Date End: {{ Carbon\Carbon::parse($data->scheduleDateEnd)->toDateString() }}
+                                                        <br>
+                                                        Time End: {{ Carbon\Carbon::parse($data->scheduleDateEnd)->toTimeString() }}
+                                                    </p>
                                                     <textarea class="form-control" style="resize: none" rows='10' readonly>{{$data->scheduleContent}}</textarea>
                             
                                                     <div class="modal-footer">

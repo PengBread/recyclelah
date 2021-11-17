@@ -27,6 +27,5 @@ class OrganizationSeeder extends Seeder
                 'organizationCode' => Str::random(7),
             ]
         ]);
-        
     }
 }

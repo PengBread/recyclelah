@@ -98,7 +98,7 @@ class MapController extends Controller
         if($collectedBtn == "collected") {
             $target = MapPointer::select('pointerID')
             -> where('pointerID', $pointer)
-            -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now()]);
+            -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now('Asia/Singapore')]);
 
             $body = [
                 'name' => $user->name,
@@ -112,7 +112,7 @@ class MapController extends Controller
         } else {
             $target = MapPointer::select('pointerID')
             -> where('pointerID', $pointer)
-            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now()]); 
+            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now('Asia/Singapore')]); 
         }
 
         return redirect()->route('workerPage');

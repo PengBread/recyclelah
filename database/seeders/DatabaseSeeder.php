@@ -30,6 +30,5 @@ class DatabaseSeeder extends Seeder
         User::find(4)->update([
             'organizationID' => 2
         ]);
-        
     }
 }

@@ -23,7 +23,7 @@ class orgScheduleController extends Controller
         //When user open the page, it will automatically check if any schedule date end is more than today's date. [Prevent schedules with date lesser than user's date to show]
         $autoStatus = Schedule::select('*')
                     ->where('organizationID', $organization->organizationID)
-                    ->whereDate('scheduleDateEnd', '<=', Carbon::now())
+                    ->whereDate('scheduleDateEnd', '<=', Carbon::now('Asia/Singapore'))
                     ->update(['scheduleStatus' => false]);
 
         $schedules = Schedule::select('*')

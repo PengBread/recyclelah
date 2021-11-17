@@ -14,9 +14,9 @@
 
                     @if ($message = Session::get('error'))
                         <div class="text-danger">
-                        <p>
-                            {{ $message }}
-                        </p>
+                            <p>
+                                {{ $message }}
+                            </p>
                         </div>
                     @endif
 

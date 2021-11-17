@@ -24,8 +24,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password1'),
                 'phoneNumber' => '0123456789',
                 'isVerified' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'created_at' => Carbon::now('Asia/Singapore'),
+                'updated_at' => Carbon::now('Asia/Singapore')
             ],
             [
                 'organizationID' => null,
@@ -34,8 +34,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('test1234'),
                 'phoneNumber' => '0124108873',
                 'isVerified' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now('Asia/Singapore'),
+                'updated_at' => Carbon::now('Asia/Singapore'),
             ],
             [
                 'organizationID' => null,
@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('test1234'),
                 'phoneNumber' => '0124555555',
                 'isVerified' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now('Asia/Singapore'),
+                'updated_at' => Carbon::now('Asia/Singapore'),
             ],
             [
                 'organizationID' => null,
@@ -54,8 +54,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('test1234'),
                 'phoneNumber' => '0124555558',
                 'isVerified' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now('Asia/Singapore'),
+                'updated_at' => Carbon::now('Asia/Singapore'),
             ],
             [
                 'organizationID' => null,
@@ -64,8 +64,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password2'),
                 'phoneNumber' => '0121112222',
                 'isVerified' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now('Asia/Singapore'),
+                'updated_at' => Carbon::now('Asia/Singapore'),
             ]
         ]);
     }
