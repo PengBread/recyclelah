@@ -34,7 +34,7 @@ class RecycleableEmail extends Mailable
     {
         return $this->markdown('emails.RecycleableEmail')
             ->subject($this->title)
-            ->from('pinyan2701@gmail.com', 'Recycle-Lah Team')
+            ->from('pengbreadpersonal@gmail.com', 'Recycle-Lah Team')
             ->to('recyclelahfyp@gmail.com', 'Recycle-Lah User')
             ->with('body', $this->body);
     }

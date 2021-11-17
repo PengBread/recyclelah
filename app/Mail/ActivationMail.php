@@ -32,7 +32,7 @@ class ActivationMail extends Mailable
     {
         return $this->markdown('emails.ActivationEmail')
             ->subject('Recycle-Lah - Welcome!')
-            ->from('pinyan2701@gmail.com', 'Recycle-Lah Team')
+            ->from('pengbreadpersonal@gmail.com', 'Recycle-Lah Team')
             ->to('recyclelahfyp@gmail.com', 'Recycle-Lah User')
             ->with('body', $this->body);
     }
