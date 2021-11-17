@@ -122,7 +122,7 @@
 
                             @foreach($schedules as $data)
                                 @if($data->scheduleStatus != false)
-                                <div class="schedule-Cards col-3 d-flex justify-content-center align-items-center">
+                                <div class="schedule-Cards col-lg-3 d-flex justify-content-center align-items-center">
                                     <div class="card">
                                         <div class="card-body">
                                             <div>

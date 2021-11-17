@@ -49,7 +49,7 @@
                     <div class="justify-content-center align-items-center pt-2 pb-2 px-4">
                         <div class="information-content">
                             <div class="row">
-                                <div class="d-flex col-2 align-items-center">
+                                <div class="d-flex col-md-2 align-items-center">
                                     E-mail:
                                 </div>
                                 <div class="d-flex col-md-8 align-items-center">
@@ -59,39 +59,39 @@
                         </div>
                         <div class="information-content pt-3">
                             <div class="row">
-                                <div class="d-flex col-2 align-items-center">
+                                <div class="d-flex col-md-2 align-items-center">
                                     Name:
                                 </div>
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="text" id="inputName" class="form-control" readonly="true" value="{{ $userInfo->name }}">
                                 </div>
-                                <div class="d-flex col-md-2 justify-content-center align-items-center">
+                                <div class="editBtn d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#nameModal">Edit</button>
                                 </div>
                             </div>
                         </div>
                         <div class="information-content pt-3">
                             <div class="row">
-                                <div class="d-flex col-2 align-items-center">
+                                <div class="d-flex col-md-2 align-items-center">
                                     Phone Number:
                                 </div>
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="text" id="inputPhone" class="form-control" readonly="true" value="{{ $userInfo->phoneNumber }}">
                                 </div>
-                                <div class="d-flex col-md-2 justify-content-center align-items-center">
+                                <div class="editBtn d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#phoneModal">Edit</button>
                                 </div>
                             </div>
                         </div>
                         <div class="information-content pt-3 pb-4">
                             <div class="row">
-                                <div class="d-flex col-2 align-items-center">
+                                <div class="d-flex col-md-2 align-items-center">
                                     Password:
                                 </div>
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" readonly="true" value="0123456789">
                                 </div>
-                                <div class="d-flex col-md-2 justify-content-center align-items-center">
+                                <div class="editBtn d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#passwordModal">Edit</button>
                                 </div>
                             </div>

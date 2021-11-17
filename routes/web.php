@@ -22,10 +22,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Route::get('/test', function () {
-//     return view('test');
-// });
-
 Route::get('/verify', function () {
     return view('auth.verify');
 });
@@ -53,7 +49,7 @@ Route::group([
 
     Route::get('register', 'registerController2@index')->middleware('guest');
     Route::post('register', 'registerController2@register')->middleware('guest');
-    Route::get('verified', 'registerController2@verified')->middleware('guest');
+    Route::get('verified', 'registerController2@verified');
     Route::post('resendEmail', 'registerController2@sendEmail')->middleware('guest');
 
     Route::get('forgotPassword', 'ForgotPassword2@forgotPassword')->middleware('guest');

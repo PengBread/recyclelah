@@ -2,9 +2,9 @@
 
 @section('navfoot')
 
-    <div id="section1-div" style="height: 65vh; background-image: url('{{asset('/images/bg.png')}}');">
-        <div class="container h-100">
-            <div class="row h-auto">
+    <div id="section1-div" style="min-height: 65vh; background-image: url('{{asset('/images/bg.png')}}');">
+        <div class="container">
+            <div class="row">
                 <div id="section1-Description" class="wordColor col-sm d-flex justify-content-center align-items-center">
                     <div class="wordColor">
                         <h1>Welcome to Recycle-Lah!</h1>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div style="background: #aee8e2; box-shadow: 0 -5px 50px 50px #aee8e2;">
-        <div class="container mx-auto" style="height: 55vh;">
+        <div class="container mx-auto pb-5" style="">
             <div class="container h-100">
                 <div class="row h-auto">
                     <div class="col-sm d-flex justify-content-center align-items-center ">
@@ -156,7 +156,9 @@
                                 Our mother earth is currently slowly collapsing day by day.
                                 Do mother earth a favor, start recycling today!
                             </p>
-                            <a id="startRecyclingBtn" class="btn btn-success btn-lg d-flex justify-content-center align-items-center" href="/schedule">Start Recycling</a>
+                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="/schedule">
+                                <p class="pt-1">Start Recycling</p>
+                            </a>
                         </div>
                     </div>
                 </div>

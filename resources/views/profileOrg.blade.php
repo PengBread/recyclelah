@@ -40,7 +40,7 @@
                             <p>View your organization information</p>
                         </div>
                     </div>
-                    <div class="pt-5 pb-5 px-5">
+                    <div class="pt-md-5 pb-md-5 px-md-5">
                         @include('components.errors')
                         <div class="border">
                             

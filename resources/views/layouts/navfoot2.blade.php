@@ -53,7 +53,7 @@
     </head>
     <body class="antialiased">
       <header>
-        <nav id="navigationBar" class="navbar navbar-expand-lg">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="/" style="padding: 0 0 0 20px;">
               <img src="{{asset('/images/Logov2White.png')}}" alt="" width="85" height="48" class="d-inline-block align-text-top">
@@ -93,7 +93,7 @@
               </ul>
 
               @guest
-              <div class="d-flex">
+              <div class="d-flex justify-content-center">
                 <a class="btn btn-outline-light btn-lg" style="width: 150px" href="/login">Login</a>
               </div>
               @endguest
@@ -102,7 +102,7 @@
               <!-- 
                 If user is logged in, the nav bar will change to "Profile/Account"
               -->
-              <div class="d-flex nav-item dropdown">
+              <div class="d-flex justify-content-center nav-item dropdown">
                 <a class="btn btn-outline-light btn-lg dropdown-toggle" style="width: 150px" href="/login" data-bs-toggle="dropdown" aria-expanded="false"> 
                   <span class="mdi mdi-account-circle-outline"></span>
                   Account

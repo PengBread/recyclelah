@@ -17,7 +17,7 @@
 
         <div style="min-height: 54vh; background-image: url({{asset('/images/recyclebg1.jpg')}})">
             <div style="min-height: 54vh; background: #f3fdf5b7;">
-                <div id="rankings-Main" class="container mx-auto p-5">
+                <div id="rankings-Main" class="container mx-auto p-lg-5">
                     <div class="border">
                         <div>
                             <table class="table" id="scheduleTable">

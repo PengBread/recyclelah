@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div id="organizationDiv" class="form-group row py-2 px-5" >
+                    <div id="organizationDiv" class="form-group row py-2 px-lg-5" >
                         {{-- style="display: none;" --}}
                         {{-- <label for="organizationName" class="col-md-3 col-form-label text-md-right">{{ __('Organization Name') }}</label> --}}
 
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row py-2 px-5">
+                    <div class="form-group row py-2 px-lg-5">
                         {{-- <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('Email') }}</label> --}}
 
                         <div class="col-md">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row py-2 px-5">
+                    <div class="form-group row py-2 px-lg-5">
                         {{-- <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label> --}}
 
                         <div class="col-md">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group row py-2 px-5">
+                    <div class="form-group row py-2 px-lg-5">
                         {{-- <label for="phoneNumber" class="col-md-3 col-form-label text-md-right">{{ __('Phone Number') }}</label> --}}
 
                         <div class="col-md">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row py-2 px-5">
+                    <div class="form-group row py-2 px-lg-5">
                         {{-- <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
                         <div class="col-md">
@@ -119,7 +119,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row py-2 px-5">
+                    <div class="form-group row py-2 px-lg-5">
                         {{-- <label for="password-confirm" class="col-md-3 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
 
                         <div class="col-md">
@@ -133,11 +133,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group row px-5 pt-4">
+                    <div class="form-group row px-lg-5 pt-4">
                         <div class="col-md-1 align-content-center">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                         </div>
-                        <div class=" col-md-11">
+                        <div class="col-md-11">
                             <label class="form-check-label" for="flexCheckDefault">
                                 I have read and agree to the <a data-bs-toggle="modal" data-bs-target="#termsModal" href="#termsModal">Terms of Service</a> & <a data-bs-toggle="modal" data-bs-target="#privacyModal" href="#privacyModal">Privacy Policy</a>
                             </label>

@@ -43,7 +43,9 @@
     .btnOrg {
         width: 150px;
     }
-
+    .editBtn {
+        padding: 20px 0;
+    }
 }
 
 /* .information-content {

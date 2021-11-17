@@ -141,15 +141,6 @@ class MapController extends Controller
 
         Mail::send(new RecycleableEmail($body, $title));
 
-        // $message = [
-        //     'name' => $email->name,
-        //     'title' => 'Recycle Truck Alert - Recycle Lah',
-        //     'description' => 'A recycling truck is heading towards your house now.',
-        // ];
-
-        // Mail::to($email)
-        //     ->send(new SupportEmail($message, $ownedBy->email));
-
         return redirect()->route('workerPage');
     }
 

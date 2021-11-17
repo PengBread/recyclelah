@@ -16,7 +16,7 @@ class VerifyStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->status != 'active') {
+        if(auth()->user()->isVerified == false) {
             return response()->view('auth/verify');
         }
         return $next($request);

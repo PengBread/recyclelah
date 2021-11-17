@@ -65,6 +65,7 @@ class registerController2 extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phoneNumber' => $request->input('phoneNumber'),
+                'status' => 'verifying',
                 'password' => Hash::make($request->input('password')),
             ]);
         }
@@ -89,6 +90,7 @@ class registerController2 extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phoneNumber' => $request->input('phoneNumber'),
+                'status' => 'verifying',
                 'password' => Hash::make($request->input('password')),
             ]);
             $organization = Organization::create([
@@ -103,7 +105,7 @@ class registerController2 extends Controller
 
         $body = [
             'name' => $request->input('name'),
-            'url' => 'http://127.0.0.1:8000/verified',
+            'url' => 'http://127.0.0.1:8000/verify',
         ];
 
         Mail::send(new ActivationMail($body));
@@ -117,6 +119,7 @@ class registerController2 extends Controller
     public function verified() {
         $user = Model::all()->last();
         $user->isVerified = 1;
+        $user->status = 'active';
         $user->save();
         Auth::login($user);
         return redirect("/profile");
@@ -126,7 +129,7 @@ class registerController2 extends Controller
         $user = Model::all()->last();
         $body = [
             'name' => $user->name,
-            'url' => 'http://127.0.0.1:8000/verified',
+            'url' => 'http://127.0.0.1:8000/verify',
         ];
 
         Mail::send(new ActivationMail($body));
