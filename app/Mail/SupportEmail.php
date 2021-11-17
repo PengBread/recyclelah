@@ -18,10 +18,9 @@ class SupportEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($body, $fromAddress)
+    public function __construct($body)
     {
         $this->body = $body;
-        $this->fromAddress = $fromAddress;
     }
 
     /**
@@ -33,7 +32,8 @@ class SupportEmail extends Mailable
     {
         return $this->markdown('emails.SupportEmail')
             ->subject('Feedback Email')
-            ->from($this->fromAddress)
+            ->from('recyclelahfyp@gmail.com', 'Recycle-Lah')
+            ->to('pengbreadpersonal@gmail.com')
             ->with('body', $this->body);
     }
 }

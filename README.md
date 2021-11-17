@@ -28,6 +28,16 @@ For a fresh copy, please do the following to get all the required modules, packa
 
     https://m.youtube.com/watch?v=J0CxA54z-3A&t=392s    -> follow the steps until 2.15
 
+    ---------------------------------------------------------------------------------------------------------------------
+
+    1. On your computer, open Gmail.
+    2. In the top right, click Settings.
+    3. Click the Accounts and import or Accounts tab.
+    4. In the "Send mail as" section, click Add another email address.
+    5. Enter your name (Recycle-Lah) and the address (recyclelahfyp@gmail.com) you want to send from.
+    6. Click Next Step and then Send verification.
+    7. Ask Kai Shen for verification code.
+    8. Click Add Account.
 
     ---------------------------------------------------------------------------------------------------------------------
     Reference from https://stackoverflow.com/questions/58078757/class-illuminate-support-facades-input-not-found/64583451

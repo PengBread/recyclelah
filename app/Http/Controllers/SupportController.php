@@ -19,23 +19,22 @@ class SupportController extends Controller
 
     public function sendMail(Request $request) {
 
-        // $request->validate([
-        //     'nameInput' => 'required|string|max:50',
-        //     'emailInput' => 'required|string|email|max:50',
-        //     'titleInput' => 'required|string|max:50',
-        //     'descriptionInput' => 'required|string|max:1500',
-        // ]);
+        $request->validate([
+            //'nameInput' => 'required|string|max:50',
+            //'emailInput' => 'required|string|email|max:50',
+            //'titleInput' => 'required|string|max:50',
+            //'descriptionInput' => 'required|string|max:1500',
+        ]);
 
         //dd($request);
 
         if ($request->titleInput == null) {
-            //dd($request);
+            dd($request);
             return redirect()->route('support')->withErrors([
                 'invalid' => 'Please enter a title'
             ]);
-        } else {
-        
-
+        } 
+        else {
         //dd($request);
 
         $user = User::where('email', $request->only('emailInput'))->first();
@@ -50,10 +49,9 @@ class SupportController extends Controller
                 'title' => $request->input('titleInput'),
                 'description' => $request->input('descriptionInput'),
             ];
-
-            Mail::to('pengbreadpersonal@gmail.com')
-            // pengbreadpersonal@gmail.com
-                ->send(new SupportEmail($body, $request->input('emailInput')));
+            
+            Mail::send(new SupportEmail($body));
+            
             return redirect('/feedbackSuccess');
         }
     }
