@@ -19,4 +19,12 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+
+{{-- your password is updated
+<a class="btn" href="/">Click to return</a> --}}
+
+>>>>>>> 6258b59aa0287001df6e2dab77223080620dd6e3
 @endsection

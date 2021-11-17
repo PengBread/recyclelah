@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
+use App\Models\User;
+use App\Models\Organization;
+use Mail;
+use App\Mail\SupportEmail;
 
 class SupportController extends Controller
 {
@@ -14,19 +18,25 @@ class SupportController extends Controller
     }
 
     public function sendMail(Request $request) {
+
+        // $request->validate([
+        //     'nameInput' => 'required|string|max:50',
+        //     'emailInput' => 'required|string|email|max:50',
+        //     'titleInput' => 'required|string|max:50',
+        //     'descriptionInput' => 'required|string|max:1500',
+        // ]);
+
+        //dd($request);
+
+        if ($request->titleInput == null) {
+            //dd($request);
+            return redirect()->route('support')->withErrors([
+                'invalid' => 'Please enter a title'
+            ]);
+        } else {
         
-        $catSelection = $request->categoryInput;
 
-        if ($catSelection == null) {
-            return redirect()->back()->with(['categoryInput' => 'Select a category.']);
-        }
-
-        $request->validate([
-            'nameInput' => 'required|string|max:50',
-            'emailInput' => 'required|string|email|max:50',
-            'titleInput' => 'required|string|max:50',
-            'descriptionInput' => 'required|string|max:1500',
-        ]);
+        //dd($request);
 
         $user = User::where('email', $request->only('emailInput'))->first();
 
@@ -41,11 +51,12 @@ class SupportController extends Controller
                 'description' => $request->input('descriptionInput'),
             ];
 
-            Mail::to('pinyan2701@gmail.com')
+            Mail::to('pengbreadpersonal@gmail.com')
             // pengbreadpersonal@gmail.com
                 ->send(new SupportEmail($body, $request->input('emailInput')));
             return redirect('/feedbackSuccess');
         }
+    }
     }
 
     public function feedbackSuccess() {

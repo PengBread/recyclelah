@@ -11,7 +11,11 @@ use Illuminate\Support\Str;
 use Mail;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
 use App\Mail\ActivationMail;
+=======
+use Illuminate\Support\Facades\Validator;
+>>>>>>> 6258b59aa0287001df6e2dab77223080620dd6e3
 
 class registerController2 extends Controller
 {
@@ -52,6 +56,13 @@ class registerController2 extends Controller
                 ],
                 'password-confirm' => 'required|same:password'
             ]);
+
+            // $validator = Validator::make($request->all(), [
+            //     'name' => 'required|string|max:50',
+            //     'email' => 'required|string|email|max:50|unique:users',
+            //     'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,10}/',
+            //     'password' => 'required|string|min:8|confirmed',
+            // ]);
 
             $user = User::create([
                 'name' => $request->input('name'),

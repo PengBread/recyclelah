@@ -1,4 +1,20 @@
 <!-- Organization Schedules Create Modal -->
+
+<script>
+    function updateDate(val) {
+
+        //var dateTime = document.getElementById("scheduleDateStart").value;
+        var dateTime = val;
+        var getDate = dateTime.split('-');
+        var getTime = getDate[2].split(' ');
+        var getHour = getTime[1].split(':');
+        var hour = parseInt(getHour[0], 10) + 1;
+
+        document.getElementById("scheduleEndDate").value = getDate[0] + '-' + getDate[1] + '-' + getTime[0] + ' ' + hour + ':' + getHour[1];
+    }
+</script>
+
+
 <div class="modal fade bd-example-modal-lg" id="createScheduleModal" tabindex="-1">     
     <div class="modal-dialog modal-lg">
         <div class="modal-content">     
@@ -75,7 +91,7 @@
                         <label for="scheduleDateStart" class="col-md-3 col-form-label text-md-right">Date Start: </label>
                         <div class="col-md-9">
                             <div class="md-form">
-                                <input class="form-control @error('scheduleDateStart') is-invalid @enderror" type="datetime-local" placeholder="Select a date" id="scheduleDateStart" name="scheduleDateStart" data-bs-target="#scheduleDateStart" required >
+                                <input class="form-control @error('scheduleDateStart') is-invalid @enderror" type="datetime-local" placeholder="Select a date" id="scheduleDateStart" name="scheduleDateStart" data-bs-target="#scheduleDateStart" onchange="updateDate(this.value)" required >
                             </div>
                             
                             <script type="text/javascript">
