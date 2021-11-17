@@ -95,29 +95,4 @@ class orgScheduleController extends Controller
         ]);
         return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
     }
-
-    // public function display(Request $request)
-    // {
-    //     $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
-
-    //     $catSelection = $request->catScheduleSelection;
-    //     $stateSelection = $request->stateScheduleSelection;
-    //     $dateSelection = $request->dateScheduleSelection;
-
-    //     $schedules = Schedule::query();
-
-    //     if($catSelection != null) {
-    //         $schedules->where('recyclingCategory', $catSelection);
-    //     }
-    //     if($stateSelection != null) {
-    //         $schedules->where('stateName', $stateSelection);
-    //     }
-    //     if($dateSelection != null) {
-    //         $schedules->whereDate('scheduleDateStart', '=', $dateSelection);
-    //     }
-        
-    //     $filtered = $schedules->get();
-
-    //     return view('orgSchedule', ['category' => $category, 'schedules' => $filtered]);
-    // }
 }

@@ -123,13 +123,13 @@
                   <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="carousel-item active" style="text-align: center;">
+                  <div class="carousel-item active mx-auto" style="text-align: center; width: 100%">
                     <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
                   </div>
-                  <div class="carousel-item">
-                    <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
+                  <div class="carousel-item" style="text-align: center; width: 100%">
+                    <img class="img-fluid" src="{{asset('/images/poster2.png')}}" class="d-block w-100" alt="..." width="1100" height="auto">
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item" style="text-align: center; width: 100%">
                     <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
                   </div>
                 </div>

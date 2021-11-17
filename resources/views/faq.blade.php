@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div style="min-height: 54vh">
+        <div style="min-height: 54vh; background-image: url({{asset('/images/questionMarkBG.png')}})" >
             <div id="faq-Main" class="container mx-auto">
                 <!-- 1 -->
                 <div class="faq-panels accordion">
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-panelsLast accordion">
+                <div class="faq-panelsLast accordion pb-5">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTen">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
