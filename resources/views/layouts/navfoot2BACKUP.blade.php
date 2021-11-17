@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
 
         <title>{{ env('APP_NAME') }}</title>
 
@@ -11,11 +10,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.1.95/css/materialdesignicons.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Styles -->
         <style>
           #navigationBar {
-            background-color: rgba(170, 169, 169, 0.068);
+            background-color: rgba(0, 0, 0, 0.0);
           }
           .navbar-nav {
             margin-left: 50px;
@@ -27,25 +27,15 @@
             color: #004b4d;
             font-size: 30px;
           }
-          body {
-            height: 100%;
-            min-height: 100%;
-          }
-          html {
-            background-color: #f8f8f8;
-          }
+
           .footer {
+            position: relative;
             left: 0;
             bottom: 0;
+            width: 100%;
             background-color: #181818;
+            color: white;
             text-align: center;
-          }
-          .navBtn {
-            color: #ccccd5
-          }
-          }
-          .navBtn:hover {
-            color: rgb(172, 208, 255);
           }
           .footer-bottom {
             height: 50px;
@@ -56,10 +46,10 @@
     </head>
     <body class="antialiased">
       <header>
-        <nav id="navigationBar" class="navbar navbar-expand-lg">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="/" style="padding: 0 0 0 20px;">
-              <img src="{{asset('/images/Logov2.png')}}" alt="" width="85" height="48" class="d-inline-block align-text-top">
+              <img src="{{asset('/images/TempLogo.png')}}" alt="" width="85" height="50" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -90,11 +80,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('rankings') }}">Rankings</a>
-                </li>
               </ul>
-              
+
               @guest
               <div class="d-flex">
                 <a class="btn btn-outline-success btn-lg" style="width: 150px" href="/login">Login</a>
@@ -123,26 +110,15 @@
         </nav>
       </header>
 
-      @yield('navfoot')
+      @yield('navfoot2')
 
       <footer>
         <div class="footer">
-          <div class="text-center p-5" style="background-color: #313a43;">
-            <div>
-              <a class="navBtn btn" href="/" role="button">Home</a>
-              <a class="navBtn btn" data-bs-toggle="modal" data-bs-target="#termsModal" role="button">Terms of Service</a>
-              <a class="navBtn btn" data-bs-toggle="modal" data-bs-target="#privacyModal" role="button">Privacy Policy</a>
-              <a class="navBtn btn" href="{{ route('faq') }}" role="button">FAQ</a>
-              <a class="navBtn btn" href="{{ route('support') }}" role="button">Support</a>
-            </div>
-            <div style="font-size: 12px; color: #ccccd5">
-              <p>Copyright @ 2021 Bird-Bird - UOW KDU PENANG Final Year Project, All Rights Reserved.</p>
-            </div>
+          <div class="text-center navbar-static-bottom p-5" style="background-color: #313a43;">
+            <p class="text-white">Website by Bird-Bird</p>
           </div>
           <div class="footer-bottom" style=""></div>
         </div>
       </footer>
     </body>
 </html>
-
-@include('components.termsModal')

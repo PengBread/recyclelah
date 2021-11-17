@@ -16,24 +16,25 @@
 </script>
 
 <div style="height: 100%">
-    <div id="" class="container mx-auto">
+    <div class="container mx-auto">
         <div class="row">
-            <div class="profile-sidebar p-5">
+            <div class="profile-sidebar pt-5">
                 <div class="border justify-content-center align-items-center">
                     <div class="profile-sidebar-container">
-                        <div class="pt-3 px-3">
+                        <div class="pt-3 px-3" style="font-weight: bold">
                             Account Management
                             <hr>
                         </div>
                         <div class="profile-sidebar-items">
-                            <a href="{{ route('authProfile') }}">Account Information</a>
+                            <a class="profilesideBtn btn" href="{{ route('authProfile') }}">Account Information</a>
                         </div>
-                        <div class="profile-sidebar-items">
-                            <a href="{{ route('organization') }}">Organization Information</a>
+                        <div class="profile-sidebar-items pb-4">
+                            <a class="profilesideBtn btn" href="{{ route('organization') }}">Organization Information</a>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="profile-content col col-sm pt-5 pb-5">
                 <!--Account Details -->
                 <div class="profile-content-container border">
@@ -64,7 +65,7 @@
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="text" id="inputName" class="form-control" readonly="true" value="{{ $userInfo->name }}">
                                 </div>
-                                <div class="d-flex col-2 justify-content-center align-items-center">
+                                <div class="d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#nameModal">Edit</button>
                                 </div>
                             </div>
@@ -77,12 +78,12 @@
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="text" id="inputPhone" class="form-control" readonly="true" value="{{ $userInfo->phoneNumber }}">
                                 </div>
-                                <div class="d-flex col-2 justify-content-center align-items-center">
+                                <div class="d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#phoneModal">Edit</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="information-content py-3">
+                        <div class="information-content pt-3 pb-4">
                             <div class="row">
                                 <div class="d-flex col-2 align-items-center">
                                     Password:
@@ -90,7 +91,7 @@
                                 <div class="d-flex col-md-8 align-items-center">
                                     <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" readonly="true" value="0123456789">
                                 </div>
-                                <div class="d-flex col-2 justify-content-center align-items-center">
+                                <div class="d-flex col-md-2 justify-content-center align-items-center">
                                     <button type="button" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#passwordModal">Edit</button>
                                 </div>
                             </div>
@@ -99,9 +100,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div style="height: 19vh;">
     </div>
 
     @include('components.profileModal')

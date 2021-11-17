@@ -1,6 +1,6 @@
-@extends('layouts.navfoot2')
+@extends('layouts.navfoot')
 
-@section('navfoot2')
+@section('navfoot')
 <link rel="stylesheet" href="{{ asset('css/map.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {{-- <script src="{{ asset('js/orgMapJS.js') }}"></script> --}}
@@ -19,32 +19,40 @@
 
         pointers.forEach(pointerList => {
             // console.log(pointerList)
-            const contentString =
-            '<form method="POST" action="{{ route("map.changeStatus") }}">' +
-                '@csrf' +
-                '@method("put")' +
-                '<div id="content">' +
-                    '<input type="hidden" name="pointer_Input" value="' + pointerList.pointerID + '" readonly>' +
-                    "<p><b>Latitude: " + pointerList.latitude + "</b><br>" +
-                    "<b>Longitude: " + pointerList.longitude + "</b></p>" +
-                    '<div id="bodyContent">' +
-                        "<b>Name:</b> " + pointerList.name + " <br>" +
-                        "<b>Phone No:</b> " + pointerList.phoneNumber + "<br>" +
-                        "<b>Address:</b> " + pointerList.pointerAddress + "<br>" +
-                        "<b>Recycling:</b> " + pointerList.recycleCategory + "<br><br>" +
-                        "<b>Pick-up Date:</b> " + pointerList.scheduleDateStart + "<br>" +
-                        "<b>Status:</b> " + pointerList.pointerStatus + "<br>" +
+            let pStatus = pointerList.pointerStatus;
+            let collectCompare = (pStatus == "Done") ? '<button type="submit" id="collectedBtn" name="collectedBtn" class="btn btn-primary" value="unset">UNSET</button>' : '<button type="submit" id="collectedBtn" name="collectedBtn" class="btn btn-primary" value="collected">COLLECTED</button>';
+            let alertCompare = (pStatus == "Done") ? '<button type="submit" id="alertBtn" class="btn btn-primary" disabled>ALERT</button>' : '<button type="submit" id="alertBtn" class="btn btn-primary">ALERT</button>';
+            let contentString =
+            '<div>' +
+                '<form method="POST" action="{{ route("map.changeStatus") }}">' +
+                    '@csrf' +
+                    '@method("put")' +
+                    '<div id="content">' +
+                        '<input type="hidden" name="pointer_Input" value="' + pointerList.pointerID + '" readonly>' +
+                        "<p><b>Latitude: " + pointerList.latitude + "</b><br>" +
+                        "<b>Longitude: " + pointerList.longitude + "</b></p>" +
+                        '<div id="bodyContent">' +
+                            "<b>Name:</b> " + pointerList.name + " <br>" +
+                            "<b>Phone No:</b> " + pointerList.phoneNumber + "<br>" +
+                            "<b>Address:</b> " + pointerList.pointerAddress + "<br>" +
+                            "<b>Recycling:</b> " + pointerList.recycleCategory + "<br><br>" +
+                            "<b>Pick-up Date:</b> " + pointerList.scheduleDateStart + "<br>" +
+                            "<b>Status:</b> " + pointerList.pointerStatus + "<br>" +
+                        "</div>" +
+                        '<div style="text-align: end; padding-top: 8px;">' +
+                            collectCompare +
+                        "</div>" +
                     "</div>" +
+                "</form>" +
+                '<form method="POST" action="{{ route("map.alertUser") }}">' +
+                    '@csrf' +
+                    '@method("put")' +
                     '<div style="text-align: end; padding-top: 8px;">' +
-                        '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
-                        // '@if(' + pointerList.pointerStatus + '!= "Done")' +
-                        // '<button type="submit" id="collectedBtn" class="btn-primary">UNSET</button>' +
-                        // '@else' +
-                        // '<button type="submit" id="collectedBtn" class="btn-primary">COLLECTED</button>' +
-                        // '@endIf' +
-                    "</div>" +
-                "</div>" +
-            "</form>";
+                        alertCompare +
+                    "</div>"+
+                    '<input type="hidden" name="pointer_Input" value="' + pointerList.pointerID + '" readonly>' +
+                "</form>" +
+            '</div>';
 
             const infowindow = new google.maps.InfoWindow({
                 content: contentString,
@@ -88,52 +96,56 @@
                     <h3>ORGANIZATION MAP</h3>
                 </div>
                 <div class="d-flex justify-content-center align-content-center">
-                    <p>Check user-pinpoints under specific schedules</p>
+                    <p>Check users under specific schedules to collect their recycleables</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="mapPage-Bottom">
+    <div id="mapPage-Bottom" class="p-4" style="background-image: url({{asset('/images/map1.jpg')}});">
         <div class="container mx-auto">
         <!-- Google Map -->
             <div>
                 <div id="googleMap" style="width:100%; height:700px;"></div>
+            </div> 
+        </div> 
+    </div>
 
-                    <form id="workerForm" method="GET" action="{{ route('workerPage') }}">
-                        @csrf
+    <div style="background: #aee8e2"> 
+        <div class="p-4">
+            <div class="container mx-auto">
+                <form id="workerForm" method="GET" action="{{ route('workerPage') }}">
+                    @csrf
 
-                        <div class="d-flex justify-content-center align-items-center pt-3">
-                            <div class="px-4">
-                            <label for="date-dropdown">Scheduled Date: </label>
-                            <select name="dateSchedules" id="date-dropdown">
+                    <div class="d-flex justify-content-center align-items-center pt-3">
+                        <div class="selectSection p-3">
+                            <label for="date-dropdown">Select a Schedule Date: </label>
+                            <select name="dateSchedules" id="date-dropdown" class="p-1">
                                 @if($filter->isEmpty())
                                     <option value="empty">No Schedule Available</option>
-                                @else
-                                @foreach($filter as $scheduleDate)
-                                    <option value="{{ $scheduleDate->scheduleID}}" {{ request()->get("dateSchedules") == $scheduleDate->scheduleID ? "selected" : " "}}>{{ $scheduleDate->scheduleDateStart }}</option>
-                                @endforeach
+                                @elseif(!$filter->isEmpty())
+                                    <option value="showAll">Show all User Location</option>
+                                    @foreach($filter as $scheduleDate)
+                                        <option value="{{ $scheduleDate->scheduleID}}" {{ request()->get("dateSchedules") == $scheduleDate->scheduleID ? "selected" : " "}}>{{ $scheduleDate->scheduleDateStart }}</option>
+                                    @endforeach
                                 @endIf
                             </select>
-                            </div>
-                            <div>
-                            <button type="submit" id="markerBtn" class="btn btn-primary">Show Pointers</button>
-                            </div>
+                            <button type="submit" id="markerBtn" class="btn btn-primary ms-3">Show Pointers</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <div id="mapSearch" class="p-5">
-                <div class="container mx-auto">
-                    <div id="mapSearch-Inside" class="p-5">
-                        <div class="row">
-                            <h2 class="d-flex justify-content-center">Guide</h2>
-                            <p class="d-flex justify-content-center" style="text-align: center;">
-                                Locate households pointers that are under your organization's schedule.
-                                <br>Select a specific date, click the "Show Pointers" button to filter out pointers.
-                            </p>
-                        </div>
+        <div id="mapSearch" class="p-4">
+            <div class="container mx-auto">
+                <div id="mapSearch-Inside" class="p-5">
+                    <div class="row">
+                        <h2 class="d-flex justify-content-center">Guide</h2>
+                        <p class="d-flex justify-content-center" style="text-align: center;">
+                            Locate households pointers that are under your organization's schedule.
+                            <br>Select a specific date, click the "Show Pointers" button to filter out pointers.
+                        </p>
                     </div>
                 </div>
             </div>

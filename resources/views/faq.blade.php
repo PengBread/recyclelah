@@ -1,6 +1,6 @@
-@extends('layouts.navfoot2')
+@extends('layouts.navfoot')
 
-@section('navfoot2')
+@section('navfoot')
 <link rel="stylesheet" href="{{ asset('css/supportFaqProfile.css') }}">
 
     <div>
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div style="min-height: 54vh">
+        <div style="min-height: 54vh; background-image: url({{asset('/images/questionMarkBG.png')}})" >
             <div id="faq-Main" class="container mx-auto">
                 <!-- 1 -->
                 <div class="faq-panels accordion">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-panelsLast accordion">
+                <div class="faq-panels accordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
@@ -120,6 +120,72 @@
                             <div class="accordion-body">
                                 <p>
                                     Kindly make your report at the report/feedback page and we will look into it soon. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panels accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                                How to pin-point house location? 
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                            <div class="accordion-body">
+                                <p>
+                                    Head over to the "Map" button in the navigation bar. Once you're in the page, type in your location inside the input box and click the "Confirm" button.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panels">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
+                                How to join a schedule? 
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+                            <div class="accordion-body">
+                                <p>
+                                    Head over to the "Schedules" button in the navigation bar, this will navigate you to the schedule page. Once you are inside the page, select a specific schedule and
+                                    click the join button in the schedule boxes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panels">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
+                                What do ranking do?
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+                            <div class="accordion-body">
+                                <p>
+                                    Rankings are only meant to be just for fun. There are no rewards other than displaying your name in the top 10 ranking list.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-panelsLast accordion pb-5">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTen">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
+                                How do you earn points?
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
+                            <div class="accordion-body">
+                                <p>
+                                    You will be given 1 point for every recycling you made using Recycle-Lah! platform. To receive the point, you will need to do the confirmation after a truck has marked your location as "completed".
+                                    The confirmation will be shown in the Map Page.
                                 </p>
                             </div>
                         </div>

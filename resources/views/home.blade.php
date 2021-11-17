@@ -57,7 +57,10 @@
                                 <h4>SIMPLE & EASY</h4>
                             </div>
                             <div class="text-center">
-                                Content words etc etc
+                                <p class="px-2">
+                                    All you have to do is pin-point your household location and select a schedule to join. After that, you'll only need to wait
+                                    in your home!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +73,10 @@
                                 <h5>ECO-FRIENDLY</h5>
                             </div>
                             <div class="text-center">
-                                <p>Reduces the amount of vehicles.</p>
+                                <p class="px-2">
+                                    Recycle-Lah! reduces the amount of vehicles because people won't be needing to drive over to recycling
+                                    locations to dump their recycleables!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +89,10 @@
                                 <h5>ENCOURAGES RECYCLING</h5>
                             </div>
                             <div class="text-center">
-                                Content words etc etc
+                                <p class="px-2">
+                                    People are lazy these days. With Recycle-Lah! it encourages recycling because they don't have to go outside to find
+                                    a place to recycle!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -95,14 +104,14 @@
                 <div id="section3-Interested" class="wordColor">
                     <h1>Interested?</h1>
                     <p style="font-size: 20px;">
-                        You can view all the schedules available created by recycling organizations
-                        <br>that use our website here!
+                        You can start registering an account with us to start your
+                        <br>recycling adventure today!
                     </p>
                 </div>
             </div>
             <div id="section3-Btn" class="d-flex justify-content-center align-items-center">
                 <div>
-                    <a id="viewScheduleBtn" class="btn btn-success btn-lg" href="/schedule">VIEW ALL SCHEDULES</a>
+                    <a id="viewScheduleBtn" class="btn btn-success btn-lg d-flex justify-content-center align-items-center" href="/register">REGISTER NOW</a>
                 </div>
             </div>
         </div>
@@ -114,13 +123,13 @@
                   <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="carousel-item active" style="text-align: center;">
+                  <div class="carousel-item active mx-auto" style="text-align: center; width: 100%">
                     <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
                   </div>
-                  <div class="carousel-item">
-                    <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
+                  <div class="carousel-item" style="text-align: center; width: 100%">
+                    <img class="img-fluid" src="{{asset('/images/poster2.png')}}" class="d-block w-100" alt="..." width="1100" height="auto">
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item" style="text-align: center; width: 100%">
                     <img class="img-fluid" src="{{asset('/images/poster1.jpg')}}" class="d-block w-100" alt="..." width="600" height="auto">
                   </div>
                 </div>
@@ -147,7 +156,7 @@
                                 Our mother earth is currently slowly collapsing day by day.
                                 Do mother earth a favor, start recycling today!
                             </p>
-                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="/schedule">Start Recycling</a>
+                            <a id="startRecyclingBtn" class="btn btn-success btn-lg d-flex justify-content-center align-items-center" href="/schedule">Start Recycling</a>
                         </div>
                     </div>
                 </div>

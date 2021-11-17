@@ -96,30 +96,32 @@
                         </div>
                     </div>          
                     <div class="form-group row p-2">
-                        <label for="scheduleDateEnd" class="col-md-3 col-form-label text-md-right">Date End: </label>
+                        <label for="scheduleDateEnd" class="col-md-3 col-form-label text-md-right">Time Length: </label>
                         <div class="col-md-9">
                             <div class="md-form">
-                                <input class="form-control @error('scheduleDateEnd') is-invalid @enderror" type="datetime-local" placeholder="Select a date" id="scheduleDateEnd" name="scheduleDateEnd" data-bs-target="#scheduleDateEnd" value="{{ $data->scheduleDateEnd }}" required>
+                                <select class="form-select" id="scheduleDateEnd" name="scheduleDateEnd">
+                                    {{-- <option value="Select a Category">Select a category</option> --}}
+                                    <option value="1">1 Hour</option>
+                                    <option value="2">2 Hours</option>
+                                    <option value="3">3 Hours</option>
+                                    <option value="4">4 Hours</option>
+                                    <option value="5">5 Hours</option>
+                                    <option value="6">6 Hours</option>
+                                    <option value="7">7 Hours</option>
+                                    <option value="8">8 Hours</option>
+                                    <option value="9">9 Hours</option>
+                                    <option value="10">10 Hours</option>
+                                    <option value="11">11 Hours</option>
+                                    <option value="12">12 Hours</option>
+                                </select>
                             </div>
-                            <script type="text/javascript">
-
-                                config = {
-                                    enableTime: true,
-                                    dateFormat: "Y-m-d H:i",
-                                    altInput: true,
-                                    minDate: Date.now(),
-                                    defaultDate: Date.now(),
-                                }
-
-                                flatpickr("input[type=datetime-local]", config);
-                           </script>
                             @error('scheduleDateEnd')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
-                    </div>          
+                    </div>       
                     
                     <div class="form-group row p-2">
                         <label for="scheduleContent" class="col-md-3 col-form-label text-md-right">Post: </label>

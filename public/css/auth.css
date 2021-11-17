@@ -1,20 +1,24 @@
+.card {
+    width: 50%;
+    margin: auto;
+}
 .card-header {
     text-align: center;
+    /* background-color: #4ea4dc; */
 }
 
-.form-group {
-
+.btn-primary {
+    background-color: #4ea4dc;
 }
 
 @media screen and (min-width: 768px) {
     .content-container {
-        width: 50%;
-        padding: 200px 10px 200px;
+        padding: 100px 10px 100px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .content-container {
-        padding: 100px 10px 100px;
+        padding: 100px 0px 100px;
     }
 }

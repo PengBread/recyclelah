@@ -22,10 +22,15 @@ class ScheduleController extends Controller
         //display everything at the beginning
         $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
 
+        //When user open the page, it will automatically check if any schedule date end is more than today's date. [Prevent schedules with date lesser than user's date to show]
+        $autoStatus = Schedule::select('*')
+                    ->whereDate('scheduleDateEnd', '<=', Carbon::now())
+                    ->update(['scheduleStatus' => false]);
+
         $organizationName = Organization::join('schedules', 'schedules.organizationID', '=', 'organizations.organizationID')
-            ->orderBy('organizations.organizationName')
-            ->groupBy('organizations.organizationName')
-            ->get('organizations.organizationName');
+                            ->orderBy('organizations.organizationName')
+                            ->groupBy('organizations.organizationName')
+                            ->get('organizations.organizationName');
 
         $schedules = Schedule::all()->toJson();
         $schedules = json_decode($schedules);
@@ -65,8 +70,12 @@ class ScheduleController extends Controller
     }
 
     public function joinSchedule(Request $request) {
-        auth()->user()->pointer->update(['scheduleID' => $request->sch]);
+        if(!auth()->user()->pointer) {
+            return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);
+        } else {
 
-        return redirect()->route('schedules');
+            auth()->user()->pointer->update(['scheduleID' => $request->sch]);
+            return redirect()->route('schedules')->with('success', 'Successfully joined a schedule');
+        }
     }
 }

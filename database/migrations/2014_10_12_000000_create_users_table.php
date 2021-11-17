@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phoneNumber')->unique();
+            $table->integer('points');
             $table->string('status')->default('active');
             $table->unsignedInteger('pointerID')->default(null)->nullable();
             $table->string('password');
@@ -34,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->foreign('pointerID')
                 ->references('pointerID')
                 ->on('map_pointers')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
 
         Schema::enableForeignKeyConstraints();
