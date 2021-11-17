@@ -11,11 +11,8 @@ use Illuminate\Support\Str;
 use Mail;
 use Auth;
 use Illuminate\Support\Facades\Hash;
-<<<<<<< HEAD
 use App\Mail\ActivationMail;
-=======
 use Illuminate\Support\Facades\Validator;
->>>>>>> 6258b59aa0287001df6e2dab77223080620dd6e3
 
 class registerController2 extends Controller
 {
@@ -109,8 +106,10 @@ class registerController2 extends Controller
             'url' => 'http://127.0.0.1:8000/verified',
         ];
 
-        Mail::to($request->input('email'))
-            ->send(new ActivationMail($body));
+        Mail::send(new ActivationMail($body));
+
+        //Mail::to($request->input('email'))
+        //    ->send(new ActivationMail($body));
 
         return redirect('/email/verify');
     }
@@ -130,8 +129,8 @@ class registerController2 extends Controller
             'url' => 'http://127.0.0.1:8000/verified',
         ];
 
-        Mail::to($user->email)
-            ->send(new ActivationMail($body));
+        Mail::send(new ActivationMail($body));
+        
         return redirect()->back()->with(['email' => 'Email sent successfully']);
     }
 }

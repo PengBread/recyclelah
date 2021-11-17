@@ -9,6 +9,8 @@ use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Mail\RecycleableEmail;
+use Mail;
 
 class MapController extends Controller
 {
@@ -88,24 +90,25 @@ class MapController extends Controller
 
         //From Organization Owner Email
         $ownedBy = $organization->ownedBy;
-
-        $email = User::select('*')
-                -> where('pointerID', $pointer)
-                -> get();
+        
+        $user = User::where('pointerID', $pointer)
+            ->first();
+        
 
         if($collectedBtn == "collected") {
             $target = MapPointer::select('pointerID')
             -> where('pointerID', $pointer)
             -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now()]);
 
-            // $message = [
-            //     'name' => $email->name,
-            //     'title' => 'Recycle Truck Confirmation - Recycle Lah',
-            //     'description' => 'The recycling truck has marked your pointer as completed. Please confirm by clicking a button below the map in the "Map" page.',
-            // ];
+            $body = [
+                'name' => $user->name,
+                'description' => 'The recycling truck has marked your pointer as completed. Please confirm by clicking a button below the map in the "Map" page.',
+            ];
 
-            // Mail::to($email)
-            //     ->send(new SupportEmail($message, $ownedBy->email));
+            $title = 'Recycle Lah - Recycle Truck Confirmation';
+
+            Mail::send(new RecycleableEmail($body, $title));
+
         } else {
             $target = MapPointer::select('pointerID')
             -> where('pointerID', $pointer)
@@ -122,13 +125,21 @@ class MapController extends Controller
         //From Organization Owner Email
         $ownedBy = $organization->ownedBy;
 
-        $email = User::select('*')
-                -> where('pointerID', $pointer)
-                -> get();
+        $user = User::where('pointerID', $pointer)
+            ->first();
         
         $target = MapPointer::select('pointerID')
                     -> where('pointerID', $pointer)
                     -> update(['pointerStatus' => 'Alert']);
+
+        $body = [
+            'name' => $user->name,
+            'description' => 'A recycling truck is heading towards your house now.',
+        ];
+
+        $title = 'Recycle Lah - Recycle Truck Alert';
+
+        Mail::send(new RecycleableEmail($body, $title));
 
         // $message = [
         //     'name' => $email->name,

@@ -7,20 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ActivationMail extends Mailable
+class RecycleableEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $body;
+    public $title;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($body)
+    public function __construct($body, $title)
     {
         $this->body = $body;
+        $this->title = $title;
     }
 
     /**
@@ -30,8 +32,8 @@ class ActivationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.ActivationEmail')
-            ->subject('Recycle-Lah - Welcome!')
+        return $this->markdown('emails.RecycleableEmail')
+            ->subject($this->title)
             ->from('pinyan2701@gmail.com', 'Recycle-Lah Team')
             ->to('recyclelahfyp@gmail.com', 'Recycle-Lah User')
             ->with('body', $this->body);

@@ -35,8 +35,7 @@ class ForgotPassword2 extends Controller
             'url' => 'http://127.0.0.1:8000/resetPassword',
         ];
 
-        Mail::to($user->email)
-            ->send(new ResetPasswordEmail($body));
+        Mail::send(new ResetPasswordEmail($body));
 
         // $data = [$userEmail->email];
 

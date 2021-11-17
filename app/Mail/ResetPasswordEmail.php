@@ -31,6 +31,9 @@ class ResetPasswordEmail extends Mailable
     public function build()
     {
         return $this->markdown('emails.ResetPasswordEmail')
+            ->subject('Recycle-Lah - Reset Password')
+            ->from('pinyan2701@gmail.com'. 'Recycle-Lah Team')
+            ->to('recyclelahfyp@gmail.com', 'Recycle-Lah User')
             ->with('body', $this->body);
     }
 }
