@@ -30,13 +30,21 @@ For a fresh copy, please do the following to get all the required modules, packa
 
     ---------------------------------------------------------------------------------------------------------------------
 
-    1. On your computer, open Gmail.
+    To Login RecycleLah Email:
+
+    Email: recyclelahfyp@gmail.com
+    Password: recyclelah123
+
+
+    To allow recyclelah email could be sent to website owner account:
+
+    1. On your computer, open Gmail (your personal email acc).
     2. In the top right, click Settings.
     3. Click the Accounts and import or Accounts tab.
     4. In the "Send mail as" section, click Add another email address.
     5. Enter your name (Recycle-Lah) and the address (recyclelahfyp@gmail.com) you want to send from.
     6. Click Next Step and then Send verification.
-    7. Ask Kai Shen for verification code.
+    7. Check your recyclelah email.
     8. Click Add Account.
 
     ---------------------------------------------------------------------------------------------------------------------
