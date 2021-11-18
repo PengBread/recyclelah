@@ -76,6 +76,7 @@
                                     <div style="text-align: center;">
                                         <h5>{{ $organizationInfo->organizationName }}</h5>
                                         <p class="pb-3" style="font-size: 14px;">You are the owner of this organization<p>
+                                        <p class="pb-3" style="font-size: 13px;">Organization Code: {{ $organizationInfo->organizationCode }}<p>
                                         <div class="py-3">
                                             <a type="button" class="btnOrg btn btn-dark" href="{{ route('orgSchedule.schedules') }}">Organization Schedules</a>
                                             {{-- <button type="button" id="btnMakeSchedule" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#makeSchedule">Organization Schedule</button> --}}

@@ -38,6 +38,11 @@
             <div class="profile-content col col-sm pt-5 pb-5">
                 <!--Account Details -->
                 <div class="profile-content-container border">
+                    
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    @endif
+
                     <div class="pt-3 px-3">
                         <h4>Account Information</h4>
                         <hr>

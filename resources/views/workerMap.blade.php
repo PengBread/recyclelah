@@ -90,19 +90,19 @@
 <!-- -->
 
     <div>
-        <div id="pageTitle" class="pt-5 pb-5">
+        <div id="pageTitle" class="p-5">
             <div id="pageTitle-Container" class="row">
                 <div class="d-flex justify-content-center align-content-center">
                     <h3>ORGANIZATION MAP</h3>
                 </div>
-                <div class="d-flex justify-content-center align-content-center">
+                <div class="d-flex justify-content-center align-content-center" style="text-align: center">
                     <p>Check users under specific schedules to collect their recycleables</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="mapPage-Bottom" class="p-4" style="background-image: url({{asset('/images/map1.jpg')}});">
+    <div id="mapPage-Bottom" class="p-md-4" style="background-image: url({{asset('/images/map1.jpg')}});">
         <div class="container mx-auto">
         <!-- Google Map -->
             <div>
@@ -112,34 +112,38 @@
     </div>
 
     <div style="background: #aee8e2"> 
-        <div class="p-4">
+        <div class="py-4 p-md-4">
             <div class="container mx-auto">
                 <form id="workerForm" method="GET" action="{{ route('workerPage') }}">
                     @csrf
 
                     <div class="d-flex justify-content-center align-items-center pt-3">
-                        <div class="selectSection p-3">
-                            <label for="date-dropdown">Select a Schedule Date: </label>
-                            <select name="dateSchedules" id="date-dropdown" class="p-1">
-                                @if($filter->isEmpty())
-                                    <option value="empty">No Schedule Available</option>
-                                @elseif(!$filter->isEmpty())
-                                    <option value="showAll">Show all User Location</option>
-                                    @foreach($filter as $scheduleDate)
-                                        <option value="{{ $scheduleDate->scheduleID}}" {{ request()->get("dateSchedules") == $scheduleDate->scheduleID ? "selected" : " "}}>{{ $scheduleDate->scheduleDateStart }}</option>
-                                    @endforeach
-                                @endIf
-                            </select>
-                            <button type="submit" id="markerBtn" class="btn btn-primary ms-3">Show Pointers</button>
+                        <div class="selectSection d-flex justify-content-center align-content-center row-sm p-3">
+                            <div>
+                                <label for="date-dropdown">Select a Schedule Date: </label>
+                                <select name="dateSchedules" id="date-dropdown" class="align-content-center p-2">
+                                    @if($filter->isEmpty())
+                                        <option value="empty">No Schedule Available</option>
+                                    @elseif(!$filter->isEmpty())
+                                        <option value="showAll">Show all User Location</option>
+                                        @foreach($filter as $scheduleDate)
+                                            <option value="{{ $scheduleDate->scheduleID}}" {{ request()->get("dateSchedules") == $scheduleDate->scheduleID ? "selected" : " "}}>{{ $scheduleDate->scheduleDateStart }}</option>
+                                        @endforeach
+                                    @endIf
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" id="markerBtn" class="btn btn-primary p-2 ms-3">Show Pointers</button>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div id="mapSearch" class="p-4">
+        <div id="mapSearch" class="pb-2 p-md-3">
             <div class="container mx-auto">
-                <div id="mapSearch-Inside" class="p-5">
+                <div id="mapSearch-Inside" class="p-2 p-md-5">
                     <div class="row">
                         <h2 class="d-flex justify-content-center">Guide</h2>
                         <p class="d-flex justify-content-center" style="text-align: center;">

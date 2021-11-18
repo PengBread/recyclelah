@@ -30,10 +30,6 @@ Route::get('/reset', function () {
     return view('auth.reset');
 });
 
-Route::get('/email/verify', function () {
-    return view('auth.verify');
-});
-
 //pull out from group for testing
 Route::get('support', 'App\Http\Controllers\SupportController@getInfo')->name('support');
 Route::post('send', 'App\Http\Controllers\SupportController@sendMail')->name('support.sendMail');
@@ -49,8 +45,8 @@ Route::group([
 
     Route::get('register', 'registerController2@index')->middleware('guest');
     Route::post('register', 'registerController2@register')->middleware('guest');
-    Route::get('verified', 'registerController2@verified');
-    Route::post('resendEmail', 'registerController2@sendEmail')->middleware('guest');
+    Route::get('verified', 'registerController2@verified')->name('verification');
+    Route::post('resendEmail', 'registerController2@sendEmail');
 
     Route::get('forgotPassword', 'ForgotPassword2@forgotPassword')->middleware('guest');
     Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword')->middleware('guest');
@@ -84,6 +80,12 @@ Route::group([
         Route::get('profile/organization/affiliates', 'ProfileController@listUsers')->name('memberList');
         Route::get('map', 'MapController@mapPage')->name('mapPage');
         Route::get('organizationMap', 'MapController@workerPage')->name('workerPage');
+        Route::get('/email/verify', function () {
+            if(auth()->user()->isVerified) {
+                return redirect('/');
+            }
+            return view('auth.verify');
+        });
 
         /**
          * ScheduleController Section

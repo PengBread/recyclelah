@@ -17,7 +17,9 @@ class ScheduleController extends Controller
     //  *
     //  * @return \Illuminate\Http\Response
     //  */
-    public function index(Request $request)
+
+    //NOT USING BUT LEAVING IT HERE INCASE ANYTHING HAPPEN.
+    public function index1(Request $request)
     {
         //display everything at the beginning
         $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
@@ -38,11 +40,11 @@ class ScheduleController extends Controller
         return view('schedule', ['category' => $category, 'organization' => $organizationName,'schedules' => $schedules]);
     }
 
-    public function display(Request $request)
+    public function index(Request $request)
     {
         $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
 
-        $organization = Organization::all();
+        $organization = Organization::select('organizationID', 'organizationName')->get();
 
         $catSelection = $request->catScheduleSelection;
         $stateSelection = $request->stateScheduleSelection;

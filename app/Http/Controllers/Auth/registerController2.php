@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Validator;
 
 class registerController2 extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -53,13 +49,6 @@ class registerController2 extends Controller
                 ],
                 'password-confirm' => 'required|same:password'
             ]);
-
-            // $validator = Validator::make($request->all(), [
-            //     'name' => 'required|string|max:50',
-            //     'email' => 'required|string|email|max:50|unique:users',
-            //     'phoneNumber' => 'required|regex:/(6?01)[0-9]{8,10}/',
-            //     'password' => 'required|string|min:8|confirmed',
-            // ]);
 
             $user = User::create([
                 'name' => $request->input('name'),
@@ -96,7 +85,7 @@ class registerController2 extends Controller
             $organization = Organization::create([
                 'userID' => $user->userID,
                 'organizationName' => $request->input('organizationName'),
-                'organizationCode' => Str::random(5)
+                'organizationCode' => Str::random(7)
             ]);
 
             $user->organizationID = $organization->organizationID;
@@ -105,31 +94,28 @@ class registerController2 extends Controller
 
         $body = [
             'name' => $request->input('name'),
-            'url' => 'http://127.0.0.1:8000/verify',
+            'url' => route('verification', ['id' => $user->userID]),
         ];
 
         Mail::send(new ActivationMail($body));
 
-        //Mail::to($request->input('email'))
-        //    ->send(new ActivationMail($body));
-
         return redirect('/email/verify');
     }
 
-    public function verified() {
-        $user = Model::all()->last();
-        $user->isVerified = 1;
-        $user->status = 'active';
-        $user->save();
-        Auth::login($user);
-        return redirect("/profile");
+    //Used to set verified
+    public function verified(Request $request) {
+        Model::where('userID', $request->id)
+            ->update(['isVerified' => true, 'status' => 'active']);
+
+        return redirect()->route('login')->with('success', 'Verification Successful');
     }
 
+    //Used to resend email verification
     public function sendEmail(){
-        $user = Model::all()->last();
+        $user = auth()->user();
         $body = [
             'name' => $user->name,
-            'url' => 'http://127.0.0.1:8000/verify',
+            'url' => route('verification', ['id' => $user->userID]),
         ];
 
         Mail::send(new ActivationMail($body));

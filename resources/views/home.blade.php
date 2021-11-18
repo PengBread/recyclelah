@@ -23,15 +23,15 @@
     <div style="background: #aee8e2; box-shadow: 0 -5px 50px 50px #aee8e2;">
         <div class="container mx-auto pb-5" style="">
             <div class="container h-100">
-                <div class="row h-auto">
-                    <div class="col-sm d-flex justify-content-center align-items-center ">
-                        <img id="section2-Image" class="img-fluid" src="{{asset('/images/truck.png')}}" alt="" width="500" height="417">
+                <div class="row h-auto pt-5">
+                    <div class="col-sm d-flex justify-content-center align-items-center">
+                        <img id="section2-Image" class="img-fluid" src="{{asset('/images/Logov2.png')}}" alt="" width="500" height="417">
                     </div>
                     <div id="section2-DescriptionDiv" class="wordColor col-sm d-flex justify-content-center align-items-center">
                         <div id="section2-Description" class="wordColor">
                             <h1 id="section2-h1">What is Recycle-Lah?</h1>
                             <p>
-                                Recycle-Lah is a Recycle webpage that allows recycling companies to search for their potential households that are looking to
+                                Recycle-Lah is a recycling platform that allows recycling companies to search for their potential households that are looking to
                                 recycle instead of wandering around random areas.
                                 Our goal is to enhance everyone's reclcing experience with ease
                                 to encourage and spread recycling habits to people in the world.

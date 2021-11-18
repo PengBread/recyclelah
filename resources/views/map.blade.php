@@ -112,19 +112,19 @@ function initMap() {
 <!-- -->
 
     <div>
-        <div id="pageTitle" class="pt-5 pb-5">
+        <div id="pageTitle" class="p-5">
             <div id="pageTitle-Container" class="row">
                 <div class="d-flex justify-content-center align-content-center">
                     <h3>MAP</h3>
                 </div>
-                <div class="d-flex justify-content-center align-content-center">
+                <div class="d-flex justify-content-center align-content-center" style="text-align: center">
                     <p>Select your household location to start joining schedules to recycle!</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="mapPage-Bottom" class="p-4" style="background-image: url({{asset('/images/map1.jpg')}});">
+    <div id="mapPage-Bottom" class="p-md-4" style="background-image: url({{asset('/images/map1.jpg')}});">
         <div class="container mx-auto">
         <!-- Google Map -->
             <div>
@@ -180,18 +180,26 @@ function initMap() {
                         @method('put')
 
                         @if(!auth()->user()->pointer)
-                            <div class="d-flex justify-content-center">
-                                <label for="placeAddress" class="px-2">Search Location:</label>
-                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="" placeholder="Enter your location" required>
+                            <div class="d-flex row-sm justify-content-center">
+                                <label for="placeAddress" class="d-none d-md-block px-lg-2">Search Location:</label>
+                                <input type="text" name="placeInfo" id="placeAddress" class="w-100 w-sm-100" value="" placeholder="Enter your location" required>
                             </div>
-                            <div class="d-flex justify-content-center row py-3">
-                                <div class="col-3">
+                            <div class="row py-3 d-flex justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-center">
                                     <label for="lng" class="">Latitude: </label>
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="" readonly required>
-                                </div>
-                                <div class="col-3">
-                                    <label for="lat" class="">Longitude: </label>
+                                    </div> 
+                                    <div class="d-flex justify-content-center">
                                     <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="" readonly required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-center">
+                                    <label for="lat" class="">Longitude: </label>
+                                    </div> 
+                                    <div class="d-flex justify-content-center">
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="" readonly required>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center pt-3">
@@ -221,9 +229,9 @@ function initMap() {
             </div>
         </div>
 
-        <div id="mapSearch" class="p-3">
+        <div id="mapSearch" class="pb-2 p-md-3">
             <div class="container mx-auto" style="">
-                <div id="mapSearch-Inside" class="p-5">
+                <div id="mapSearch-Inside" class="p-2 p-md-5">
                     <div class="row">
                         <h2 class="d-flex justify-content-center">Guide</h2>
                         <p class="d-flex justify-content-center" style="text-align: center;">

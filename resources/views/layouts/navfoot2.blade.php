@@ -53,7 +53,7 @@
     </head>
     <body class="antialiased">
       <header>
-        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-light">
+        <nav id="navigationBar" class="navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="/" style="padding: 0 0 0 20px;">
               <img src="{{asset('/images/Logov2White.png')}}" alt="" width="85" height="48" class="d-inline-block align-text-top">

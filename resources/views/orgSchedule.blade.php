@@ -43,7 +43,7 @@
                     </div>
                     <div class="p-3">
                         <div class="border">
-                            <div>
+                            <div class="table-responsive-sm">
                                 <table class="table" id="scheduleTable">
                                     @csrf
                                     

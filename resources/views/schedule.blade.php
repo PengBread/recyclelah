@@ -33,8 +33,8 @@
                     @if (Session::has('success'))
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
-                    <form class="form" method="POST" action="{{ route('schedules') }}">
-                        @csrf
+                    
+                    <form class="form" method="GET" action="{{ route('schedules') }}">
 
                         <div class="row">
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
@@ -77,7 +77,7 @@
                                     </select>
                                 </div>
                             </div>
-
+                            
                             <div class="form-group col-sm d-flex justify-content-center align-items-center">
                                 <div class="input-group">
                                     <span class="input-group-text">
@@ -86,6 +86,7 @@
                                     <select class="form-select" id="orgScheduleSelection" name="orgScheduleSelection" placeholder="Select an Organization">
                                         <option value="">Select an Organization</option>
                                         @foreach ($organization as $item)
+                                            
                                             <option value='{{ $item->organizationID }}'>{{ $item->organizationName }}</option>
                                         @endforeach
                                     </select>

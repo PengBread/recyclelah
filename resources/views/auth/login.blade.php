@@ -12,6 +12,10 @@
                 <form method="POST" action="{{ url('login') }}"> 
                     @csrf
 
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    @endif
+                    
                     @if ($message = Session::get('error'))
                         <div class="text-danger">
                             <p>
