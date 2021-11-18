@@ -14,7 +14,13 @@
                     <h3>SCHEDULES</h3>
                     <p>Check on schedules and select the schedule you would like a specific organization to collect your materials</p>
                 </div>
-                @if(auth()->user())
+                @if(!auth()->user())
+                <div id="accountCheckDiv" class="d-flex justify-content-center">
+                    <div style="color: red; align-items: center;">
+                    <h5>You do not have an account. Create one here to start joining schedule! <a href="/register">CLICK HERE</a></h5>
+                    </div>
+                </div>
+                @else
                 @if(!auth()->user()->pointer)
                 <div id="pointerCheckDiv" class="d-flex justify-content-center">
                     <div style="color: red; align-items: center;">

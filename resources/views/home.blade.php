@@ -156,7 +156,7 @@
                                 Our mother earth is currently slowly collapsing day by day.
                                 Do mother earth a favor, start recycling today!
                             </p>
-                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="/schedule">
+                            <a id="startRecyclingBtn" class="btn btn-success btn-lg" href="{{ route('schedules') }}">
                                 <p class="pt-1">Start Recycling</p>
                             </a>
                         </div>
