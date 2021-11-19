@@ -99,7 +99,7 @@ class registerController2 extends Controller
 
         Mail::send(new ActivationMail($body));
 
-        return redirect('/email/verify');
+        return redirect('login')->with(['success' => 'A verification mail has been sent to your email. If you did not receive, you may login your account and click on the resend button.']);
     }
 
     //Used to set verified

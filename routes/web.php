@@ -64,7 +64,7 @@ Route::group([
          * Without Login Checking. Available to everyone
          */
         Route::get('schedules', 'ScheduleController@index')->name('schedules');
-        Route::post('schedules', 'ScheduleController@display')->name('display');
+        // Route::post('schedules', 'ScheduleController@display')->name('display');
         Route::get('faq', function () { return view('faq'); })->name('faq');
         Route::get('rankings', 'RankingsController@displayRankings')->name('rankings');
         // Route::get('support', 'SupportController@getInfo')->name('support');
