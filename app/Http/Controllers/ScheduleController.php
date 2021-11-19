@@ -19,26 +19,26 @@ class ScheduleController extends Controller
     //  */
 
     //NOT USING BUT LEAVING IT HERE INCASE ANYTHING HAPPEN.
-    public function index1(Request $request)
-    {
-        //display everything at the beginning
-        $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
+    // public function index1(Request $request)
+    // {
+    //     //display everything at the beginning
+    //     $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
 
-        //When user open the page, it will automatically check if any schedule date end is more than today's date. [Prevent schedules with date lesser than user's date to show]
-        $autoStatus = Schedule::select('*')
-                    ->whereDate('scheduleDateEnd', '<=', Carbon::now(('Asia/Singapore')))
-                    ->update(['scheduleStatus' => false]);
+    //     //When user open the page, it will automatically check if any schedule date end is more than today's date. [Prevent schedules with date lesser than user's date to show]
+    //     $autoStatus = Schedule::select('*')
+    //                 ->whereDate('scheduleDateEnd', '<=', Carbon::now(('Asia/Singapore')))
+    //                 ->update(['scheduleStatus' => false]);
 
-        $organizationName = Organization::join('schedules', 'schedules.organizationID', '=', 'organizations.organizationID')
-                            ->orderBy('organizations.organizationName')
-                            ->groupBy('organizations.organizationName')
-                            ->get('organizations.organizationName');
+    //     $organizationName = Organization::join('schedules', 'schedules.organizationID', '=', 'organizations.organizationID')
+    //                         ->orderBy('organizations.organizationName')
+    //                         ->groupBy('organizations.organizationName')
+    //                         ->get('organizations.organizationName');
 
-        $schedules = Schedule::all()->toJson();
-        $schedules = json_decode($schedules);
+    //     $schedules = Schedule::all()->toJson();
+    //     $schedules = json_decode($schedules);
 
-        return view('schedule', ['category' => $category, 'organization' => $organizationName,'schedules' => $schedules]);
-    }
+    //     return view('schedule', ['category' => $category, 'organization' => $organizationName,'schedules' => $schedules]);
+    // }
 
     public function index(Request $request)
     {

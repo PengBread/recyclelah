@@ -86,6 +86,7 @@ class orgScheduleController extends Controller
         Schedule::create([
             'organizationID' => $organization->organizationID,
             'scheduleName' => $request->input('scheduleTitle'),
+            // 'scheduleName' => $request->input('scheduleTitle'),
             'stateName' => $request->scheduleState,
             'scheduleDateStart' => $request->input('scheduleDateStart'),
             'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours),

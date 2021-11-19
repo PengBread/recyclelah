@@ -18,12 +18,12 @@ class OrganizationSeeder extends Seeder
         Organization::insert([
             [
                 'userID' => 3,
-                'organizationName' => 'testOrganization1',
+                'organizationName' => 'The Banana Recycler',
                 'organizationCode' => Str::random(7),
             ],
             [
                 'userID' => 4,
-                'organizationName' => 'testOrganization2',
+                'organizationName' => 'Green Company',
                 'organizationCode' => Str::random(7),
             ]
         ]);

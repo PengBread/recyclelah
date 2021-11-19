@@ -19,7 +19,7 @@ class ScheduleSeeder extends Seeder
         Schedule::insert([
             [
                 'organizationID' => '1',
-                'scheduleName'=> 'testOrganization1',
+                'scheduleName'=> 'We love Bananas',
                 'scheduleDateStart'=> Carbon::now('Asia/Singapore'),
                 'scheduleDateEnd'=> Carbon::now('Asia/Singapore')->addHours(5),
                 'scheduleStatus'=> true,
@@ -29,7 +29,7 @@ class ScheduleSeeder extends Seeder
             ],
             [
                 'organizationID' => '1',
-                'scheduleName'=> 'testOrganization1',
+                'scheduleName'=> 'We love Bananas',
                 'scheduleDateStart'=>Carbon::now('Asia/Singapore')->addDays(1)->addHours(1),
                 'scheduleDateEnd'=>Carbon::now('Asia/Singapore')->addDays(1)->addHours(2),
                 'scheduleStatus'=> true,
@@ -40,7 +40,7 @@ class ScheduleSeeder extends Seeder
             ],
             [
                 'organizationID' => '1',
-                'scheduleName'=>'testOrganization1',
+                'scheduleName'=>'We love Bananas',
                 'scheduleDateStart'=>Carbon::now('Asia/Singapore')->addDays(2)->addHours(2),
                 'scheduleDateEnd'=>Carbon::now('Asia/Singapore')->addDays(2)->addHours(4),
                 'scheduleStatus'=> true,
@@ -50,7 +50,7 @@ class ScheduleSeeder extends Seeder
             ],
             [
                 'organizationID' => '2',
-                'scheduleName'=>'testOrganization2',
+                'scheduleName'=>'Green green bird',
                 'scheduleDateStart'=>Carbon::now('Asia/Singapore')->addDays(3)->addHours(3),
                 'scheduleDateEnd'=>Carbon::now('Asia/Singapore')->addDays(3)->addHours(6),
                 'scheduleStatus'=> true,

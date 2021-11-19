@@ -133,7 +133,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div>
-                                                <h5 id="cardTitle" class="card-title">{{$data->scheduleName}}</h5>
+                                                <h5 id="cardTitle" class="card-title">{{$data->ownedBy->organizationName}}</h5>
                                                 <h6 id="cardState" class="card-subtitle text-muted p-1">{{$data->stateName}}</h6>
                                             </div>
                                             <div class="pt-5"> 
@@ -166,14 +166,16 @@
                                 <div class="modal fade" id="modal{{$data->scheduleID}}" tabindex="-1">                   
                                     <div class="modal-dialog">
                                         <div class="modal-content">                                 
-                                            <div class="modal-header">                                      
-                                            <h5 class="modal-title" id="scheduleModel">{{$data->scheduleName}}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="scheduleModel">{{$data->ownedBy->organizationName}}</h5>                                     
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>    
                                             <div class="modal-body">
                                                 <form class="form" method="POST" action="{{ route('schedule.joinSchedule', ['sch'=>$data->scheduleID]) }}">
                                                     @csrf
-                                                    @method('put') 
+                                                    @method('put')
+                                                    <h6 class="modal-title" id="scheduleModel">Title: {{$data->scheduleName}}</h6>
+                                                    <br> 
                                                     <p>
                                                         Date Start: {{ Carbon\Carbon::parse($data->scheduleDateStart)->toDateString() }}
                                                         <br>
