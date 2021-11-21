@@ -112,7 +112,16 @@ class MapController extends Controller
         } else {
             $target = MapPointer::select('pointerID')
             -> where('pointerID', $pointer)
-            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now('Asia/Singapore')]); 
+            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now('Asia/Singapore')]);
+            
+            $body = [
+                'name' => $user->name,
+                'description' => 'The recycling truck has unset the confirmation. We apologize for any inconvenience.',
+            ];
+
+            $title = 'Recycle Lah - Recycle Truck Confirmation - Mistake';
+
+            Mail::send(new RecycleableEmail($body, $title));
         }
 
         return redirect()->route('workerPage');
