@@ -1,7 +1,8 @@
 @component('mail::message')
 # Feedback Email
+{{ $body['name'] }} has send a support email.
 
-{{ $body['name'] }} send us a {{ $body['title'] }} email.
+Title: {{ $body['title'] }}
 
 {{ $body['description'] }}
 

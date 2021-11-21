@@ -35,6 +35,11 @@ class ForgotPassword2 extends Controller
         //     'url' => route('verification', ['id' => $this->user->userID]),
         // ];
 
+        // $body = [
+        //     'name' => $user->name,
+        //     'url' => 'http://127.0.0.1:8000/resetPassword',
+        // ];
+
         Mail::send(new ResetPasswordEmail($user));
 
         return redirect()->back()->with(['success' => 'An email for resetting your password has been sent to your email']);
@@ -47,7 +52,6 @@ class ForgotPassword2 extends Controller
 
     public function updatePassword(Request $request)
     {
-
         $user = User::whereEmail($request->email)->first();
 
         if (($user) == null) {
