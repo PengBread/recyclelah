@@ -18,6 +18,7 @@ class UserPasswordReset extends Model
      * @var string[]
      */
     protected $fillable = [
+        'userID',
         'token',
         'used_At',
         'created_At',
@@ -33,4 +34,8 @@ class UserPasswordReset extends Model
         'password',
         'remember_token',
     ];
+
+    public function requestBy() {
+        return $this->belongsTo(User::class, 'userID', 'userID');
+    }
 }

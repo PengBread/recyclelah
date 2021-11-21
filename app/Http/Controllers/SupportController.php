@@ -47,7 +47,8 @@ class SupportController extends Controller {
         $body = [
             'name' => $request->input('nameInput'),
             'email' => $request->input('emailInput'),
-            'title' => $request->input('categoryInput') . ' - ' . $request->input('titleInput'),
+            'title' => $request->input('titleInput'),
+            'category' => $request->input('categoryInput'),
             'description' => $request->input('descriptionInput'),
         ];
 
