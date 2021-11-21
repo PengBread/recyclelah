@@ -18,8 +18,8 @@ class SupportController extends Controller {
  
     public function sendMail(Request $request) {
         $request->validate([
-            'authNameInput' => 'required|string',
-            'authEmailInput' => 'required|string',
+            'nameInput' => 'required|string',
+            'emailInput' => 'required|string',
             'titleInput' => 'required|string',
             'descriptionInput' => 'required|string',
         ]);
@@ -42,23 +42,18 @@ class SupportController extends Controller {
         } 
 
 
-        $user = User::where('email', $request->only('emailInput'))->first();
- 
-        if ($user == null){
-            return redirect()->back()->with(['emailInput' => 'These credentials do not match our record.']);
-        }
-        else{
- 
-            $body = [
-                'name' => $request->input('nameInput'),
-                'title' => $request->input('titleInput'),
-                'description' => $request->input('descriptionInput'),
-            ];
+        // $user = User::where('email', $request->only('emailInput'))->first();
 
-            Mail::send(new SupportEmail($body));
+        $body = [
+            'name' => $request->input('nameInput'),
+            'email' => $request->input('emailInput'),
+            'title' => $request->input('categoryInput') . ' - ' . $request->input('titleInput'),
+            'description' => $request->input('descriptionInput'),
+        ];
 
-            return redirect('/feedbackSuccess');
-        }
+        Mail::send(new SupportEmail($body));
+
+        return redirect('/feedbackSuccess');
     }
  
     public function feedbackSuccess() {

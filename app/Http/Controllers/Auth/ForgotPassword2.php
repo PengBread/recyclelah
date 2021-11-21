@@ -24,27 +24,20 @@ class ForgotPassword2 extends Controller
     public function sendResetPassword(Request $request)
     {
         //$userEmail = User::whereEmail($request->email)->first();
-        $user = User::where('email',$request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         if ($user == null || $user->isVerified == 0) {
-            return redirect()->back()->with(['error' => 'Email not exists']);
+            return redirect()->back()->with(['error' => 'Email does not exists']);
         }
 
-        $body = [
-            'name' => $user->name,
-            'url' => 'http://127.0.0.1:8000/resetPassword',
-        ];
+        // $body = [
+        //     'name' => $user->name,
+        //     'url' => route('verification', ['id' => $this->user->userID]),
+        // ];
 
-        Mail::send(new ResetPasswordEmail($body));
+        Mail::send(new ResetPasswordEmail($user));
 
-        // $data = [$userEmail->email];
-
-        // Mail::send('auth.emailResetPassword', $data, function ($message) use ($data) {
-        //     $message->to($data[0]);
-        //     $message->subject('Recycle-Lah - Reset Password');
-        // });
-
-        return redirect()->back()->with(['success' => 'Reset code sent to your email']);
+        return redirect()->back()->with(['success' => 'An email for resetting your password has been sent to your email']);
     }
 
     public function resetPassword()

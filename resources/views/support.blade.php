@@ -43,10 +43,10 @@
                             </div>
                         @else
                             <div class="input-group">
-                                <input type="text" name="authNameInput" id="authNameInput" class="form-control" placeholder="Name *" aria-label="Name" value="{{ $userInfo->name }}" readonly="readonly" required>
+                                <input type="text" name="nameInput" id="nameInput" class="form-control" placeholder="Name *" aria-label="Name" value="{{ $userInfo->name }}" readonly="readonly" required>
                             </div>
                             <div class="input-group">
-                                <input type="text" name="authEmailInput" id="authEmailInput" class="form-control" placeholder="E-mail *" aria-label="E-mail" value="{{ $userInfo->email }}" readonly="readonly" required>
+                                <input type="text" name="emailInput" id="emailInput" class="form-control" placeholder="E-mail *" aria-label="E-mail" value="{{ $userInfo->email }}" readonly="readonly" required>
                             </div>
                         @endIf
                         <div class="input-group">

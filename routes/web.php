@@ -50,7 +50,7 @@ Route::group([
 
     Route::get('forgotPassword', 'ForgotPassword2@forgotPassword')->middleware('guest');
     Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword')->middleware('guest');
-    Route::get('resetPassword', 'ForgotPassword2@resetPassword')->middleware('guest');
+    Route::get('resetPassword', 'ForgotPassword2@resetPassword')->name('resetPassword')->middleware('guest');
     Route::post('updatePassword', 'ForgotPassword2@updatePassword')->middleware('guest');
 });
 

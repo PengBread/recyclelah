@@ -91,13 +91,8 @@ class registerController2 extends Controller
             $user->organizationID = $organization->organizationID;
             $user->save();
         }
-
-        $body = [
-            'name' => $request->input('name'),
-            'url' => route('verification', ['id' => $user->userID]),
-        ];
-
-        Mail::send(new ActivationMail($body));
+        
+        Mail::send(new ActivationMail($user));
 
         return redirect('login')->with(['success' => 'A verification mail has been sent to your email. If you did not receive, you may login your account and click on the resend button.']);
     }
@@ -113,12 +108,8 @@ class registerController2 extends Controller
     //Used to resend email verification
     public function sendEmail(){
         $user = auth()->user();
-        $body = [
-            'name' => $user->name,
-            'url' => route('verification', ['id' => $user->userID]),
-        ];
 
-        Mail::send(new ActivationMail($body));
+        Mail::send(new ActivationMail($user));
         
         return redirect()->back()->with(['email' => 'Email sent successfully']);
     }

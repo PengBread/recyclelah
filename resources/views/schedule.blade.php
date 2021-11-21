@@ -116,14 +116,18 @@
                     </form>
                 </div>
             </div>
-            @if(auth()->user()->pointer->pointerSchedule)
-            <div id="pointerJoinedDiv" class="d-flex justify-content-center">
-                <div class="p-2" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
-                    <h5>Your are currently in a schedule. The schedule info is:</h5>
-                    <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
-                    <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
-                </div>
-            </div>
+            @if(auth()->user())
+                @if(auth()->user()->pointer)
+                    @if(auth()->user()->pointer->pointerSchedule)
+                    <div id="pointerJoinedDiv" class="d-flex justify-content-center">
+                        <div class="p-2" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
+                            <h5>Your are currently in a schedule. The schedule info is:</h5>
+                            <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
+                            <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
+                        </div>
+                    </div>
+                    @endif
+                @endif
             @endif
         </div>
 

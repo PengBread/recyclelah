@@ -32,8 +32,8 @@ class SupportEmail extends Mailable
     {
         return $this->markdown('emails.SupportEmail')
             ->subject('Recycle-Lah - Feedback Email')
-            ->from('recyclelahfyp@gmail.com', 'Recycle-Lah User')
-            ->to('pengbreadpersonal@gmail.com', 'Recycle-Lah Team')
+            ->from($this->body['email'])
+            ->to('recyclelahFYP@gmail.com', 'Recycle-Lah User')
             ->with('body', $this->body);
     }
 }

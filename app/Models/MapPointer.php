@@ -35,4 +35,8 @@ class MapPointer extends Model
     {
         return $this->belongsTo(Schedule::class, 'scheduleID', 'scheduleID');
     }
+
+    public function createdBy() {
+        return $this->belongsTo(User::class, 'pointerID', 'pointerID');
+    }
 }

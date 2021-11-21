@@ -85,43 +85,28 @@ class MapController extends Controller
 
     public function changeStatus(Request $request) {
         $pointer = $request->input('pointer_Input');
-        $organization = auth()->user()->affiliate;
+        // $organization = auth()->user()->affiliate;
         $collectedBtn = $request->collectedBtn;
 
-        //From Organization Owner Email
-        $ownedBy = $organization->ownedBy;
+        // //From Organization Owner Email
+        // $ownedBy = $organization->ownedBy;
         
-        $user = User::where('pointerID', $pointer)
-            ->first();
+        $target = MapPointer::where('pointerID', $pointer)->first();
         
 
         if($collectedBtn == "collected") {
-            $target = MapPointer::select('pointerID')
-            -> where('pointerID', $pointer)
-            -> update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now('Asia/Singapore')]);
-
-            $body = [
-                'name' => $user->name,
-                'description' => 'The recycling truck has marked your pointer as completed. Please confirm by clicking a button below the map in the "Map" page.',
-            ];
+            $target->update(['pointerStatus' => 'Done', 'arrived_At' => Carbon::now('Asia/Singapore')]);
 
             $title = 'Recycle Lah - Recycle Truck Confirmation';
 
-            Mail::send(new RecycleableEmail($body, $title));
+            Mail::send(new RecycleableEmail($target->createdBy, $title, 'The recycling truck has marked your pointer as completed. Please confirm by clicking a button below the map in the "Map" page.'));
 
         } else {
-            $target = MapPointer::select('pointerID')
-            -> where('pointerID', $pointer)
-            -> update(['pointerStatus' => 'Active', 'arrived_At' => Carbon::now('Asia/Singapore')]);
-            
-            $body = [
-                'name' => $user->name,
-                'description' => 'The recycling truck has unset the confirmation. We apologize for any inconvenience.',
-            ];
+            $target->update(['pointerStatus' => 'Active', 'arrived_At' => null]);
 
             $title = 'Recycle Lah - Recycle Truck Confirmation - Mistake';
 
-            Mail::send(new RecycleableEmail($body, $title));
+            Mail::send(new RecycleableEmail($target->createdBy, $title, 'The recycling truck has unset the confirmation. We apologize for any inconvenience.'));
         }
 
         return redirect()->route('workerPage');
@@ -133,22 +118,12 @@ class MapController extends Controller
 
         //From Organization Owner Email
         $ownedBy = $organization->ownedBy;
-
-        $user = User::where('pointerID', $pointer)
-            ->first();
         
-        $target = MapPointer::select('pointerID')
-                    -> where('pointerID', $pointer)
-                    -> update(['pointerStatus' => 'Alert']);
+        $target = MapPointer::where('pointerID', $pointer)->first();
+        $target->pointerStatus = 'Alert';
+        $target->save();
 
-        $body = [
-            'name' => $user->name,
-            'description' => 'A recycling truck is heading towards your house now.',
-        ];
-
-        $title = 'Recycle Lah - Recycle Truck Alert';
-
-        Mail::send(new RecycleableEmail($body, $title));
+        Mail::send(new RecycleableEmail($target->createdBy, 'Recycle Lah - Recycle Truck Alert', 'A recycling truck is heading towards your house now.'));
 
         return redirect()->route('workerPage');
     }

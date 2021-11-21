@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,18 +12,20 @@ class RecycleableEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $body;
+    public $user;
     public $title;
+    public $description;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($body, $title)
+    public function __construct(User $user, $title, $description)
     {
-        $this->body = $body;
+        $this->user = $user;
         $this->title = $title;
+        $this->description = $description;
     }
 
     /**
@@ -32,10 +35,15 @@ class RecycleableEmail extends Mailable
      */
     public function build()
     {
+        $body = [
+            'name' => $this->user->name,
+            'description' => $this->description,
+        ];
+
         return $this->markdown('emails.RecycleableEmail')
             ->subject($this->title)
-            ->from('pengbreadpersonal@gmail.com', 'Recycle-Lah Team')
-            ->to('recyclelahfyp@gmail.com', 'Recycle-Lah User')
-            ->with('body', $this->body);
+            ->from('recyclelahFYP@gmail.com', 'Recycle-Lah Team')
+            ->to($this->user->email)
+            ->with('body', $body);
     }
 }
