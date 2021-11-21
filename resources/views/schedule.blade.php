@@ -20,14 +20,12 @@
                     <h5>You do not have an account. Create one here to start joining schedule! <a href="/register">CLICK HERE</a></h5>
                     </div>
                 </div>
-                @else
-                @if(!auth()->user()->pointer)
-                <div id="pointerCheckDiv" class="d-flex justify-content-center">
-                    <div style="color: red; align-items: center;">
-                    <h5>You do not have a pointer selected. Click the button below to register a pointer under your location. <a href="{{ route('mapPage') }}">CLICK HERE</a></h5>
+                @elseif(!auth()->user()->pointer)
+                    <div id="pointerCheckDiv" class="d-flex justify-content-center">
+                        <div style="color: red; align-items: center;">
+                        <h5>You do not have a pointer selected. Click the button below to register a pointer under your location. <a href="{{ route('mapPage') }}">CLICK HERE</a></h5>
+                        </div>
                     </div>
-                </div>
-                @endIf
                 @endIf
             </div>
 
@@ -118,6 +116,15 @@
                     </form>
                 </div>
             </div>
+            @if(auth()->user()->pointer->pointerSchedule)
+            <div id="pointerJoinedDiv" class="d-flex justify-content-center">
+                <div class="p-2" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
+                    <h5>Your are currently in a schedule. The schedule info is:</h5>
+                    <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
+                    <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
+                </div>
+            </div>
+            @endif
         </div>
 
         <!-- Schedules Boxes -->
