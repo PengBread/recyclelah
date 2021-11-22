@@ -35,7 +35,7 @@ class ResetPasswordEmail extends Mailable
             'name' => $this->user->name,
             'url' => route('resetPassword', ['id' => $this->user->userID, 'token' => $this->user->passwordReset->token]),
         ];
-        dd($body);
+
         return $this->markdown('emails.ResetPasswordEmail')
             ->subject('Recycle-Lah - Reset Password')
             ->from('recyclelahFYP@gmail.com', 'Recycle-Lah Team')
