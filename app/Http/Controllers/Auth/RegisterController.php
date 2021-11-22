@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\ActivationMail;
 use Illuminate\Support\Facades\Validator;
 
-class registerController2 extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.

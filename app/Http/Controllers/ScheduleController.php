@@ -51,10 +51,26 @@ class ScheduleController extends Controller
     public function joinSchedule(Request $request) {
         if(!auth()->user()->pointer) {
             return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);
+        }
+
+        $pointer = auth()->user()->pointer;
+        $schedule = Schedule::where('scheduleID', $pointer->scheduleID)->first();
+        
+        if($pointer->scheduleID != null && Carbon::parse($schedule->scheduleDateStart)->isSameDay(today())) {
+            return redirect()->route('schedules')->withErrors(['error' => 'You are not allowed to leave this schedule because the schedule is already started. Please wait until the schedule ends.']);
+        } 
+
+        auth()->user()->pointer->update(['scheduleID' => $request->sch]);
+        return redirect()->route('schedules')->with('success', 'Successfully joined a schedule');
+    }
+
+    public function leaveSchedule(Request $request) {
+        if(!auth()->user()->pointer) {
+            return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);
         } else {
 
-            auth()->user()->pointer->update(['scheduleID' => $request->sch]);
-            return redirect()->route('schedules')->with('success', 'Successfully joined a schedule');
+            auth()->user()->pointer->update(['scheduleID' => null]);
+            return redirect()->route('schedules')->with('success', 'Successfully left the schedule!');
         }
     }
 }

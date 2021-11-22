@@ -31,8 +31,7 @@ class MapPointer extends Model
         'recycleCategory',
     ];
 
-    public function pointerSchedule()
-    {
+    public function pointerSchedule() {
         return $this->belongsTo(Schedule::class, 'scheduleID', 'scheduleID');
     }
 

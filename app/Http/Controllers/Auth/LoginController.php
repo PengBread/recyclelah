@@ -8,7 +8,7 @@ use Auth;
 use App\Models\User as Model;
 use App\Models\User;
 
-class LoginController2 extends Controller
+class LoginController extends Controller
 {
 
     public function authentication(Request $request)

@@ -40,18 +40,18 @@ Route::group([
 ], function() {
 
     Route::get('/login', function () {return view('auth.login');})->name('login')->middleware('guest');
-    Route::post('login', 'LoginController2@authentication')->middleware('guest');
+    Route::post('login', 'LoginController@authentication')->middleware('guest');
     Route::get('logout', 'LogoutController@logout');
 
-    Route::get('register', 'registerController2@index')->middleware('guest');
-    Route::post('register', 'registerController2@register')->middleware('guest');
-    Route::get('verified', 'registerController2@verified')->name('verification');
-    Route::post('resendEmail', 'registerController2@sendEmail');
+    Route::get('register', 'RegisterController@index')->middleware('guest');
+    Route::post('register', 'RegisterController@register')->middleware('guest');
+    Route::get('verified', 'RegisterController@verified')->name('verification');
+    Route::post('resendEmail', 'RegisterController@sendEmail');
 
-    Route::get('forgotPassword', 'ForgotPassword2@forgotPassword')->middleware('guest');
-    Route::post('forgotPassword', 'ForgotPassword2@sendResetPassword')->middleware('guest');
-    Route::get('resetPassword', 'ForgotPassword2@resetPassword')->name('resetPassword')->middleware('guest');
-    Route::post('updatePassword', 'ForgotPassword2@updatePassword')->middleware('guest');
+    Route::get('forgotPassword', 'ForgotPasswordController@forgotPassword')->middleware('guest');
+    Route::post('forgotPassword', 'ForgotPasswordController@sendResetPassword')->middleware('guest');
+    Route::get('resetPassword', 'ForgotPasswordController@resetPassword')->name('resetPassword')->middleware('guest');
+    Route::post('updatePassword', 'ForgotPasswordController@updatePassword')->middleware('guest');
 });
 
 Route::group([
@@ -94,6 +94,7 @@ Route::group([
             'prefix' => 'schedule'
         ], function () {
             Route::put('/join', 'ScheduleController@joinSchedule')->name('schedule.joinSchedule');
+            Route::put('/leave', 'ScheduleController@leaveSchedule')->name('schedule.leaveSchedule');
         });
 
         /**

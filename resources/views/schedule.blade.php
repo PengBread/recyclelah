@@ -32,11 +32,13 @@
             <!-- Search -->
             <div id="searchSchedule-Main" class="container mx-auto" style="height: 100%;">
                 <div id="searchSchedule-Container" class="container h-100">
-                    @include('components.errors')
+                    <div class="pt-3">
+                        @include('components.errors')
 
-                    @if (Session::has('success'))
-                        <div class="alert alert-success">{{ Session::get('success') }}</div>
-                    @endif
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        @endif
+                    </div>
                     
                     <form class="form" method="GET" action="{{ route('schedules') }}">
 
@@ -119,13 +121,21 @@
             @if(auth()->user())
                 @if(auth()->user()->pointer)
                     @if(auth()->user()->pointer->pointerSchedule)
-                    <div id="pointerJoinedDiv" class="d-flex justify-content-center">
-                        <div class="p-2" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
-                            <h5>Your are currently in a schedule. The schedule info is:</h5>
-                            <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
-                            <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
+                    <form class="form pt-5" method="POST" action="{{ route('schedule.leaveSchedule') }}">
+                        @csrf
+                        @method('put')
+                        <div id="pointerJoinedDiv" class="d-flex justify-content-center">
+                            <div class="p-3" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
+                                <h5>Your are currently in a schedule. The schedule info is:</h5>
+                                <h6>Organization: {{auth()->user()->pointer->pointerSchedule->ownedBy->organizationName}}</h6>
+                                <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
+                                <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
+                                <div class="d-flex justify-content-center p-2">
+                                    <button id="leaveBtn" type="submit" class="btn btn-danger" style="width: 200px;">LEAVE SCHEDULE</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     @endif
                 @endif
             @endif
