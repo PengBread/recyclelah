@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
 use App\Models\User;
+use App\Models\UserPasswordReset;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,13 +19,11 @@ use App\Mail\ResetPasswordEmail;
 class ForgotPassword2 extends Controller
 {
 
-    public function forgotPassword()
-    {
+    public function forgotPassword() {
         return view('auth.reset');
     }
 
-    public function sendResetPassword(Request $request)
-    {
+    public function sendResetPassword(Request $request) {
         //$userEmail = User::whereEmail($request->email)->first();
         $user = User::where('email', $request->email)->first();
 
@@ -30,32 +31,39 @@ class ForgotPassword2 extends Controller
             return redirect()->back()->with(['error' => 'Email does not exists']);
         }
 
-        // $body = [
-        //     'name' => $user->name,
-        //     'url' => route('verification', ['id' => $this->user->userID]),
-        // ];
-
-        // $body = [
-        //     'name' => $user->name,
-        //     'url' => 'http://127.0.0.1:8000/resetPassword',
-        // ];
-
+        $user->passwordReset()->updateOrCreate(['userID' => $user->userID] , ['token' => Str::random(20), 'requested_at' => Carbon::now(), 'used_at' => null]);
+        
         Mail::send(new ResetPasswordEmail($user));
 
         return redirect()->back()->with(['success' => 'An email for resetting your password has been sent to your email']);
     }
 
-    public function resetPassword()
-    {
-        return view('auth.passwords.reset');
+    public function resetPassword(Request $request) {
+        $user = User::where('userID', $request->id)->first();
+        $requestedAt = Carbon::parse($user->passwordReset->requested_at);
+
+        if($user->passwordReset->token != $request->token) {
+            return redirect()->route('login')->with(['error' => 'Password Reset Token Invalid']);
+        }
+        if($requestedAt->addMinutes(5) < Carbon::now() || $user->passwordReset->used_at) {
+            return redirect()->route('login')->with(['error' => 'Expired Token']);
+        }
+
+        return view('auth.passwords.reset', ['id' => $request->id, 'token' => $request->token]);
     }
 
-    public function updatePassword(Request $request)
-    {
-        $user = User::whereEmail($request->email)->first();
+    public function updatePassword(Request $request) {
+        $user = User::where('userID', $request->id)->first();
+        $requestedAt = Carbon::parse($user->passwordReset->requested_at);
 
-        if (($user) == null) {
-            return redirect()->back()->withErrors(['email' => 'Email not exists']);
+        if(!$user) {
+            return redirect()->route('login')->with(['error' => 'User ID Invalid']);
+        }
+        if($user->passwordReset->token != $request->token) {
+            return redirect()->route('login')->with(['error' => 'Password Reset Token Invalid']);
+        }
+        if($requestedAt->addMinutes(5) < Carbon::now() || $user->passwordReset->used_at) {
+            return redirect()->route('login')->with(['error' => 'Expired Token']);
         }
 
         $userPassword = [Input::get('password')];
@@ -71,6 +79,7 @@ class ForgotPassword2 extends Controller
         } else {
             $user->password = Hash::make($userPassword[0]);
             $user->save();
+            $user->passwordReset()->update(['used_at' => Carbon::now()]);
             return view('auth.updatePasswordSuccessful');
         }
     }

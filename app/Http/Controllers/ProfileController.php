@@ -48,8 +48,10 @@ class ProfileController extends Controller
     }
 
     public function joinOrganization(ProfileRequest $request) {
+        //Check if code is a string and 7 maximum alphabets/numbers
         $code = $request->safe()->code;
 
+        //Find the organization under the code
         $table = Organization::select('organizationID')
                 ->where('organizationCode', '=', $code)
                 ->first();
@@ -59,14 +61,10 @@ class ProfileController extends Controller
             ]);
         }
 
+        //Update user's organization affiliation column in database
         auth()->user()->update(['organizationID' => $table->organizationID]);
 
         return redirect()->route('organization');
-
-        // $table = DB::table('organizations')
-        //                     ->select('organizationID')
-        //                     ->where('organizationCode', '=', $code)
-        //                     ->get();
     }
 
     public function leaveOrganization(Request $request) {
@@ -76,7 +74,9 @@ class ProfileController extends Controller
     }
 
     public function listUsers(Request $request) {
+        //Retrieving Organization Owner's organizationID
         $organization = auth()->user()->affiliate;
+        
         $page = ($request->page) ?? 1;
         $staffs = $organization
                 ->staffs()

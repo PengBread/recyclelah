@@ -59,6 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(MapPointer::class, 'pointerID', 'pointerID');
     }
 
+    public function passwordReset() {
+        return $this->hasOne(UserPasswordReset::class, 'userID', 'userID');
+    }
+
     // public function ranking() {
     //     $collection = collect(User::orderBy('points', 'ASC')->get());
     //     $data = $collection->where('id', $this->id);

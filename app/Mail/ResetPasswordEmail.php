@@ -33,7 +33,7 @@ class ResetPasswordEmail extends Mailable
     {
         $body = [
             'name' => $this->user->name,
-            'url' => route('resetPassword', ['id' => $this->user->userID]),
+            'url' => route('resetPassword', ['id' => $this->user->userID, 'token' => $this->user->passwordReset->token]),
         ];
 
         return $this->markdown('emails.ResetPasswordEmail')

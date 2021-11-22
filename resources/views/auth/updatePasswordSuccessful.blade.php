@@ -9,7 +9,7 @@
             <div class="card-header"><h4>Password updated</h4></div>
 
             <div class="card-body">
-                <div class="form-group">
+                <div class="form-group" style="text-align: center">
                     <p>Your password has been updated.</p>
                 </div>
                 <div class="form-group d-flex justify-content-center pt-3 px-3 ">
@@ -19,12 +19,5 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-=======
 
-
-{{-- your password is updated
-<a class="btn" href="/">Click to return</a> --}}
-
->>>>>>> 6258b59aa0287001df6e2dab77223080620dd6e3
 @endsection

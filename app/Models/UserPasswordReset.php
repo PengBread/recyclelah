@@ -9,8 +9,8 @@ class UserPasswordReset extends Model
 {
     use HasFactory;
 
-    protected $table = 'users';
-    protected $primaryKey = 'userID';
+    protected $table = 'userpasswordreset';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -20,9 +20,8 @@ class UserPasswordReset extends Model
     protected $fillable = [
         'userID',
         'token',
-        'used_At',
-        'created_At',
-        'updated_At',
+        'used_at',
+        'requested_at',
     ];
 
     /**

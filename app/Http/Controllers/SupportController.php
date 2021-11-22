@@ -54,10 +54,10 @@ class SupportController extends Controller {
 
         Mail::send(new SupportEmail($body));
 
-        return redirect('/feedbackSuccess');
+        return redirect('/mailSuccess');
     }
  
-    public function feedbackSuccess() {
+    public function mailSuccess() {
         return view('supportSuccess');
     }
 }

@@ -33,7 +33,7 @@ Route::get('/reset', function () {
 //pull out from group for testing
 Route::get('support', 'App\Http\Controllers\SupportController@getInfo')->name('support');
 Route::post('send', 'App\Http\Controllers\SupportController@sendMail')->name('support.sendMail');
-Route::get('feedbackSuccess', 'App\Http\Controllers\SupportController@feedbackSuccess');
+Route::get('mailSuccess', 'App\Http\Controllers\SupportController@mailSuccess');
 
 Route::group([
     'namespace' => 'App\Http\Controllers\Auth'

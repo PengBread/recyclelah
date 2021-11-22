@@ -12,8 +12,7 @@ use Illuminate\Http\Request;
 
 class orgScheduleController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         //display everything at the beginning
         $organization = auth()->user()->affiliate;
         $ownedBy = $organization->ownedBy;
@@ -49,7 +48,6 @@ class orgScheduleController extends Controller
             'scheduleTitle' => 'required|string|max:50',
             'scheduleDateStart' => 'required|date',
             'scheduleDateEnd' => 'required',
-            // 'scheduleDateEnd' => 'required|date|after:'.$startDate,
             'scheduleContent'=>'required|string|max:500'
         ]);
 
