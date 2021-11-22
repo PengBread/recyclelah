@@ -60,7 +60,7 @@
 
                     <div class="form-group row p-2">
                         <div class="col">
-                            <a href="/forgotPassword">Forgot password?</a>
+                            <a href="{{ route('forgotpasswordpage') }}">Forgot password?</a>
                         </div>
                         <div class="col" style="text-align: right;">
                             <a href="/register">Register Now</a>

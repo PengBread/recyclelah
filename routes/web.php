@@ -26,10 +26,6 @@ Route::get('/verify', function () {
     return view('auth.verify');
 });
 
-Route::get('/reset', function () {
-    return view('auth.reset');
-});
-
 //pull out from group for testing
 Route::get('support', 'App\Http\Controllers\SupportController@getInfo')->name('support');
 Route::post('send', 'App\Http\Controllers\SupportController@sendMail')->name('support.sendMail');
@@ -48,9 +44,9 @@ Route::group([
     Route::get('verified', 'RegisterController@verified')->name('verification');
     Route::post('resendEmail', 'RegisterController@sendEmail');
 
-    Route::get('forgotPassword', 'ForgotPasswordController@forgotPassword')->middleware('guest');
+    Route::get('forgotPassword', 'ForgotPasswordController@forgotPasswordPage')->name('forgotpasswordpage')->middleware('guest');
     Route::post('forgotPassword', 'ForgotPasswordController@sendResetPassword')->middleware('guest');
-    Route::get('resetPassword', 'ForgotPasswordController@resetPassword')->name('resetPassword')->middleware('guest');
+    Route::get('resetPassword', 'ForgotPasswordController@resetPasswordPage')->name('resetPassword')->middleware('guest');
     Route::post('updatePassword', 'ForgotPasswordController@updatePassword')->middleware('guest');
 });
 

@@ -6,7 +6,7 @@
 <div class="container">
     <div class="content-container container">
         <div class="card">
-            <div class="card-header"><h4>Reset password</h4></div>
+            <div class="card-header"><h4>Forgot Password</h4></div>
 
             <div class="card-body">
                 <form method="POST" action="{{url('/forgotPassword')}}">

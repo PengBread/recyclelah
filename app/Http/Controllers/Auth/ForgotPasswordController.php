@@ -18,13 +18,13 @@ use App\Mail\ResetPasswordEmail;
 
 class ForgotPasswordController extends Controller
 {
-
-    public function forgotPassword() {
-        return view('auth.reset');
+    //Prompt user to forgotPassword page
+    public function forgotPasswordPage() {
+        return view('auth.forgotPassword');
     }
 
+    //Send reset Password Email
     public function sendResetPassword(Request $request) {
-        //$userEmail = User::whereEmail($request->email)->first();
         $user = User::where('email', $request->email)->first();
 
         if ($user == null || $user->isVerified == 0) {
@@ -34,11 +34,11 @@ class ForgotPasswordController extends Controller
         $user->passwordReset()->updateOrCreate(['userID' => $user->userID] , ['token' => Str::random(20), 'requested_at' => Carbon::now(), 'used_at' => null]);
         
         Mail::send(new ResetPasswordEmail($user));
-
         return redirect()->back()->with(['success' => 'An email for resetting your password has been sent to your email']);
     }
 
-    public function resetPassword(Request $request) {
+    //Prompt user to reset password page with validation.
+    public function resetPasswordPage(Request $request) {
         $user = User::where('userID', $request->id)->first();
         $requestedAt = Carbon::parse($user->passwordReset->requested_at);
 
@@ -52,16 +52,20 @@ class ForgotPasswordController extends Controller
         return view('auth.passwords.reset', ['id' => $request->id, 'token' => $request->token]);
     }
 
+    //Change user's password according to reset password request
     public function updatePassword(Request $request) {
         $user = User::where('userID', $request->id)->first();
         $requestedAt = Carbon::parse($user->passwordReset->requested_at);
 
+        //Check if user id is valid
         if(!$user) {
             return redirect()->route('login')->with(['error' => 'User ID Invalid']);
         }
+        //Check if user token and link token is correct or not
         if($user->passwordReset->token != $request->token) {
             return redirect()->route('login')->with(['error' => 'Password Reset Token Invalid']);
         }
+        //Check if token is more than 5 minutes, more than 5 minutes is expired.
         if($requestedAt->addMinutes(5) < Carbon::now() || $user->passwordReset->used_at) {
             return redirect()->route('login')->with(['error' => 'Expired Token']);
         }
