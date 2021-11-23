@@ -85,13 +85,9 @@ class MapController extends Controller
 
     public function changeStatus(Request $request) {
         $pointer = $request->input('pointer_Input');
-        // $organization = auth()->user()->affiliate;
-        $collectedBtn = $request->collectedBtn;
-
-        // //From Organization Owner Email
-        // $ownedBy = $organization->ownedBy;
-        
         $target = MapPointer::where('pointerID', $pointer)->first();
+
+        $collectedBtn = $request->collectedBtn;
         
 
         if($collectedBtn == "collected") {
@@ -115,9 +111,6 @@ class MapController extends Controller
     public function alertUser(Request $request) {
         $pointer = $request->input('pointer_Input');
         $organization = auth()->user()->affiliate;
-
-        //From Organization Owner Email
-        $ownedBy = $organization->ownedBy;
         
         $target = MapPointer::where('pointerID', $pointer)->first();
         $target->pointerStatus = 'Alert';
@@ -129,15 +122,15 @@ class MapController extends Controller
     }
 
     public function userConfirm(Request $request) {
-        $pointer = auth()->user()->pointer->update(['pointerStatus' => 'Inactive', 'scheduleID' => null,'confirmed_At' => Carbon::now()]);
+        auth()->user()->pointer->update(['pointerStatus' => 'Active', 'scheduleID' => null,'confirmed_At' => Carbon::now()]);
 
-        $points = auth()->user()->increment('points', 1);
+        auth()->user()->increment('points', 1);
 
         return redirect()->route('mapPage');
     }
 
     public function alertOk(Request $request) {
-        $pointer = auth()->user()->pointer->update(['pointerStatus' => 'Active']);
+        auth()->user()->pointer->update(['pointerStatus' => 'Active']);
 
         return redirect()->route('mapPage');
     }

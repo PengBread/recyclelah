@@ -73,7 +73,7 @@ class ForgotPasswordController extends Controller
         $userPassword = [Input::get('password')];
 
         $rules = array(
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|regex:/^[a-zA-Z0-9]{8,}$/|confirmed'
         );
 
         $validator = Validator::make(Input::all(), $rules);

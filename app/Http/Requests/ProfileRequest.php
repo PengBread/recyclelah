@@ -34,7 +34,7 @@ class ProfileRequest extends FormRequest
             $rules['name'] = 'bail|required|string|max:50';
         }
         else if($link == route('profile.editPhone')) {
-            $rules['phoneNumber'] = 'required|regex:/(6?01)[0-9]{8,10}/';
+            $rules['phoneNumber'] = 'required|regex:/(6?01)[0-9]{8,10}/|unique:users';
         }
         else if($link == route('profile.editPassword')) {
             $rules['password'] = 'required|string|regex:/^[a-zA-Z0-9]{8,}$/';

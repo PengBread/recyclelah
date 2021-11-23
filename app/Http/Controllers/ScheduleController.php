@@ -18,18 +18,23 @@ class ScheduleController extends Controller
     //  * @return \Illuminate\Http\Response
     //  */
 
+    //Displaying and filtering schedules
     public function index(Request $request) {
+        //Grabbing all the available categories for dropdownlist
         $category = Schedule::select('recyclingCategory')->groupBy('recyclingCategory')->get();
-
+        //Grabbing all the available organizations for dropdownlist
         $organization = Organization::select('organizationID', 'organizationName')->get();
 
+        //Grabbing data from inputs available in filter section
         $catSelection = $request->catScheduleSelection;
         $stateSelection = $request->stateScheduleSelection;
         $orgSelection = $request->orgScheduleSelection;
         $dateSelection = $request->dateScheduleSelection;
 
+        //Query up all the data into $schedule variable
         $schedules = Schedule::query();
 
+        //Filtering
         if($catSelection != null) {
             $schedules->where('recyclingCategory', $catSelection);
         }
@@ -48,6 +53,7 @@ class ScheduleController extends Controller
         return view('schedule', ['category' => $category, 'organization' => $organization, 'schedules' => $filtered]);
     }
 
+    //Joining a schedule
     public function joinSchedule(Request $request) {
         if(!auth()->user()->pointer) {
             return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);
@@ -64,6 +70,7 @@ class ScheduleController extends Controller
         return redirect()->route('schedules')->with('success', 'Successfully joined a schedule');
     }
 
+    //Leaving a schedule
     public function leaveSchedule(Request $request) {
         if(!auth()->user()->pointer) {
             return redirect()->route('schedules')->withErrors(['noPointer' => 'You do not have a location selected. Please select your household location before joining a schedule!']);

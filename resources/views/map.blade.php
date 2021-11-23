@@ -73,15 +73,6 @@ function initMap() {
         map.setCenter(marker.getPosition());
     });
 
-    // //Onclick Add Marker
-    // google.maps.event.addListener(map, 'click', function(event) {
-    //     placeMarker(event.latLng);
-    // });
-
-    // function placeMarker(location) {
-    //     marker.setPosition(location);
-    // }
-
     //SearchBox Add Marker
     google.maps.event.addListener(searchBox, 'places_changed', function(){
         var places = searchBox.getPlaces();
