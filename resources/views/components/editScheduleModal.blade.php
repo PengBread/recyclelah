@@ -11,20 +11,6 @@
                 @method('put')
 
                 <div class="modal-body">
-                    {{-- <div id="statusRadioBtns" class="form-group">
-                        <input name="scheduleStatus" value="{{ $data->scheduleStatus }}" hidden>
-                        <div class="row align-items-center">
-                        <label class="col-md-3 col-form-label text-md-right" for="statusRadioBtns">Status: </label>
-                        <div class="form-check col-lg-2">
-                            <input class="form-check-input" type="radio" name="statusRadio" id="statusRadio1" value="On-Going" checked>
-                            <label class="form-check-label" for="statusRadio1">On-Going</label>
-                        </div>
-                        <div class="form-check col-lg-2">
-                            <input class="form-check-input" type="radio" name="statusRadio" id="statusRadio2" value="Completed">
-                            <label class="form-check-label" for="statusRadio2">Completed</label>
-                        </div>
-                        <div>
-                    </div> --}}
                     <div class="form-group row p-2">
                         <label for="scheduleState" class="col-md-3 col-form-label text-md-right">Status: </label>
                         <div class="col-md-9">
