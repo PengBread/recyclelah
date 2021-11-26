@@ -171,7 +171,15 @@ function initMap() {
                         @method('put')
 
                         @if(!auth()->user()->pointer)
-                            <div class="d-flex row-sm justify-content-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label for="category" class="d-none d-md-block px-lg-2">Category:</label>
+                                <select class="form-select w-50" name="category">
+                                    <option value="Plastic">Plastic</option>
+                                    <option value="Metal">Metal</option>
+                                    <option value="Paper">Paper</option>
+                                </select>
+                            </div>
+                            <div class="d-flex row-sm justify-content-center pt-3">
                                 <label for="placeAddress" class="d-none d-md-block px-lg-2">Search Location:</label>
                                 <input type="text" name="placeInfo" id="placeAddress" class="w-100 w-sm-100" value="" placeholder="Enter your location" required>
                             </div>
@@ -197,21 +205,37 @@ function initMap() {
                                 <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
                             </div>
                         @else
-                            <div class="d-flex justify-content-center">
-                                <label for="placeAddress" class="px-2">Search Location:</label>
-                                <input type="text" name="placeInfo" id="placeAddress" class="w-50" value="{{ $userInfo->pointerAddress }}" placeholder="Enter your location">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label for="category" class="d-none d-md-block px-lg-2">Category:</label>
+                                <select class="form-select w-50" name="category">
+                                    <option value="Plastic">Plastic</option>
+                                    <option value="Metal">Metal</option>
+                                    <option value="Paper">Paper</option>
+                                </select>
                             </div>
-                            <div class="d-flex justify-content-center row py-3">
-                                <div class="col-3">
+                            <div class="d-flex row-sm justify-content-center pt-3">
+                                <label for="placeAddress" class="d-none d-md-block px-lg-2">Search Location:</label>
+                                <input type="text" name="placeInfo" id="placeAddress" class="w-100 w-sm-100" value="{{ $userInfo->pointerAddress }}" placeholder="Enter your location" required>
+                            </div>
+                            <div class="row py-3 d-flex justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-center">
                                     <label for="lng" class="">Latitude: </label>
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->longitude }}" readonly>
+                                    </div> 
+                                    <div class="d-flex justify-content-center">
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->longitude }}" readonly required>
+                                    </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex justify-content-center">
                                     <label for="lat" class="">Longitude: </label>
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->latitude }}" readonly>
+                                    </div> 
+                                    <div class="d-flex justify-content-center">
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->latitude }}" readonly required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center pt-5">
+                            <div class="d-flex justify-content-center pt-3">
                                 <button type="submit" id="confirmBtn" class="btn btn-primary">SAVE LOCATION</button>
                             </div>
                         @endif

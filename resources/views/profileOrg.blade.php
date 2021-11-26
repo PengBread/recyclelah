@@ -34,6 +34,12 @@
                 <!-- Organization -->
                 <div class="profile-content-container border" style="height: 100%">
                     <div class="pt-3 px-3">
+                        @if (Session::has('success'))
+                            <div class="p-2">
+                                <div class="alert alert-success">{{ Session::get('success') }}</div>
+                            </div>
+                        @endif
+                        
                         <h4>Organization Information</h4>
                         <hr>
                         <div>

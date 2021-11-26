@@ -40,9 +40,40 @@ class orgScheduleController extends Controller
         return view('orgSchedule', ['schedules' => $schedules, 'total' => $total, 'page' => $page, 'owner' => $ownedBy]);
     }
 
-    public function updateSchedule(Request $request) {
-        $startDate = $request->scheduleDateStart;
+    public function createSchedule(Request $request) {
+        if(Carbon::parse($request->input('scheduleDateStart')) < Carbon::now()->addDays(7)) {
+            return redirect()->route('orgSchedule.schedules')->withErrors(['error' => 'Schedule Date-Start must be 7-days after todays date']);
+        }
+
+        $request->validate([
+            'scheduleTitle' => 'required|string|max:50',
+            'scheduleDateStart' => 'required|date',
+            'scheduleContent'=>'required|string|max:500'
+        ]);
+
         $hours = $request->scheduleDateEnd;
+
+
+        $organization = auth()->user()->affiliate;
+        Schedule::create([
+            'organizationID' => $organization->organizationID,
+            'scheduleName' => $request->input('scheduleTitle'),
+            'stateName' => $request->scheduleState,
+            'scheduleDateStart' => Carbon::parse($request->input('scheduleDateStart')),
+            'scheduleDateEnd' => Carbon::parse($request->input('scheduleDateStart'))->addHours($hours),
+            'scheduleContent' => $request->input('scheduleContent'),
+            'recyclingCategory'=> $request->scheduleCategory,
+            'scheduleStatus' => true,
+        ]);
+        return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
+    }
+
+    public function updateSchedule(Request $request) {
+        if($request->scheduleStatus) {
+            if(Carbon::parse($request->input('scheduleDateStart')) < Carbon::now()->addDays(7)) {
+                return redirect()->route('orgSchedule.schedules')->withErrors(['error' => 'Schedule Date-Start must be 7-days after todays date']);
+            }
+        }
 
         $request->validate([
             'scheduleTitle' => 'required|string|max:50',
@@ -51,14 +82,15 @@ class orgScheduleController extends Controller
             'scheduleContent'=>'required|string|max:500'
         ]);
 
+        $startDate = $request->scheduleDateStart;
+        $hours = $request->scheduleDateEnd;
         $target = $request->schedule;
 
         Schedule::where('scheduleID', $target)
                 ->update(['scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
                         'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours), 'scheduleContent' => $request->scheduleContent]);
 
-        return redirect()->route('orgSchedule.schedules');
-
+        return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully edited a Schedule.');
     }
 
     public function deleteSchedule(Request $request) {
@@ -68,30 +100,5 @@ class orgScheduleController extends Controller
                     ->delete();
         
         return redirect()->route('orgSchedule.schedules');
-    }
-
-    public function createSchedule(Request $request) {
-        $startDate = $request->scheduleDateStart;
-        $hours = $request->scheduleDateEnd;
-        $request->validate([
-            'scheduleTitle' => 'required|string|max:50',
-            'scheduleDateStart' => 'required|date',
-            'scheduleDateEnd' => 'required',
-            'scheduleContent'=>'required|string|max:500'
-        ]);
-        
-        $organization = auth()->user()->affiliate;
-        Schedule::create([
-            'organizationID' => $organization->organizationID,
-            'scheduleName' => $request->input('scheduleTitle'),
-            // 'scheduleName' => $request->input('scheduleTitle'),
-            'stateName' => $request->scheduleState,
-            'scheduleDateStart' => $request->input('scheduleDateStart'),
-            'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours),
-            'scheduleContent' => $request->input('scheduleContent'),
-            'recyclingCategory'=> $request->scheduleCategory,
-            'scheduleStatus' => true,
-        ]);
-        return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully create a new Schedule.');
     }
 }

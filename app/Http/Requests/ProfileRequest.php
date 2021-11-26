@@ -23,10 +23,7 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-        ];
-        
-       
+        $rules = [];
 
         $link = request()->server()['HTTP_ORIGIN'] . request()->server()['REQUEST_URI'];
 
@@ -42,7 +39,6 @@ class ProfileRequest extends FormRequest
         else if($link == route('profile.joinOrganization')) {
             $rules['code'] = 'required|string|regex:/^[a-zA-Z0-9]{7}$/';
         }
-        // dd($rules);
 
         return $rules;
     }

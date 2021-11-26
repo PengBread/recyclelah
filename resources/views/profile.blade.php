@@ -40,7 +40,9 @@
                 <div class="profile-content-container border">
                     
                     @if (Session::has('success'))
-                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        <div class="p-2">
+                            <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        </div>
                     @endif
 
                     <div class="pt-3 px-3">

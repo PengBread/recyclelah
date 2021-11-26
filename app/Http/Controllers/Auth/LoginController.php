@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         //Check if credentials exist in database
         if(!Auth::attempt($credentials)) {
-            return redirect()->back()->with(['error' => 'These credentials do not match our record']); 
+            return redirect()->back()->with(['error' => 'Invalid email or password']); 
         }
         
         //Gets user account

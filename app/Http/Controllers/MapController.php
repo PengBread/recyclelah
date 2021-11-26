@@ -36,7 +36,7 @@ class MapController extends Controller
                 'latitude' => $request->lat,
                 'pointerAddress' => $request->placeInfo,
                 'pointerStatus' => 'Active',
-                'recycleCategory' => 'Paper',
+                'recycleCategory' => $request->category,
             ]);
             //Insert pointerID into User
             auth()->user()->update(['pointerID' => $create->pointerID]);
@@ -108,6 +108,7 @@ class MapController extends Controller
         return redirect()->route('workerPage');
     }
 
+    //Alerting user when worker alert them
     public function alertUser(Request $request) {
         $pointer = $request->input('pointer_Input');
         $organization = auth()->user()->affiliate;
@@ -121,6 +122,7 @@ class MapController extends Controller
         return redirect()->route('workerPage');
     }
 
+    //User Confirmation When Worker Set their Pointer Collected
     public function userConfirm(Request $request) {
         auth()->user()->pointer->update(['pointerStatus' => 'Active', 'scheduleID' => null,'confirmed_At' => Carbon::now()]);
 

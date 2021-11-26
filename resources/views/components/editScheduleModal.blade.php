@@ -10,6 +10,8 @@
                 @csrf
                 @method('put')
                 
+                <input name="scheduleStatus" value="{{ $data->scheduleStatus }}" hidden>
+
                 <div class="modal-body">
                     <div class="form-group row p-2">
                         <label for="scheduleTitle" class="col-md-3 col-form-label text-md-right">Title: </label>

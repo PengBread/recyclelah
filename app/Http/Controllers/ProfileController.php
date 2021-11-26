@@ -16,37 +16,41 @@ use Session;
 
 class ProfileController extends Controller
 {
-
+    //Display User's Profile information
     public function profile(Request $request) {
         $user = auth()->user();
         return view('profile', ['userInfo' => $user]);
     }
 
+    //Display Organization Information
     public function organization(Request $request) {
-        
         return view('profileOrg', ['organizationInfo' => auth()->user()->affiliate]);
     }
 
+    //Updating user account name
     public function editName(ProfileRequest $request) {
         $array = $request->safe()->only(['name']);
         auth()->user()->update($array);
 
-        return redirect()->route('authProfile');
+        return redirect()->route('authProfile')->with(['success' => 'Successfully updated your name']);
     }
 
+    //Updating user account phone number
     public function editPhone(ProfileRequest $request) {
         $array = $request->safe()->only(['phoneNumber']);
         auth()->user()->update($array);
 
-        return redirect()->route('authProfile');
+        return redirect()->route('authProfile')->with(['success' => 'Successfully updated your phone number']);
     }
 
+    //Updating user account password
     public function editPassword(ProfileRequest $request) {
         auth()->user()->update(['password' => Hash::make($request->safe()->password)]);
 
-        return redirect()->route('authProfile');
+        return redirect()->route('authProfile')->with(['success' => 'Successfully updated your password']);
     }
 
+    //Joining an organization
     public function joinOrganization(ProfileRequest $request) {
         //Check if code is a string and 7 maximum alphabets/numbers
         $code = $request->safe()->code;
@@ -64,15 +68,17 @@ class ProfileController extends Controller
         //Update user's organization affiliation column in database
         auth()->user()->update(['organizationID' => $table->organizationID]);
 
-        return redirect()->route('organization');
+        return redirect()->route('organization')->with(['success' => 'Successfully joined the organization']);
     }
 
+    //Leaving an organization
     public function leaveOrganization(Request $request) {
         auth()->user()->update(['organizationID' => null]);
 
-        return redirect()->route('authProfile');
+        return redirect()->route('organization')->with(['success' => 'Successfully left the organization']);
     }
 
+    //Listing all users affiliated with organization in List Workers page
     public function listUsers(Request $request) {
         //Retrieving Organization Owner's organizationID
         $organization = auth()->user()->affiliate;
@@ -93,12 +99,14 @@ class ProfileController extends Controller
         return view('affiliatesList', ['userOrg' => $staffs, 'total' => $total, 'page' => $page]);
     }
 
+    //Kicking a user from the organization
     public function kickUser(Request $request, User $kicked) {
         $kicked->update(['organizationID' => null]);
         
         return redirect()->route('memberList');
     }
 
+    //Refreshing organization 7 digit join code
     public function refreshCode(Request $request) {
         $organization = auth()->user()->affiliate;
 
