@@ -73,6 +73,7 @@ class orgScheduleController extends Controller
             if(Carbon::parse($request->input('scheduleDateStart')) < Carbon::now()->addDays(7)) {
                 return redirect()->route('orgSchedule.schedules')->withErrors(['error' => 'Schedule Date-Start must be 7-days after todays date']);
             }
+
         }
 
         $request->validate([
@@ -85,9 +86,15 @@ class orgScheduleController extends Controller
         $startDate = $request->scheduleDateStart;
         $hours = $request->scheduleDateEnd;
         $target = $request->schedule;
+    
+        if($request->scheduleStatus == "Ongoing") {
+            $status = true;
+        } else {
+            $status = false;
+        }
 
         Schedule::where('scheduleID', $target)
-                ->update(['scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
+                ->update(['scheduleStatus' => $status, 'scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
                         'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours), 'scheduleContent' => $request->scheduleContent]);
 
         return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully edited a Schedule.');

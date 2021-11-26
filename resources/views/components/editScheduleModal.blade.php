@@ -9,10 +9,39 @@
             <form method="POST" action="{{ route('orgSchedule.updateSchedule', ['schedule' => $data->scheduleID]) }}">
                 @csrf
                 @method('put')
-                
-                <input name="scheduleStatus" value="{{ $data->scheduleStatus }}" hidden>
 
                 <div class="modal-body">
+                    {{-- <div id="statusRadioBtns" class="form-group">
+                        <input name="scheduleStatus" value="{{ $data->scheduleStatus }}" hidden>
+                        <div class="row align-items-center">
+                        <label class="col-md-3 col-form-label text-md-right" for="statusRadioBtns">Status: </label>
+                        <div class="form-check col-lg-2">
+                            <input class="form-check-input" type="radio" name="statusRadio" id="statusRadio1" value="On-Going" checked>
+                            <label class="form-check-label" for="statusRadio1">On-Going</label>
+                        </div>
+                        <div class="form-check col-lg-2">
+                            <input class="form-check-input" type="radio" name="statusRadio" id="statusRadio2" value="Completed">
+                            <label class="form-check-label" for="statusRadio2">Completed</label>
+                        </div>
+                        <div>
+                    </div> --}}
+                    <div class="form-group row p-2">
+                        <label for="scheduleState" class="col-md-3 col-form-label text-md-right">Status: </label>
+                        <div class="col-md-9">
+                            <select class="form-select @error('scheduleStatus') is-invalid @enderror" id="scheduleState" name="scheduleStatus">
+                                <option value="Ongoing" @if ($data->scheduleStatus == true) selected="selected" @endif>Ongoing</option>
+                                <option value="Completed" @if ($data->scheduleStatus == false) selected="selected" @endif>Completed</option>
+                            </select>
+
+                            @error('scheduleStatus')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                        </div>
+                    </div>
+
                     <div class="form-group row p-2">
                         <label for="scheduleTitle" class="col-md-3 col-form-label text-md-right">Title: </label>
 
@@ -29,9 +58,8 @@
                     <div class="form-group row p-2">
                         <label for="scheduleState" class="col-md-3 col-form-label text-md-right">State: </label>
                         <div class="col-md-9">
-
                             <select class="form-select @error('scheduleState') is-invalid @enderror" id="scheduleState" name="scheduleState">
-                                {{-- <option value="Select a State">Select a state</option> --}}
+                                <option value="{{ $data->stateName }}">Old Selection: {{ $data->stateName }}</option>
                                 <option value="Johor">Johor</option>
                                 <option value="Kedah">Kedah</option>
                                 <option value="Kelantan">Kelantan</option>
@@ -58,9 +86,8 @@
                     <div class="form-group row p-2">
                         <label for="scheduleCategory" class="col-md-3 col-form-label text-md-right">Category: </label>
                         <div class="col-md-9">
-
                             <select class="form-select" id="scheduleCategory" name="scheduleCategory">
-                                {{-- <option value="Select a Category">Select a category</option> --}}
+                                <option value="{{ $data->recyclingCategory }}">Old Selection: {{ $data->recyclingCategory }}</option>
                                 <option value="Plastic">Plastic</option>
                                 <option value="Metal">Metal</option>
                                 <option value="Paper">Paper</option>
