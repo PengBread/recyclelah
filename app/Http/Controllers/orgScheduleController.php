@@ -94,7 +94,7 @@ class orgScheduleController extends Controller
         }
 
         Schedule::where('scheduleID', $target)
-                ->update(['scheduleStatus' => $status, 'scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->recyclingCategory, 
+                ->update(['scheduleStatus' => $status, 'scheduleName' => $request->scheduleTitle, 'stateName' => $request->scheduleState, 'recyclingCategory' => $request->scheduleCategory, 
                         'scheduleDateStart' => $request->scheduleDateStart, 'scheduleDateEnd' => Carbon::parse($startDate)->addHours($hours), 'scheduleContent' => $request->scheduleContent]);
 
         return redirect()->route('orgSchedule.schedules')->with('success', 'Successfully edited a Schedule.');

@@ -208,9 +208,10 @@ function initMap() {
                             <div class="d-flex justify-content-center align-items-center">
                                 <label for="category" class="d-none d-md-block px-lg-2">Category:</label>
                                 <select class="form-select w-50" name="category">
-                                    <option value="Plastic">Plastic</option>
-                                    <option value="Metal">Metal</option>
-                                    <option value="Paper">Paper</option>
+                                    {{-- <option value="{{$userInfo->recycleCategory}}">Original Selection: {{$userInfo->recycleCategory}}</option> --}}
+                                    <option value="Plastic" {{ $userInfo->recycleCategory == "Plastic" ? "selected" : " "}}>Plastic</option>
+                                    <option value="Metal" {{ $userInfo->recycleCategory == "Metal" ? "selected" : " "}}>Metal</option>
+                                    <option value="Paper" {{ $userInfo->recycleCategory == "Paper" ? "selected" : " "}}>Paper</option>
                                 </select>
                             </div>
                             <div class="d-flex row-sm justify-content-center pt-3">

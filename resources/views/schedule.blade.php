@@ -125,14 +125,15 @@
                         @csrf
                         @method('put')
                         <div id="pointerJoinedDiv" class="d-flex justify-content-center">
-                            <div class="p-3" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px;">
-                                <h5>Your are currently in a schedule. The schedule info is:</h5>
+                            <div class="p-3" style="color: rgb(44, 44, 44); align-items: center; background-color: rgb(255, 189, 189); border-radius: 10px; text-align:center">
+                                <h5>You are currently in a schedule. The schedule info is:</h5>
                                 <h6>Organization: {{auth()->user()->pointer->pointerSchedule->ownedBy->organizationName}}</h6>
                                 <h6>Date Start: {{auth()->user()->pointer->pointerSchedule->scheduleDateStart}}</h6>
                                 <h6>Date End: {{auth()->user()->pointer->pointerSchedule->scheduleDateEnd}}</h6>
-                                <div class="d-flex justify-content-center p-2">
+                                <div class="d-flex justify-content-center p-3">
                                     <button id="leaveBtn" type="submit" class="btn btn-danger" style="width: 200px;">LEAVE SCHEDULE</button>
                                 </div>
+                                <p>NOTE: YOU WILL NOT BE ABLE TO LEAVE THE SCHEDULE YOU JOINED DURING THE SCHEDULE DATE</p>
                             </div>
                         </div>
                     </form>

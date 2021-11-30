@@ -41,7 +41,7 @@ class MapController extends Controller
             //Insert pointerID into User
             auth()->user()->update(['pointerID' => $create->pointerID]);
         } else {
-            auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo, 'longitude' => $request->lng, "latitude" => $request->lat], ['recycleCategory' => 'Paper']);
+            auth()->user()->pointer->update(['pointerAddress' => $request->placeInfo, 'longitude' => $request->lng, "latitude" => $request->lat, 'recycleCategory' => "$request->category"]);
         }
 
         return redirect()->route('mapPage')->with('success', 'Successfully added your location');

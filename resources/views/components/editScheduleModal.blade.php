@@ -45,20 +45,19 @@
                         <label for="scheduleState" class="col-md-3 col-form-label text-md-right">State: </label>
                         <div class="col-md-9">
                             <select class="form-select @error('scheduleState') is-invalid @enderror" id="scheduleState" name="scheduleState">
-                                <option value="{{ $data->stateName }}">Old Selection: {{ $data->stateName }}</option>
-                                <option value="Johor">Johor</option>
-                                <option value="Kedah">Kedah</option>
-                                <option value="Kelantan">Kelantan</option>
-                                <option value="Malacca">Malacca</option>
-                                <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                <option value="Pahang">Pahang</option>
-                                <option value="Penang">Penang</option>
-                                <option value="Perak">Perak</option>
-                                <option value="Perlis">Perlis</option>
-                                <option value="Sabah">Sabah</option>
-                                <option value="Sarawak">Sarawak</option>
-                                <option value="Selangor">Selangor</option>
-                                <option value="Terengganu">Terengganu</option>
+                                <option value="Johor" {{ $data->stateName == "Johor" ? "selected" : " " }}>Johor</option>
+                                <option value="Kedah" {{ $data->stateName == "Kedah" ? "selected" : " " }}>Kedah</option>
+                                <option value="Kelantan" {{ $data->stateName == "Kelantan" ? "selected" : " " }}>Kelantan</option>
+                                <option value="Malacca" {{ $data->stateName == "Malacca" ? "selected" : " " }}>Malacca</option>
+                                <option value="Negeri Sembilan" {{ $data->stateName == "Negeri Sembilan" ? "selected" : " " }}>Negeri Sembilan</option>
+                                <option value="Pahang" {{ $data->stateName == "Pahang" ? "selected" : " " }}>Pahang</option>
+                                <option value="Penang" {{ $data->stateName == "Penang" ? "selected" : " " }}>Penang</option>
+                                <option value="Perak" {{ $data->stateName == "Perak" ? "selected" : " " }}>Perak</option>
+                                <option value="Perlis" {{ $data->stateName == "Perlis" ? "selected" : " " }}>Perlis</option>
+                                <option value="Sabah" {{ $data->stateName == "Sabah" ? "selected" : " " }}>Sabah</option>
+                                <option value="Sarawak" {{ $data->stateName == "Sarawak" ? "selected" : " " }}>Sarawak</option>
+                                <option value="Selangor" {{ $data->stateName == "Selangor" ? "selected" : " " }}>Selangor</option>
+                                <option value="Terengganu" {{ $data->stateName == "Terengganu" ? "selected" : " " }}>Terengganu</option>
                             </select>
 
                             @error('scheduleState')
@@ -73,10 +72,9 @@
                         <label for="scheduleCategory" class="col-md-3 col-form-label text-md-right">Category: </label>
                         <div class="col-md-9">
                             <select class="form-select" id="scheduleCategory" name="scheduleCategory">
-                                <option value="{{ $data->recyclingCategory }}">Old Selection: {{ $data->recyclingCategory }}</option>
-                                <option value="Plastic">Plastic</option>
-                                <option value="Metal">Metal</option>
-                                <option value="Paper">Paper</option>
+                                <option value="Plastic" {{ $data->recyclingCategory == "Plastic" ? "selected" : " " }}>Plastic</option>
+                                <option value="Metal" {{ $data->recyclingCategory == "Metal" ? "selected" : " " }}>Metal</option>
+                                <option value="Paper" {{ $data->recyclingCategory == "Paper" ? "selected" : " " }}>Paper</option>
                             </select>
 
                             @error('scheduleCategory')
