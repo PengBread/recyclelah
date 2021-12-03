@@ -13,15 +13,14 @@ var userLoc;
 function initMap() {
     const input = document.getElementById("placeAddress");
     const searchBox = new google.maps.places.SearchBox(input);
-    var latitude = parseFloat(document.getElementById("lat").value);
-    var longitude = parseFloat(document.getElementById("lng").value);
+    let latitude = parseFloat(document.getElementById("lat").value);
+    let longitude = parseFloat(document.getElementById("lng").value);
     const contentString =
     '<div id="content">' +
         "<p><b>You placed your location here!</b></p>" +
         '<div id="bodyContent">' +
         "</div>" +
     "</div>";
-    console.log(longitude);
     if(!longitude || !latitude) {
         longitude = 100.3530;
         latitude = 5.3528;
@@ -186,7 +185,7 @@ function initMap() {
                             <div class="row py-3 d-flex justify-content-center">
                                 <div class="col-md-4">
                                     <div class="d-flex justify-content-center">
-                                    <label for="lng" class="">Latitude: </label>
+                                    <label for="lat" class="">Latitude: </label>
                                     </div> 
                                     <div class="d-flex justify-content-center">
                                     <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="" readonly required>
@@ -194,7 +193,7 @@ function initMap() {
                                 </div>
                                 <div class="col-md-4">
                                     <div class="d-flex justify-content-center">
-                                    <label for="lat" class="">Longitude: </label>
+                                    <label for="lng" class="">Longitude: </label>
                                     </div> 
                                     <div class="d-flex justify-content-center">
                                     <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="" readonly required>
@@ -221,18 +220,18 @@ function initMap() {
                             <div class="row py-3 d-flex justify-content-center">
                                 <div class="col-md-4">
                                     <div class="d-flex justify-content-center">
-                                    <label for="lng" class="">Latitude: </label>
+                                    <label for="lat" class="">Latitude: </label>
                                     </div> 
                                     <div class="d-flex justify-content-center">
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->longitude }}" readonly required>
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lat" id="lat" class="w-50" value="{{ $userInfo->latitude }}" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="d-flex justify-content-center">
-                                    <label for="lat" class="">Longitude: </label>
+                                    <label for="lng" class="">Longitude: </label>
                                     </div> 
                                     <div class="d-flex justify-content-center">
-                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->latitude }}" readonly required>
+                                    <input type="text" style="background-color: rgb(221, 221, 221);" name="lng" id="lng" class="w-50" value="{{ $userInfo->longitude }}" readonly required>
                                     </div>
                                 </div>
                             </div>
